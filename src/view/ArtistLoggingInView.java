@@ -102,6 +102,8 @@ public class ArtistLoggingInView extends JFrame{
 			logIn = new account(registeredUsername,registeredPassword);
 			generalController.getInstance().gettingRegisteredArtistAccountData(registeredUsername, registeredPassword);
 //			RegisteredUserView.getInstance().setUserName(registeredUsername);
+			artistHomeView.getInstance().setUsername(gettingUsername());
+			System.out.println(gettingUsername());
 			closingWindow();
 			SelectAccount.getInstance().closingWindow();
 		}
@@ -111,8 +113,7 @@ public class ArtistLoggingInView extends JFrame{
 		JOptionPane.showMessageDialog(null,"Successfully Logged In! Welcome back Artist!");
 //		RegisteredUserView.getInstance().setVisible(true);
 //		artistHomeView = new HomeViewA();
-		artistHomeView.getInstance().setUsername(gettingUsername());
-		System.out.println(gettingUsername());
+		
 		artistHomeView.getInstance().run();
 //		artistHomeView.setVisible(true);
 	}

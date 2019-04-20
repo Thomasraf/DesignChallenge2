@@ -219,8 +219,7 @@ public class Database{
 		
 	}
 	
-	public boolean artistloggingAccount(account registeredAccount)
-	{
+	public boolean loggingArtistAccount(account registeredAccount) { //Logging In
 		Connection cnt = getConnection(); 
 		boolean loggedIn = false;
 		

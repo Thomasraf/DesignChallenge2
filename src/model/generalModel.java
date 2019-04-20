@@ -52,10 +52,8 @@ public class generalModel {
 		}
 	}
 	
-
-	public void checkingArtistAccountData(account w)
-	{
-		if(Database.getInstance().artistloggingAccount(w) == true) {
+	public void checkingArtistAccountData(account w) { //LOGGING IN
+		if(Database.getInstance().loggingArtistAccount(w) == true) {
 			ArtistLoggingInView.getInstance().entranceAllowed();
 		}
 		else {
@@ -68,7 +66,6 @@ public class generalModel {
 		Database.getInstance().addingPlaylist(p);
 	}
 
-	
 	public void getUserPlaylistData(Playlist p)
 	{
 		Database.getInstance().addingUserPlaylist(p);

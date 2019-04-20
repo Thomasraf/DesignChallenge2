@@ -30,6 +30,8 @@ public class CreateAlbum extends JFrame {
 	private volatile static CreateAlbum instance = null;
 	private JPanel contentPane;
 	private JTextField textFieldEnterPlaylistName;
+	JButton btnCreatePlaylist;
+
 	private JTextField textField;
 
 	/**
@@ -65,10 +67,16 @@ public class CreateAlbum extends JFrame {
 		lblNewLabel.setBounds(30, 14, 112, 14);
 		contentPane.add(lblNewLabel);
 		
+		btnCreatePlaylist = new JButton("Create Album");
+		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
+		btnCreatePlaylist.setBounds(336, 228, 101, 23);
+		contentPane.add(btnCreatePlaylist);
+
 		JButton btnCreateAlbum = new JButton("Create Album");
 		btnCreateAlbum.addActionListener(new btn_CreateAlbum());
 		btnCreateAlbum.setBounds(336, 228, 101, 23);
 		contentPane.add(btnCreateAlbum);
+
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -88,21 +96,21 @@ public class CreateAlbum extends JFrame {
 		PlaylistImagelbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		PlaylistImagelbl.setBounds(60, 66, 56, 23);
 		contentPane.add(PlaylistImagelbl);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Album Art here");
+
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(10, 91, 160, 126);
 		contentPane.add(lblNewLabel_1);
 	}
 	
-	class btn_CreateAlbum implements ActionListener
+	class btn_CreatePlaylist implements ActionListener
 	 {		
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 
-			 String playlistName = textFieldEnterPlaylistName.getText();
-			 String username = RegisteredUserView.getInstance().currentUser;
-
+			 String albumName = textFieldEnterPlaylistName.getText();
+			 String username = ArtistView.getInstance().currentUser;
 			 
 			 boolean isTrue = true;
 			 
@@ -111,7 +119,7 @@ public class CreateAlbum extends JFrame {
 
 
 			 Playlist addedPlaylist = new PlaylistBuilder()
-					 .setPlaylistName(playlistName)
+					 .setPlaylistName(albumName)
 					 .setUsername(username)
 					 .setFavorite(favorite)
 					 .getPlaylist();
@@ -120,7 +128,7 @@ public class CreateAlbum extends JFrame {
 			 
 			 for(int i = 0; i < generalModel.getInstance().getUserPlaylist(username).size();i++)
 			 {
-				 if(playlistName.equals(generalModel.getInstance().getUserPlaylist(username).get(i).getPlaylistName()))
+				 if(albumName.equals(generalModel.getInstance().getUserPlaylist(username).get(i).getPlaylistName()))
 				 {
 					 JOptionPane.showMessageDialog(null,"Playlist already exists");
 					 dispose();
@@ -135,7 +143,7 @@ public class CreateAlbum extends JFrame {
 			 
 				 generalModel.getInstance().getPlaylistData(addedPlaylist);
 				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite);
-				 JOptionPane.showMessageDialog(null, "Added " + playlistName + " playlist!");
+				 JOptionPane.showMessageDialog(null, "Added " + albumName + " playlist!");
 			 
 				 
 				 dispose();

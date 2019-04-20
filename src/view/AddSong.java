@@ -23,7 +23,6 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
-import java.awt.Color;
 
 public class AddSong extends JFrame {
 	private volatile static AddSong instance = null;
@@ -58,7 +57,6 @@ public class AddSong extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255,255,250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -91,12 +89,10 @@ public class AddSong extends JFrame {
 		contentPane.add(textFieldGenre);
 		
 		 btnNewButton = new JButton("Add Song");
-		 btnNewButton.setBackground(Color.WHITE);
 		 btnNewButton.addActionListener(new btn_Add());
-		btnNewButton.setBounds(298, 194, 89, 23);
+		btnNewButton.setBounds(306, 203, 89, 23);
 		contentPane.add(btnNewButton);
 		
-
 		 btnChooseFile = new JButton("Choose File");
 		 btnChooseFile.setBackground(Color.WHITE);
 		 btnChooseFile.addActionListener(new btn_ChooseFile());

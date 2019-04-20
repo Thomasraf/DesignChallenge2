@@ -146,6 +146,7 @@ public class SigningUpView extends JFrame{
 				String path = textFieldChosenFile.getText();
 						
 				signUp = new account(username,password); 
+
 				int x = generalController.getInstance().gettingAccountData(username, password,path);
 				
 				if(x == 1) {
@@ -160,19 +161,19 @@ public class SigningUpView extends JFrame{
 				HomeView.getInstance().setDisplayPicture(path);
 				closingWindow();
 				SelectAccount.getInstance().setVisible(false);
-				HomeView.getInstance().realPath = path;
+        HomeView.getInstance().realPath = path;
 			}
 		}
 		
-//		public void signingSuccessful() {
-//			JOptionPane.showMessageDialog(null, "Signing Up Successful!");
-//			//generalModel.getInstance().getDisplayPictureData();
-//			HomeView.getInstance().setVisible(true);
-//		}
+		public void signingSuccessful() {
+			JOptionPane.showMessageDialog(null, "Signing Up Successful!");
+			//generalModel.getInstance().getDisplayPictureData();
+			HomeView.getInstance().setVisible(true);
+		}
 //		
-//		public void signingFailed() {
-//			JOptionPane.showMessageDialog(null, "Username already exisits! Please Try Again!");
-//		}
+		public void signingFailed() {
+			JOptionPane.showMessageDialog(null, "Username already exisits! Please Try Again!");
+		}
 		
 		public void closingWindow() {
 			this.setVisible(false);

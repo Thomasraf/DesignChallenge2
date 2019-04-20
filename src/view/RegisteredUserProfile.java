@@ -29,7 +29,7 @@ public class RegisteredUserProfile extends JFrame{
 	public String currentUser;
 	public JLabel lblUser;
 	private JButton btnRefresh,btnFavoritePlaylist,btnFavoriteSong;
-	ArrayList<Song> userSongs,userSongsFavorites, userSongsMostPlayed;
+	ArrayList<Song> userSongs,userSongsFavorites;
 	ArrayList<Playlist> userPlaylist,userPlaylistFavorites;
 	PlaylistList pl;
 	JList songJlist,playlistJList,FavoriteplaylistJList,FavoritesongJList, mostPlayedList;
@@ -211,14 +211,13 @@ public class RegisteredUserProfile extends JFrame{
 			
 			//============================================== Most Played Song
 			
-			userSongsMostPlayed = generalModel.getInstance().getMostPlayed();
+			userSongs = generalModel.getInstance().getMostPlayed();
 			DefaultListModel DLM5 = new DefaultListModel();
 			
-			DLM5.addElement(userSongsMostPlayed.get(0).getSongName());
+			DLM5.addElement(userSongs.get(0).getSongName());
 			
 			 
 			mostPlayedList.setModel(DLM5);
-			
 		}
 	}
 	
@@ -253,10 +252,11 @@ public class RegisteredUserProfile extends JFrame{
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			userSongsMostPlayed = generalModel.getInstance().getMostPlayed();
+
+			userSongs = generalModel.getInstance().getMostPlayed();
 			DefaultListModel DLM = new DefaultListModel();
 			
-			DLM.addElement(userSongsMostPlayed.get(0).getSongName());
+			DLM.addElement(userSongs.get(0).getSongName());
 		
 			mostPlayedList.setModel(DLM);
 

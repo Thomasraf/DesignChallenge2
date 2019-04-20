@@ -147,6 +147,7 @@ public class SigningUpView extends JFrame{
 						
 				signUp = new account(username,password); 
 
+
 				int x = generalController.getInstance().gettingAccountData(username, password,path);
 				
 				if(x == 1) {
@@ -156,12 +157,15 @@ public class SigningUpView extends JFrame{
 				else {
 					JOptionPane.showMessageDialog(null, "Username already exisits! Please Try Again!");
 				}
+
 				
 				HomeView.getInstance().setUserName(username);
 				HomeView.getInstance().setDisplayPicture(path);
 				closingWindow();
 				SelectAccount.getInstance().setVisible(false);
+
         HomeView.getInstance().realPath = path;
+
 			}
 		}
 		

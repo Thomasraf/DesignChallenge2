@@ -72,10 +72,12 @@ public class CreateAlbum extends JFrame {
 		btnCreatePlaylist.setBounds(336, 228, 101, 23);
 		contentPane.add(btnCreatePlaylist);
 
+
 		JButton btnCreateAlbum = new JButton("Create Album");
 		btnCreateAlbum.addActionListener(new btn_CreateAlbum());
 		btnCreateAlbum.setBounds(336, 228, 101, 23);
 		contentPane.add(btnCreateAlbum);
+
 
 		
 		textField = new JTextField();
@@ -97,7 +99,8 @@ public class CreateAlbum extends JFrame {
 		PlaylistImagelbl.setBounds(60, 66, 56, 23);
 		contentPane.add(PlaylistImagelbl);
 
-		JLabel lblNewLabel_1 = new JLabel("Album Art here");
+		
+		JLabel lblNewLabel_1 = new JLabel("Album Image here");
 
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(10, 91, 160, 126);
@@ -111,6 +114,7 @@ public class CreateAlbum extends JFrame {
 			 
 			 String albumName = textFieldEnterPlaylistName.getText();
 			 String username = ArtistView.getInstance().currentUser;
+
 			 
 			 boolean isTrue = true;
 			 
@@ -128,7 +132,9 @@ public class CreateAlbum extends JFrame {
 			 
 			 for(int i = 0; i < generalModel.getInstance().getUserPlaylist(username).size();i++)
 			 {
+
 				 if(albumName.equals(generalModel.getInstance().getUserPlaylist(username).get(i).getPlaylistName()))
+
 				 {
 					 JOptionPane.showMessageDialog(null,"Playlist already exists");
 					 dispose();
@@ -142,8 +148,10 @@ public class CreateAlbum extends JFrame {
 				 int index = pList.getIndex(addedPlaylist);
 			 
 				 generalModel.getInstance().getPlaylistData(addedPlaylist);
+
 				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite);
 				 JOptionPane.showMessageDialog(null, "Added " + albumName + " playlist!");
+
 			 
 				 
 				 dispose();

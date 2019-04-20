@@ -25,7 +25,9 @@ public class ArtistView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtSearch;
+	CreateAlbum createAlbumView;
 	boolean evenClick = false;
+	String currentUser;
 	
 	JButton Shufflebtn, Nextbtn, Prevbtn, AddAlbum, AddtoQueue,
 			RemoveAlbum, RemoveSongfromAlbum, AddPic_Album;
@@ -63,6 +65,7 @@ private volatile static ArtistView modelInstance = null;
 	 * Create the frame.
 	 */
 	public ArtistView() {
+		createAlbumView = new CreateAlbum();
 		setBackground(new Color(254,254,250));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -730,7 +733,24 @@ private volatile static ArtistView modelInstance = null;
 		AddAlbum.setBounds(560, 61, 39, 39);
 		Dashboard.add(AddAlbum);
 		
-		
+		AddAlbum.addActionListener(new addAlbumbtn());
 
+	}
+	
+	class addAlbumbtn implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			createAlbumView.setVisible(true);
+		}
+		
+	}
+	
+	public void setUsername(String username)
+	{
+		currentUser = username;
+		System.out.println(currentUser + " from artist view");
 	}
 }

@@ -703,6 +703,7 @@ private volatile static HomeViewA modelInstance = null;
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			profileView.getInstance().run();
+			profileView.setUsername(currentUser);
 			closeWindow();
 			
 		}

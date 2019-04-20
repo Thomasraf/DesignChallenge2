@@ -22,16 +22,24 @@ public class generalModel {
 	public void getSongData(Song s)
 	{
 		int SongID = Database.getInstance().addingSong(s);
-		Database.getInstance().writeBLOB(SongID, s.getPath());
+		Database.getInstance().writeSongBLOB(SongID, s.getPath());
 	}
 	
+	public void getPlaylistData(Playlist p)
+	{
+		Database.getInstance().addingPlaylist(p);
+		Database.getInstance().writePlaylistBLOB(p.getPlaylistName(),p.getPath(),p.getDescription());
+	}
 	
-	public void getAccountData(account x) { //SIGNING UP
+	public int getAccountData(account x, String path) { //SIGNING UP
 		if(Database.getInstance().addingAccount(x) == false) {
-			SigningUpView.getInstance().signingSuccessful();
+			//SigningUpView.getInstance().signingSuccessful();
+			Database.getInstance().writeDisplayPictureBLOB(x.getUsername(),path);
+			return 1;
 		}
 		else{
-			SigningUpView.getInstance().signingFailed();
+			//SigningUpView.getInstance().signingFailed();
+			return 0;
 		}
 	}
 	
@@ -44,19 +52,13 @@ public class generalModel {
 		}
 	}
 	
-	public void checkingArtistAccountData(account w)
-	{
-		if(Database.getInstance().artistloggingAccount(w) == true) {
+	public void checkingArtistAccountData(account w) { //LOGGING IN
+		if(Database.getInstance().loggingArtistAccount(w) == true) {
 			ArtistLoggingInView.getInstance().entranceAllowed();
 		}
 		else {
 			ArtistLoggingInView.getInstance().entranceDenied();
 		}
-	}
-	
-	public void getPlaylistData(Playlist p)
-	{
-		Database.getInstance().addingPlaylist(p);
 	}
 	
 	public void getUserPlaylistData(Playlist p)
@@ -74,6 +76,10 @@ public class generalModel {
 	
 	public void readSongData(int SongID) {
 		Database.getInstance().readBLOB(SongID);
+	}
+	
+	public void readDisplayPicture(String username) {
+		Database.getInstance().readDisplayPictureBLOB(username);
 	}
 
 	public void updateCount(int SongID) {

@@ -693,7 +693,7 @@ private volatile static HomeViewA modelInstance = null;
 	{
 		this.currentUser = username;
 		Profile.setText(currentUser);
-		System.out.println("new username set");
+		Profile.repaint();
 	}
 	
 	class btnProfile implements ActionListener

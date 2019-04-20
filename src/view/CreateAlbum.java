@@ -121,7 +121,7 @@ public class CreateAlbum extends JFrame {
 			 
 			 for(int i = 0; i < generalModel.getInstance().getUserPlaylist(username).size();i++)
 			 {
-				 if(playlistName.equals(generalModel.getInstance().getUserPlaylist(username).get(i).getPlaylistName()))
+				 if(albumName.equals(generalModel.getInstance().getUserPlaylist(username).get(i).getPlaylistName()))
 				 {
 					 JOptionPane.showMessageDialog(null,"Playlist already exists");
 					 dispose();
@@ -136,7 +136,7 @@ public class CreateAlbum extends JFrame {
 			 
 				 generalModel.getInstance().getPlaylistData(addedPlaylist);
 //				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite);
-				 JOptionPane.showMessageDialog(null, "Added " + playlistName + " playlist!");
+				 JOptionPane.showMessageDialog(null, "Added " + albumName + " playlist!");
 			 
 				 
 				 dispose();

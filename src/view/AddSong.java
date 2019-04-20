@@ -93,8 +93,10 @@ public class AddSong extends JFrame {
 		btnNewButton.setBounds(306, 203, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		btnChooseFile = new JButton("Choose File");
-		btnChooseFile.addActionListener(new btn_ChooseFile());
+		 btnChooseFile = new JButton("Choose File");
+		 btnChooseFile.setBackground(Color.WHITE);
+		 btnChooseFile.addActionListener(new btn_ChooseFile());
+
 		btnChooseFile.setBounds(33, 73, 140, 25);
 		contentPane.add(btnChooseFile);
 		

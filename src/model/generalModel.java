@@ -61,6 +61,11 @@ public class generalModel {
 		}
 	}
 	
+	public void getPlaylistData(Playlist p)
+	{
+		Database.getInstance().addingPlaylist(p);
+	}
+
 	public void getUserPlaylistData(Playlist p)
 	{
 		Database.getInstance().addingUserPlaylist(p);

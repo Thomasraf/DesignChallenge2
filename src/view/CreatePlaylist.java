@@ -26,7 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -77,19 +76,22 @@ public class CreatePlaylist extends JFrame {
 		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
 		btnCreatePlaylist.setBounds(336, 228, 101, 23);
 		contentPane.add(btnCreatePlaylist);
-		
-		
-		
+
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(250, 95, 187, 122);
+		contentPane.add(textField);
+
 		JLabel label = new JLabel("Description:");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label.setBounds(312, 70, 80, 14);
 		contentPane.add(label);
-		
+
 		btnChoosePicture = new JButton("Choose Image");
 		btnChoosePicture.setBounds(30, 228, 101, 23);
 		contentPane.add(btnChoosePicture);
 		btnChoosePicture.addActionListener(new btn_ChoosePicture());
-		
+
 		JLabel PlaylistImagelbl = new JLabel("Image:");
 		PlaylistImagelbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		PlaylistImagelbl.setBounds(60, 66, 56, 23);
@@ -97,6 +99,7 @@ public class CreatePlaylist extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Playlist Image here");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+
 		lblNewLabel_1.setBounds(30, 93, 160, 94);
 		contentPane.add(lblNewLabel_1);
 		
@@ -109,6 +112,7 @@ public class CreatePlaylist extends JFrame {
 		descriptionTextField.setBounds(277, 95, 160, 122);
 		contentPane.add(descriptionTextField);
 		descriptionTextField.setColumns(10);
+
 	}
 	
 	class btn_ChoosePicture implements ActionListener
@@ -146,8 +150,8 @@ public class CreatePlaylist extends JFrame {
 					 .setUsername(username)
 					 .setFavorite(favorite)
 					 .setPrivacy(privacy)
-//					 .setPath(path)
-//					 .setDescription(description)
+					 .setPath(path)
+					 .setDescription(description)
 					 .getPlaylist();
 
 			 PlaylistList pList = new PlaylistList();
@@ -168,7 +172,7 @@ public class CreatePlaylist extends JFrame {
 				 int index = pList.getIndex(addedPlaylist);
 			 
 				 generalModel.getInstance().getPlaylistData(addedPlaylist);
-//				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite,privacy,path,description);
+				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite,privacy,path,description);
 				 JOptionPane.showMessageDialog(null, "Added " + playlistName + " playlist!");
 			 
 				 

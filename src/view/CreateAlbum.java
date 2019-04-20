@@ -31,6 +31,7 @@ public class CreateAlbum extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldEnterPlaylistName;
 	JButton btnCreatePlaylist;
+
 	private JTextField textField;
 
 	/**
@@ -70,6 +71,12 @@ public class CreateAlbum extends JFrame {
 		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
 		btnCreatePlaylist.setBounds(336, 228, 101, 23);
 		contentPane.add(btnCreatePlaylist);
+
+		JButton btnCreateAlbum = new JButton("Create Album");
+		btnCreateAlbum.addActionListener(new btn_CreateAlbum());
+		btnCreateAlbum.setBounds(336, 228, 101, 23);
+		contentPane.add(btnCreateAlbum);
+
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -89,8 +96,9 @@ public class CreateAlbum extends JFrame {
 		PlaylistImagelbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		PlaylistImagelbl.setBounds(60, 66, 56, 23);
 		contentPane.add(PlaylistImagelbl);
-		
-		JLabel lblNewLabel_1 = new JLabel("Album Image here");
+
+		JLabel lblNewLabel_1 = new JLabel("Album Art here");
+
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(10, 91, 160, 126);
 		contentPane.add(lblNewLabel_1);
@@ -103,7 +111,6 @@ public class CreateAlbum extends JFrame {
 			 
 			 String albumName = textFieldEnterPlaylistName.getText();
 			 String username = ArtistView.getInstance().currentUser;
-
 			 
 			 boolean isTrue = true;
 			 
@@ -135,7 +142,7 @@ public class CreateAlbum extends JFrame {
 				 int index = pList.getIndex(addedPlaylist);
 			 
 				 generalModel.getInstance().getPlaylistData(addedPlaylist);
-//				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite);
+				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite);
 				 JOptionPane.showMessageDialog(null, "Added " + albumName + " playlist!");
 			 
 				 

@@ -24,6 +24,7 @@ public class generalController {
 		generalModel.getInstance().checkingArtistAccountData(registeredAccount);
 	}
 	
+
 	public void gettingRegisteredArtistAccountData(String registeredUsername,String registeredPassword) { //LOGGING IN
 		account registeredAccount = new account(registeredUsername, registeredPassword);
 		generalModel.getInstance().checkingArtistAccountData(registeredAccount);

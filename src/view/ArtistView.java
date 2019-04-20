@@ -25,11 +25,30 @@ public class ArtistView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtSearch;
+	CreateAlbum createAlbumView;
 	boolean evenClick = false;
+	String currentUser;
+	
+	JButton Shufflebtn, Nextbtn, Prevbtn, AddAlbum, AddtoQueue,
+			RemoveAlbum, RemoveSongfromAlbum, AddPic_Album;
+	JPanel MainRectangle, SongDetails;
+	JLabel SongName, Artist, Album;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	
+private volatile static ArtistView modelInstance = null;
+	
+	public static ArtistView getInstance() {
+        if (modelInstance == null) {
+        	modelInstance = new ArtistView();
+        }
+		return modelInstance;
+	
+	}
+	
+	public static void run()
+	{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,6 +65,7 @@ public class ArtistView extends JFrame {
 	 * Create the frame.
 	 */
 	public ArtistView() {
+		createAlbumView = new CreateAlbum();
 		setBackground(new Color(254,254,250));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,19 +78,19 @@ public class ArtistView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel MainRectangle = new JPanel();
+		MainRectangle = new JPanel();
 		MainRectangle.setBackground(new Color(30,58,42));
 		MainRectangle.setBounds(110, 579, 1036, 92);
 		contentPane.add(MainRectangle);
 		MainRectangle.setLayout(null);
 		
-		JPanel SongDetails = new JPanel();
+		SongDetails = new JPanel();
 		SongDetails.setBackground(new Color(30,58,42));
 		SongDetails.setBounds(0, 0, 147, 101);
 		MainRectangle.add(SongDetails);
 		SongDetails.setLayout(null);
 		
-		JLabel SongName = new JLabel("(Song Name)");
+		SongName = new JLabel("(Song Name)");
 		SongName.setHorizontalAlignment(SwingConstants.CENTER);
 		SongName.setForeground(new Color(255, 255, 255));
 		SongName.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -560,6 +580,8 @@ public class ArtistView extends JFrame {
 		Add_SongtoAlbum.setToolTipText("Add Song to Album");
 		Dashboard.add(Add_SongtoAlbum);
 		
+//		JButton
+		
 		JButton LFollow_Dashboard = new JButton("Listeners I Follow");
 		LFollow_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
 		LFollow_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -671,7 +693,7 @@ public class ArtistView extends JFrame {
 		AFollow9.setBounds(580, 444, 164, 30);
 		Dashboard.add(AFollow9);
 		
-		JButton AddPic_Album = new JButton("");
+		AddPic_Album = new JButton("");
 		AddPic_Album.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/picture (1).png")));
 		AddPic_Album.setToolTipText("Add Album Art");
 		AddPic_Album.setBorder(null);
@@ -679,7 +701,7 @@ public class ArtistView extends JFrame {
 		AddPic_Album.setBounds(558, 11, 39, 39);
 		Dashboard.add(AddPic_Album);
 		
-		JButton RemoveSongfromAlbum = new JButton("");
+		RemoveSongfromAlbum = new JButton("");
 		RemoveSongfromAlbum.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/prohibition (1).png")));
 		RemoveSongfromAlbum.setToolTipText("Remove Song from Album");
 		RemoveSongfromAlbum.setBorder(null);
@@ -687,7 +709,7 @@ public class ArtistView extends JFrame {
 		RemoveSongfromAlbum.setBounds(705, 61, 39, 39);
 		Dashboard.add(RemoveSongfromAlbum);
 		
-		JButton RemoveAlbum = new JButton("");
+		RemoveAlbum = new JButton("");
 		RemoveAlbum.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/delete.png")));
 		RemoveAlbum.setToolTipText("Delete Album");
 		RemoveAlbum.setBorder(null);
@@ -695,7 +717,7 @@ public class ArtistView extends JFrame {
 		RemoveAlbum.setBounds(656, 61, 39, 39);
 		Dashboard.add(RemoveAlbum);
 		
-		JButton AddtoQueue = new JButton("");
+		AddtoQueue = new JButton("");
 		AddtoQueue.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/add-to-queue-button (1).png")));
 		AddtoQueue.setToolTipText("Add to Queue");
 		AddtoQueue.setBorder(null);
@@ -703,8 +725,32 @@ public class ArtistView extends JFrame {
 		AddtoQueue.setBounds(607, 61, 39, 39);
 		Dashboard.add(AddtoQueue);
 		
-
+		AddAlbum = new JButton("");
+		AddAlbum.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/add_album_icon.png")));
+		AddAlbum.setToolTipText("Create a new Album");
+		AddAlbum.setBorder(null);
+		AddAlbum.setBackground(new Color(254, 254, 250));
+		AddAlbum.setBounds(560, 61, 39, 39);
+		Dashboard.add(AddAlbum);
 		
+		AddAlbum.addActionListener(new addAlbumbtn());
 
+	}
+	
+	class addAlbumbtn implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			createAlbumView.setVisible(true);
+		}
+		
+	}
+	
+	public void setUsername(String username)
+	{
+		currentUser = username;
+		System.out.println(currentUser + " from artist view");
 	}
 }

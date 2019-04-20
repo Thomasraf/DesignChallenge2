@@ -44,6 +44,8 @@ public class HomeViewA extends JFrame {
 			RPSONG_6, RPSONG_7, MPSONG_1, MPSONG_2, MPSONG_3, MPSONG_4, MPSONG_5,
 			AddSongbtn, AlbumName_1, AlbumName_2, AlbumName_3, AlbumName_4, AlbumName_5,
 			AlbumName_6;
+	
+	ArtistView profileView = new ArtistView();
 
 	/**
 	 * Launch the application.
@@ -665,6 +667,9 @@ private volatile static HomeViewA modelInstance = null;
 		lblMadeForYou.setBounds(0, 0, 186, 23);
 		Dashboard.add(lblMadeForYou);
 		
+		ProfilePic.addActionListener(new btnProfile());
+		Profile.addActionListener(new btnProfile());
+		
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
@@ -688,7 +693,31 @@ private volatile static HomeViewA modelInstance = null;
 	{
 		this.currentUser = username;
 		Profile.setText(currentUser);
-		System.out.println("new username set");
+		Profile.repaint();
+	}
+	
+	class btnProfile implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			profileView.getInstance().run();
+			profileView.setUsername(currentUser);
+			closeWindow();
+			
+		}
+		
+	}
+	
+	public void closeWindow()
+	{
+		this.setVisible(false);
+	}
+	
+	public void openWindow()
+	{
+		this.setVisible(true);
 	}
 	
 }

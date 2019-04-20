@@ -13,6 +13,7 @@ import model.Playlist;
 import model.Song;
 import model.SongList;
 import model.generalModel;
+import view.RegisteredUserView.btn_CreatePlaylist;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -42,28 +43,38 @@ public class HomeView extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtSearch;
 	boolean evenClick = false;
-	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
-	JList Playlist_List, MP_List;
-	SongList sl = new SongList();
-	ArrayList<Song> userSongsMostPlayed, userSongs;
+
+	JButton btnPlay, Shufflebtn, btnNext, Repeatbtn, Queuebtn, btnPrev, StopBtn, Volumebtn, 
+	NewAlbumPic, SearchBtn, ProfilePic, Profile, Notificationbtn, Refreshbtn, btnCreatePlaylist;
+	boolean songChanged;
+	boolean playSongInPlaylist;
+	ArrayList<Song> userSongs,userSongsUpdated;
 	ArrayList<Playlist> userPlaylists;
-	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
-	boolean songPaused;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HomeView frame = new HomeView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
+	ListenerView listener;
+	private JPanel contentPane;
+	private JTextField txtSearch;
+	boolean evenClick = false;
+	private volatile static HomeView instance = null;
+	MP3Player mp3 = new MP3Player(new File("currentSong.mp3"));
+	RegisteredUserProfile profile;
+	public String currentUser;
+	JButton btnPickPlaylist, btnPickSong,btnCreatePlaylist,btnUploadSong, btnEditSong, btnPlay, btnPause, btnNextSong, btnPreviousSong, btnByGenre,Profile;
+	JList yourSongsList, yourSongsListJList, playlistListJList;
+	JTextPane txtpnSongNameGenre;
+	private JButton btnRefresh;
+	JLabel lblUser;
+	PlaylistList pl;
+	SongList sl;
+	ArrayList<Song> userSongs,userSongsUpdated;
+	ArrayList<Playlist> userPlaylist;
+	boolean songChanged;
+	private JButton btnProfile;
+	boolean playSongInPlaylist;
+	private JButton btnByAlbum;
+	private JButton btnByYear;
+	ArrayList<Playlist> userPlaylists;
+	String path,realPath;
 	
 	public static HomeView getInstance() {
         if (instance == null) {
@@ -238,14 +249,17 @@ public class HomeView extends JFrame {
 		SearchBtn.setBounds(55, 11, 39, 39);
 		SearchBtn.setBorder(null);
 		TopBar.add(SearchBtn);
+
+		btnProfile = new JButton("");
+		btnProfile.setIcon(new ImageIcon(HomeView.class.getResource(realPath)));
+		//btnProfile.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
+		btnProfile.setBounds(478, 10, 40, 40);
+		TopBar.add(btnProfile);
+		btnProfile.setBackground(new Color(170, 187, 204));
+		btnProfile.addActionListener(new btn_Profile());
 		
-		JButton ProfilePic = new JButton("");
-		ProfilePic.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
-		ProfilePic.setBounds(478, 10, 40, 40);
-		TopBar.add(ProfilePic);
-		ProfilePic.setBackground(new Color(170, 187, 204));
-		
-		 Profile = new JButton("Profile Name");
+		Profile = new JButton(currentUser);
+
 		Profile.setBackground(new Color(30,58,42));
 		Profile.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Profile.setForeground(Color.WHITE);
@@ -274,13 +288,16 @@ public class HomeView extends JFrame {
 		contentPane.add(MusicPanel);
 		MusicPanel.setLayout(null);
 		
+
 		 btnCreatePlaylist = new JButton("New Playlist");
 		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
+
 		btnCreatePlaylist.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCreatePlaylist.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCreatePlaylist.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		btnCreatePlaylist.setBounds(0, 429, 186, 88);
 		MusicPanel.add(btnCreatePlaylist);
+
 		
 		JLabel MusicLbl = new JLabel("Music");
 		MusicLbl.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -566,7 +583,7 @@ public class HomeView extends JFrame {
 			 
 		 }
 	 }
-	
+
 	class btn_AddSong implements ActionListener
 	 {
 		 public void actionPerformed(ActionEvent e)
@@ -584,6 +601,18 @@ public class HomeView extends JFrame {
 			 dispose();
 		 }
 	 }
+
+	 class btn_CreatePlaylist implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 CreatePlaylist cp = new CreatePlaylist();
+			 cp.setVisible(true);
+		 }
+	 }
+	
+
+
 	
 	 class btn_Play implements ActionListener 
 	 {
@@ -638,7 +667,15 @@ public class HomeView extends JFrame {
 			 mp3.stop();
 		 }
 	 }
-	 
+
+
+	class btn_Profile implements ActionListener{
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 mp3.stop();
+		 }
+	 }
+
 	 class btn_nextSong implements ActionListener
 	 {
 		 public void actionPerformed(ActionEvent e)
@@ -656,10 +693,19 @@ public class HomeView extends JFrame {
 			
 		 }
 	 }
-	 
-	 public void setUserName(String currentUser) {
-			this.currentUser = currentUser;
-			Profile.setText("Current User: " + currentUser);
-		}
+
+	public void setUserName(String currentUser) {
+		this.currentUser = currentUser;
+		Profile.setText(currentUser);
+		HomeView.getInstance().realPath = currentUser;
+		generalModel.getInstance().readDisplayPicture(currentUser);
 		
+	}
+	
+	public void setDisplayPicture(String path) {
+		this.path = path;
+		
+	}
+
 }
+

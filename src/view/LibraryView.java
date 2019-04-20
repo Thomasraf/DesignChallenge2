@@ -24,6 +24,7 @@ import javax.swing.JList;
 public class LibraryView extends JFrame {
 
 	private JPanel contentPane;
+
 	boolean evenClick = false;
 	private JButton Artist_Dashboard;
 
@@ -34,6 +35,7 @@ public class LibraryView extends JFrame {
         	instance = new LibraryView();
         }
 		return instance;
+
 	}
 
 	/**
@@ -174,6 +176,16 @@ public class LibraryView extends JFrame {
 		button.setBackground(new Color(30, 58, 42));
 		TopBar.add(button);
 		
+
+		txtSearch = new JTextField();
+		txtSearch.setForeground(SystemColor.desktop);
+		txtSearch.setText("Search");
+		txtSearch.setHorizontalAlignment(SwingConstants.LEFT);
+		txtSearch.setBounds(95, 11, 170, 39);
+		TopBar.add(txtSearch);
+		txtSearch.setColumns(10);
+		
+
 		JButton SearchBtn = new JButton("");
 		SearchBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/magnifying-glass (1).png")));
 		SearchBtn.setBorder(null);

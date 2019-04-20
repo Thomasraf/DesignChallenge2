@@ -272,27 +272,6 @@ public class QueueView extends JFrame {
 		Albums_Music.setBounds(0, 90, 186, 30);
 		MusicPanel.add(Albums_Music);
 		
-		JButton Playlist_Name3 = new JButton("");
-		Playlist_Name3.setHorizontalAlignment(SwingConstants.LEFT);
-		Playlist_Name3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		Playlist_Name3.setBackground(new Color(254, 254, 250));
-		Playlist_Name3.setBounds(0, 232, 186, 30);
-		MusicPanel.add(Playlist_Name3);
-		
-		JButton Playlist_Name2 = new JButton("");
-		Playlist_Name2.setHorizontalAlignment(SwingConstants.LEFT);
-		Playlist_Name2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		Playlist_Name2.setBackground(new Color(242, 203, 155));
-		Playlist_Name2.setBounds(0, 203, 186, 30);
-		MusicPanel.add(Playlist_Name2);
-		
-		JButton Playlist_Name1 = new JButton("");
-		Playlist_Name1.setHorizontalAlignment(SwingConstants.LEFT);
-		Playlist_Name1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		Playlist_Name1.setBackground(new Color(254, 254, 250));
-		Playlist_Name1.setBounds(0, 175, 186, 30);
-		MusicPanel.add(Playlist_Name1);
-		
 		JButton Playlists_Music = new JButton("Playlists");
 		Playlists_Music.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlists_Music.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -300,7 +279,32 @@ public class QueueView extends JFrame {
 		Playlists_Music.setBounds(0, 146, 186, 30);
 		MusicPanel.add(Playlists_Music);
 		
+		JButton Playlist_Name3 = new JButton("");
+		Playlist_Name3.setEnabled(false);
+		Playlist_Name3.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name3.setBackground(new Color(254, 254, 250));
+		Playlist_Name3.setBounds(0, 232, 186, 30);
+		MusicPanel.add(Playlist_Name3);
+		
+		JButton Playlist_Name2 = new JButton("");
+		Playlist_Name2.setEnabled(false);
+		Playlist_Name2.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name2.setBackground(new Color(242, 203, 155));
+		Playlist_Name2.setBounds(0, 203, 186, 30);
+		MusicPanel.add(Playlist_Name2);
+		
+		JButton Playlist_Name1 = new JButton("");
+		Playlist_Name1.setEnabled(false);
+		Playlist_Name1.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name1.setBackground(new Color(254, 254, 250));
+		Playlist_Name1.setBounds(0, 175, 186, 30);
+		MusicPanel.add(Playlist_Name1);
+		
 		JButton Playlist_Name7 = new JButton("");
+		Playlist_Name7.setEnabled(false);
 		Playlist_Name7.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlist_Name7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Playlist_Name7.setBackground(new Color(254, 254, 250));
@@ -308,6 +312,7 @@ public class QueueView extends JFrame {
 		MusicPanel.add(Playlist_Name7);
 		
 		JButton Playlist_Name6 = new JButton("");
+		Playlist_Name6.setEnabled(false);
 		Playlist_Name6.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlist_Name6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Playlist_Name6.setBackground(new Color(242, 203, 155));
@@ -315,6 +320,7 @@ public class QueueView extends JFrame {
 		MusicPanel.add(Playlist_Name6);
 		
 		JButton Playlist_Name5 = new JButton("");
+		Playlist_Name5.setEnabled(false);
 		Playlist_Name5.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlist_Name5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Playlist_Name5.setBackground(new Color(254, 254, 250));
@@ -322,6 +328,7 @@ public class QueueView extends JFrame {
 		MusicPanel.add(Playlist_Name5);
 		
 		JButton Playlist_Name4 = new JButton("");
+		Playlist_Name4.setEnabled(false);
 		Playlist_Name4.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlist_Name4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Playlist_Name4.setBackground(new Color(242, 203, 155));
@@ -329,6 +336,7 @@ public class QueueView extends JFrame {
 		MusicPanel.add(Playlist_Name4);
 		
 		JButton Playlist_Name9 = new JButton("");
+		Playlist_Name9.setEnabled(false);
 		Playlist_Name9.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlist_Name9.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Playlist_Name9.setBackground(new Color(254, 254, 250));
@@ -336,6 +344,7 @@ public class QueueView extends JFrame {
 		MusicPanel.add(Playlist_Name9);
 		
 		JButton Playlist_Name8 = new JButton("");
+		Playlist_Name8.setEnabled(false);
 		Playlist_Name8.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlist_Name8.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Playlist_Name8.setBackground(new Color(242, 203, 155));

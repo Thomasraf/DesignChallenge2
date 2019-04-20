@@ -25,7 +25,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+
 import javax.swing.JFileChooser;
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -35,10 +37,12 @@ public class CreatePlaylist extends JFrame {
 	private volatile static CreatePlaylist instance = null;
 	private JPanel contentPane;
 	private JTextField textFieldEnterPlaylistName;
+
 	JButton btnCreatePlaylist,btnChoosePicture;
 	String textField,fileName;
 	private JTextField textFieldChosenFile;
 	private JTextField descriptionTextField;
+
 
 	/**
 	 * Launch the application.
@@ -78,17 +82,24 @@ public class CreatePlaylist extends JFrame {
 		btnCreatePlaylist.setBounds(336, 228, 101, 23);
 		contentPane.add(btnCreatePlaylist);
 		
-		
+
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(250, 95, 187, 122);
+		contentPane.add(textField);
+
 		
 		JLabel label = new JLabel("Description:");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label.setBounds(312, 70, 80, 14);
 		contentPane.add(label);
 		
+
 		btnChoosePicture = new JButton("Choose Image");
 		btnChoosePicture.setBounds(30, 228, 101, 23);
 		contentPane.add(btnChoosePicture);
 		btnChoosePicture.addActionListener(new btn_ChoosePicture());
+
 		
 		JLabel PlaylistImagelbl = new JLabel("Image:");
 		PlaylistImagelbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -97,6 +108,7 @@ public class CreatePlaylist extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Playlist Image here");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+
 		lblNewLabel_1.setBounds(30, 93, 160, 94);
 		contentPane.add(lblNewLabel_1);
 		
@@ -109,6 +121,7 @@ public class CreatePlaylist extends JFrame {
 		descriptionTextField.setBounds(277, 95, 160, 122);
 		contentPane.add(descriptionTextField);
 		descriptionTextField.setColumns(10);
+
 	}
 	
 	class btn_ChoosePicture implements ActionListener

@@ -473,10 +473,10 @@ public class PlaylistViewA extends JFrame {
 		MPSONG_4.setBounds(0, 372, 186, 30);
 		RecentlyPlayedPanel.add(MPSONG_4);
 		
-		JButton AddSongbtn = new JButton("Add Song");
+		JButton AddSongbtn = new JButton("Add Song to Playlist");
 		AddSongbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		AddSongbtn.setHorizontalAlignment(SwingConstants.LEFT);
-		AddSongbtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		AddSongbtn.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		AddSongbtn.setBounds(0, 426, 186, 88);
 		RecentlyPlayedPanel.add(AddSongbtn);
 		
@@ -609,55 +609,9 @@ public class PlaylistViewA extends JFrame {
 		Favorite_Dashboard.setBounds(680, 170, 74, 30);
 		Dashboard.add(Favorite_Dashboard);
 		
-		JList Titlelist = new JList();
-		Titlelist.setBackground(new Color(254,254,250));
-		Titlelist.setBounds(12, 197, 160, 30);
-		Dashboard.add(Titlelist);
-		
-		JList Titlelist_1 = new JList();
-		Titlelist_1.setBackground(new Color(254, 254, 250));
-		Titlelist_1.setBounds(12, 226, 160, 30);
-		Dashboard.add(Titlelist_1);
-		
-		JList Titlelist_2 = new JList();
-		Titlelist_2.setBackground(new Color(254, 254, 250));
-		Titlelist_2.setBounds(12, 286, 160, 30);
-		Dashboard.add(Titlelist_2);
-		
-		JList Titlelist_3 = new JList();
-		Titlelist_3.setBackground(new Color(254, 254, 250));
-		Titlelist_3.setBounds(12, 256, 160, 30);
-		Dashboard.add(Titlelist_3);
-		
-		JList Titlelist_4 = new JList();
-		Titlelist_4.setBackground(new Color(254, 254, 250));
-		Titlelist_4.setBounds(12, 315, 160, 30);
-		Dashboard.add(Titlelist_4);
-		
-		JList Titlelist_5 = new JList();
-		Titlelist_5.setBackground(new Color(254, 254, 250));
-		Titlelist_5.setBounds(12, 344, 160, 30);
-		Dashboard.add(Titlelist_5);
-		
-		JList Titlelist_6 = new JList();
-		Titlelist_6.setBackground(new Color(254, 254, 250));
-		Titlelist_6.setBounds(12, 404, 160, 30);
-		Dashboard.add(Titlelist_6);
-		
-		JList Titlelist_7 = new JList();
-		Titlelist_7.setBackground(new Color(254, 254, 250));
-		Titlelist_7.setBounds(12, 374, 160, 30);
-		Dashboard.add(Titlelist_7);
-		
-		JList Titlelist_8 = new JList();
-		Titlelist_8.setBackground(new Color(254, 254, 250));
-		Titlelist_8.setBounds(12, 434, 160, 30);
-		Dashboard.add(Titlelist_8);
-		
-		JList Titlelist_9 = new JList();
-		Titlelist_9.setBackground(new Color(254, 254, 250));
-		Titlelist_9.setBounds(12, 464, 160, 30);
-		Dashboard.add(Titlelist_9);
+		JList list = new JList();
+		list.setBounds(12, 197, 158, 299);
+		Dashboard.add(list);
 		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.setEnabled(false);
@@ -665,55 +619,9 @@ public class PlaylistViewA extends JFrame {
 		btnNewButton_1.setBounds(10, 197, 164, 299);
 		Dashboard.add(btnNewButton_1);
 		
-		JList Artistlist = new JList();
-		Artistlist.setBackground(new Color(254, 254, 250));
-		Artistlist.setBounds(173, 197, 160, 30);
-		Dashboard.add(Artistlist);
-		
-		JList Artistlist_1 = new JList();
-		Artistlist_1.setBackground(new Color(254, 254, 250));
-		Artistlist_1.setBounds(173, 226, 160, 30);
-		Dashboard.add(Artistlist_1);
-		
-		JList Artistlist_2 = new JList();
-		Artistlist_2.setBackground(new Color(254, 254, 250));
-		Artistlist_2.setBounds(173, 286, 160, 30);
-		Dashboard.add(Artistlist_2);
-		
-		JList Artistlist_3 = new JList();
-		Artistlist_3.setBackground(new Color(254, 254, 250));
-		Artistlist_3.setBounds(173, 256, 160, 30);
-		Dashboard.add(Artistlist_3);
-		
-		JList Artistlist_4 = new JList();
-		Artistlist_4.setBackground(new Color(254, 254, 250));
-		Artistlist_4.setBounds(173, 315, 160, 30);
-		Dashboard.add(Artistlist_4);
-		
-		JList Artistlist_5 = new JList();
-		Artistlist_5.setBackground(new Color(254, 254, 250));
-		Artistlist_5.setBounds(173, 344, 160, 30);
-		Dashboard.add(Artistlist_5);
-		
-		JList Artistlist_6 = new JList();
-		Artistlist_6.setBackground(new Color(254, 254, 250));
-		Artistlist_6.setBounds(173, 374, 160, 30);
-		Dashboard.add(Artistlist_6);
-		
-		JList Artistlist_7 = new JList();
-		Artistlist_7.setBackground(new Color(254, 254, 250));
-		Artistlist_7.setBounds(173, 404, 160, 30);
-		Dashboard.add(Artistlist_7);
-		
-		JList Artistlist_8 = new JList();
-		Artistlist_8.setBackground(new Color(254, 254, 250));
-		Artistlist_8.setBounds(173, 434, 160, 30);
-		Dashboard.add(Artistlist_8);
-		
-		JList Artistlist_9 = new JList();
-		Artistlist_9.setBackground(new Color(254, 254, 250));
-		Artistlist_9.setBounds(173, 464, 160, 30);
-		Dashboard.add(Artistlist_9);
+		JList list_1 = new JList();
+		list_1.setBounds(173, 197, 158, 299);
+		Dashboard.add(list_1);
 		
 		JButton button_1 = new JButton("");
 		button_1.setEnabled(false);
@@ -721,55 +629,9 @@ public class PlaylistViewA extends JFrame {
 		button_1.setBounds(173, 197, 164, 299);
 		Dashboard.add(button_1);
 		
-		JList Albumlist = new JList();
-		Albumlist.setBackground(new Color(254, 254, 250));
-		Albumlist.setBounds(335, 199, 169, 30);
-		Dashboard.add(Albumlist);
-		
-		JList Albumlist_1 = new JList();
-		Albumlist_1.setBackground(new Color(254, 254, 250));
-		Albumlist_1.setBounds(335, 228, 169, 30);
-		Dashboard.add(Albumlist_1);
-		
-		JList Albumlist_2 = new JList();
-		Albumlist_2.setBackground(new Color(254, 254, 250));
-		Albumlist_2.setBounds(335, 258, 169, 30);
-		Dashboard.add(Albumlist_2);
-		
-		JList Albumlist_3 = new JList();
-		Albumlist_3.setBackground(new Color(254, 254, 250));
-		Albumlist_3.setBounds(335, 288, 169, 30);
-		Dashboard.add(Albumlist_3);
-		
-		JList Albumlist_4 = new JList();
-		Albumlist_4.setBackground(new Color(254, 254, 250));
-		Albumlist_4.setBounds(335, 317, 169, 30);
-		Dashboard.add(Albumlist_4);
-		
-		JList Albumlist_5 = new JList();
-		Albumlist_5.setBackground(new Color(254, 254, 250));
-		Albumlist_5.setBounds(335, 346, 169, 30);
-		Dashboard.add(Albumlist_5);
-		
-		JList Albumlist_6 = new JList();
-		Albumlist_6.setBackground(new Color(254, 254, 250));
-		Albumlist_6.setBounds(335, 376, 169, 30);
-		Dashboard.add(Albumlist_6);
-		
-		JList Albumlist_7 = new JList();
-		Albumlist_7.setBackground(new Color(254, 254, 250));
-		Albumlist_7.setBounds(335, 406, 169, 30);
-		Dashboard.add(Albumlist_7);
-		
-		JList Albumlist_8 = new JList();
-		Albumlist_8.setBackground(new Color(254, 254, 250));
-		Albumlist_8.setBounds(335, 436, 169, 30);
-		Dashboard.add(Albumlist_8);
-		
-		JList Albumlist_9 = new JList();
-		Albumlist_9.setBackground(new Color(254, 254, 250));
-		Albumlist_9.setBounds(335, 466, 169, 30);
-		Dashboard.add(Albumlist_9);
+		JList list_2 = new JList();
+		list_2.setBounds(335, 197, 170, 299);
+		Dashboard.add(list_2);
 		
 		JButton button_3 = new JButton("");
 		button_3.setEnabled(false);
@@ -777,55 +639,9 @@ public class PlaylistViewA extends JFrame {
 		button_3.setBounds(335, 197, 172, 299);
 		Dashboard.add(button_3);
 		
-		JList Genrelist = new JList();
-		Genrelist.setBackground(new Color(254, 254, 250));
-		Genrelist.setBounds(503, 197, 97, 30);
-		Dashboard.add(Genrelist);
-		
-		JList Genrelist_1 = new JList();
-		Genrelist_1.setBackground(new Color(254, 254, 250));
-		Genrelist_1.setBounds(503, 226, 97, 30);
-		Dashboard.add(Genrelist_1);
-		
-		JList Genrelist_2 = new JList();
-		Genrelist_2.setBackground(new Color(254, 254, 250));
-		Genrelist_2.setBounds(503, 256, 97, 30);
-		Dashboard.add(Genrelist_2);
-		
-		JList Genrelist_3 = new JList();
-		Genrelist_3.setBackground(new Color(254, 254, 250));
-		Genrelist_3.setBounds(503, 286, 97, 30);
-		Dashboard.add(Genrelist_3);
-		
-		JList Genrelist_4 = new JList();
-		Genrelist_4.setBackground(new Color(254, 254, 250));
-		Genrelist_4.setBounds(503, 315, 97, 30);
-		Dashboard.add(Genrelist_4);
-		
-		JList Genrelist_5 = new JList();
-		Genrelist_5.setBackground(new Color(254, 254, 250));
-		Genrelist_5.setBounds(503, 344, 97, 30);
-		Dashboard.add(Genrelist_5);
-		
-		JList Genrelist_6 = new JList();
-		Genrelist_6.setBackground(new Color(254, 254, 250));
-		Genrelist_6.setBounds(503, 374, 97, 30);
-		Dashboard.add(Genrelist_6);
-		
-		JList Genrelist_7 = new JList();
-		Genrelist_7.setBackground(new Color(254, 254, 250));
-		Genrelist_7.setBounds(503, 404, 97, 30);
-		Dashboard.add(Genrelist_7);
-		
-		JList Genrelist_8 = new JList();
-		Genrelist_8.setBackground(new Color(254, 254, 250));
-		Genrelist_8.setBounds(503, 434, 97, 30);
-		Dashboard.add(Genrelist_8);
-		
-		JList Genrelist_9 = new JList();
-		Genrelist_9.setBackground(new Color(254, 254, 250));
-		Genrelist_9.setBounds(503, 464, 97, 30);
-		Dashboard.add(Genrelist_9);
+		JList list_3 = new JList();
+		list_3.setBounds(503, 197, 98, 299);
+		Dashboard.add(list_3);
 		
 		JButton button_4 = new JButton("");
 		button_4.setEnabled(false);
@@ -833,55 +649,9 @@ public class PlaylistViewA extends JFrame {
 		button_4.setBounds(503, 197, 100, 299);
 		Dashboard.add(button_4);
 		
-		JList Yearlist = new JList();
-		Yearlist.setBackground(new Color(254, 254, 250));
-		Yearlist.setBounds(600, 197, 76, 30);
-		Dashboard.add(Yearlist);
-		
-		JList Yearlist_1 = new JList();
-		Yearlist_1.setBackground(new Color(254, 254, 250));
-		Yearlist_1.setBounds(600, 226, 76, 30);
-		Dashboard.add(Yearlist_1);
-		
-		JList Yearlist_2 = new JList();
-		Yearlist_2.setBackground(new Color(254, 254, 250));
-		Yearlist_2.setBounds(600, 256, 76, 30);
-		Dashboard.add(Yearlist_2);
-		
-		JList Yearlist_3 = new JList();
-		Yearlist_3.setBackground(new Color(254, 254, 250));
-		Yearlist_3.setBounds(600, 286, 76, 30);
-		Dashboard.add(Yearlist_3);
-		
-		JList Yearlist_4 = new JList();
-		Yearlist_4.setBackground(new Color(254, 254, 250));
-		Yearlist_4.setBounds(600, 315, 76, 30);
-		Dashboard.add(Yearlist_4);
-		
-		JList Yearlist_5 = new JList();
-		Yearlist_5.setBackground(new Color(254, 254, 250));
-		Yearlist_5.setBounds(600, 344, 76, 30);
-		Dashboard.add(Yearlist_5);
-		
-		JList Yearlist_6 = new JList();
-		Yearlist_6.setBackground(new Color(254, 254, 250));
-		Yearlist_6.setBounds(600, 374, 76, 30);
-		Dashboard.add(Yearlist_6);
-		
-		JList Yearlist_7 = new JList();
-		Yearlist_7.setBackground(new Color(254, 254, 250));
-		Yearlist_7.setBounds(600, 404, 76, 30);
-		Dashboard.add(Yearlist_7);
-		
-		JList Yearlist_8 = new JList();
-		Yearlist_8.setBackground(new Color(254, 254, 250));
-		Yearlist_8.setBounds(600, 434, 76, 30);
-		Dashboard.add(Yearlist_8);
-		
-		JList Yearlist_9 = new JList();
-		Yearlist_9.setBackground(new Color(254, 254, 250));
-		Yearlist_9.setBounds(600, 464, 76, 30);
-		Dashboard.add(Yearlist_9);
+		JList list_4 = new JList();
+		list_4.setBounds(600, 197, 76, 299);
+		Dashboard.add(list_4);
 		
 		JButton button_5 = new JButton("");
 		button_5.setEnabled(false);
@@ -889,55 +659,9 @@ public class PlaylistViewA extends JFrame {
 		button_5.setBounds(600, 197, 80, 299);
 		Dashboard.add(button_5);
 		
-		JList Favoritelist = new JList();
-		Favoritelist.setBackground(new Color(254, 254, 250));
-		Favoritelist.setBounds(680, 197, 69, 30);
-		Dashboard.add(Favoritelist);
-		
-		JList Favoritelist_1 = new JList();
-		Favoritelist_1.setBackground(new Color(254, 254, 250));
-		Favoritelist_1.setBounds(680, 226, 69, 30);
-		Dashboard.add(Favoritelist_1);
-		
-		JList Favoritelist_2 = new JList();
-		Favoritelist_2.setBackground(new Color(254, 254, 250));
-		Favoritelist_2.setBounds(680, 256, 69, 30);
-		Dashboard.add(Favoritelist_2);
-		
-		JList Favoritelist_3 = new JList();
-		Favoritelist_3.setBackground(new Color(254, 254, 250));
-		Favoritelist_3.setBounds(680, 286, 69, 30);
-		Dashboard.add(Favoritelist_3);
-		
-		JList Favoritelist_4 = new JList();
-		Favoritelist_4.setBackground(new Color(254, 254, 250));
-		Favoritelist_4.setBounds(680, 315, 69, 30);
-		Dashboard.add(Favoritelist_4);
-		
-		JList Favoritelist_5 = new JList();
-		Favoritelist_5.setBackground(new Color(254, 254, 250));
-		Favoritelist_5.setBounds(680, 344, 69, 30);
-		Dashboard.add(Favoritelist_5);
-		
-		JList Favoritelist_6 = new JList();
-		Favoritelist_6.setBackground(new Color(254, 254, 250));
-		Favoritelist_6.setBounds(680, 374, 69, 30);
-		Dashboard.add(Favoritelist_6);
-		
-		JList Favoritelist_7 = new JList();
-		Favoritelist_7.setBackground(new Color(254, 254, 250));
-		Favoritelist_7.setBounds(680, 404, 69, 30);
-		Dashboard.add(Favoritelist_7);
-		
-		JList Favoritelist_8 = new JList();
-		Favoritelist_8.setBackground(new Color(254, 254, 250));
-		Favoritelist_8.setBounds(680, 434, 69, 30);
-		Dashboard.add(Favoritelist_8);
-		
-		JList Favoritelist_9 = new JList();
-		Favoritelist_9.setBackground(new Color(254, 254, 250));
-		Favoritelist_9.setBounds(680, 464, 69, 30);
-		Dashboard.add(Favoritelist_9);
+		JList list_5 = new JList();
+		list_5.setBounds(680, 197, 68, 299);
+		Dashboard.add(list_5);
 		
 		JButton button_6 = new JButton("");
 		button_6.setEnabled(false);

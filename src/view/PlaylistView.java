@@ -465,10 +465,10 @@ public class PlaylistView extends JFrame {
 		MPSONG_4.setBounds(0, 372, 186, 30);
 		RecentlyPlayedPanel.add(MPSONG_4);
 		
-		JButton AddSongbtn = new JButton("Add Song");
+		JButton AddSongbtn = new JButton("Add Song to Playlist");
 		AddSongbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		AddSongbtn.setHorizontalAlignment(SwingConstants.LEFT);
-		AddSongbtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		AddSongbtn.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		AddSongbtn.setBounds(0, 426, 186, 88);
 		RecentlyPlayedPanel.add(AddSongbtn);
 		

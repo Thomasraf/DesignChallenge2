@@ -291,6 +291,32 @@ public class ListenerView extends JFrame {
 		Albums_Music.setBounds(0, 90, 186, 30);
 		MusicPanel.add(Albums_Music);
 		
+
+		JButton Playlist_Name3 = new JButton("");
+		Playlist_Name3.setEnabled(false);
+		Playlist_Name3.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name3.setBackground(new Color(254, 254, 250));
+		Playlist_Name3.setBounds(0, 232, 186, 30);
+		MusicPanel.add(Playlist_Name3);
+		
+		JButton Playlist_Name2 = new JButton("");
+		Playlist_Name2.setEnabled(false);
+		Playlist_Name2.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name2.setBackground(new Color(242, 203, 155));
+		Playlist_Name2.setBounds(0, 203, 186, 30);
+		MusicPanel.add(Playlist_Name2);
+		
+		JButton Playlist_Name1 = new JButton("");
+		Playlist_Name1.setEnabled(false);
+		Playlist_Name1.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name1.setBackground(new Color(254, 254, 250));
+		Playlist_Name1.setBounds(0, 175, 186, 30);
+		MusicPanel.add(Playlist_Name1);
+		
+
 		JButton Playlists_Music = new JButton("Playlists");
 		Playlists_Music.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlists_Music.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -298,9 +324,59 @@ public class ListenerView extends JFrame {
 		Playlists_Music.setBounds(0, 146, 186, 30);
 		MusicPanel.add(Playlists_Music);
 		
-		myPlaylistJList2 = new JList();
-		myPlaylistJList2.setBounds(0, 181, 186, 244);
-		MusicPanel.add(myPlaylistJList2);
+
+		JButton Playlist_Name7 = new JButton("");
+		Playlist_Name7.setEnabled(false);
+		Playlist_Name7.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name7.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name7.setBackground(new Color(254, 254, 250));
+		Playlist_Name7.setBounds(0, 344, 186, 30);
+		MusicPanel.add(Playlist_Name7);
+		
+		JButton Playlist_Name6 = new JButton("");
+		Playlist_Name6.setEnabled(false);
+		Playlist_Name6.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name6.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name6.setBackground(new Color(242, 203, 155));
+		Playlist_Name6.setBounds(0, 315, 186, 30);
+		MusicPanel.add(Playlist_Name6);
+		
+		JButton Playlist_Name5 = new JButton("");
+		Playlist_Name5.setEnabled(false);
+		Playlist_Name5.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name5.setBackground(new Color(254, 254, 250));
+		Playlist_Name5.setBounds(0, 287, 186, 30);
+		MusicPanel.add(Playlist_Name5);
+		
+		JButton Playlist_Name4 = new JButton("");
+		Playlist_Name4.setEnabled(false);
+		Playlist_Name4.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name4.setBackground(new Color(242, 203, 155));
+		Playlist_Name4.setBounds(0, 258, 186, 30);
+		MusicPanel.add(Playlist_Name4);
+		
+		JButton Playlist_Name9 = new JButton("");
+		Playlist_Name9.setEnabled(false);
+		Playlist_Name9.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name9.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name9.setBackground(new Color(254, 254, 250));
+		Playlist_Name9.setBounds(0, 401, 186, 30);
+		MusicPanel.add(Playlist_Name9);
+		
+		JButton Playlist_Name8 = new JButton("");
+		Playlist_Name8.setEnabled(false);
+		Playlist_Name8.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name8.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name8.setBackground(new Color(242, 203, 155));
+		Playlist_Name8.setBounds(0, 372, 186, 30);
+		MusicPanel.add(Playlist_Name8);
+
+		
+		JList Playlist_list = new JList();
+		Playlist_list.setBounds(0, 175, 186, 256);
+		MusicPanel.add(Playlist_list);
 		
 		JPanel RecentlyPlayedPanel = new JPanel();
 		RecentlyPlayedPanel.setLayout(null);
@@ -315,84 +391,96 @@ public class ListenerView extends JFrame {
 		label.setBounds(0, 0, 186, 34);
 		RecentlyPlayedPanel.add(label);
 		
-		JButton RPSONG_1 = new JButton("Song Name");
+		JButton RPSONG_1 = new JButton("");
+		RPSONG_1.setEnabled(false);
 		RPSONG_1.setHorizontalAlignment(SwingConstants.LEFT);
 		RPSONG_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RPSONG_1.setBackground(new Color(242, 203, 155));
 		RPSONG_1.setBounds(0, 33, 186, 30);
 		RecentlyPlayedPanel.add(RPSONG_1);
 		
-		JButton RPSONG_2 = new JButton("Song Name");
+		JButton RPSONG_2 = new JButton("");
+		RPSONG_2.setEnabled(false);
 		RPSONG_2.setHorizontalAlignment(SwingConstants.LEFT);
 		RPSONG_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RPSONG_2.setBackground(new Color(254, 254, 250));
 		RPSONG_2.setBounds(0, 62, 186, 30);
 		RecentlyPlayedPanel.add(RPSONG_2);
 		
-		JButton RPSONG_4 = new JButton("Song Name");
+		JButton RPSONG_4 = new JButton("");
+		RPSONG_4.setEnabled(false);
 		RPSONG_4.setHorizontalAlignment(SwingConstants.LEFT);
 		RPSONG_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RPSONG_4.setBackground(new Color(254, 254, 250));
 		RPSONG_4.setBounds(0, 119, 186, 30);
 		RecentlyPlayedPanel.add(RPSONG_4);
 		
-		JButton RPSONG_3 = new JButton("Song Name");
+		JButton RPSONG_3 = new JButton("");
+		RPSONG_3.setEnabled(false);
 		RPSONG_3.setHorizontalAlignment(SwingConstants.LEFT);
 		RPSONG_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RPSONG_3.setBackground(new Color(242, 203, 155));
 		RPSONG_3.setBounds(0, 90, 186, 30);
 		RecentlyPlayedPanel.add(RPSONG_3);
 		
-		JButton RPSONG_7 = new JButton("Song Name");
+		JButton RPSONG_7 = new JButton("");
+		RPSONG_7.setEnabled(false);
 		RPSONG_7.setHorizontalAlignment(SwingConstants.LEFT);
 		RPSONG_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RPSONG_7.setBackground(new Color(242, 203, 155));
 		RPSONG_7.setBounds(0, 203, 186, 30);
 		RecentlyPlayedPanel.add(RPSONG_7);
 		
-		JButton RPSONG_6 = new JButton("Song Name");
+		JButton RPSONG_6 = new JButton("");
+		RPSONG_6.setEnabled(false);
 		RPSONG_6.setHorizontalAlignment(SwingConstants.LEFT);
 		RPSONG_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RPSONG_6.setBackground(new Color(254, 254, 250));
 		RPSONG_6.setBounds(0, 175, 186, 30);
 		RecentlyPlayedPanel.add(RPSONG_6);
 		
-		JButton RPSONG_5 = new JButton("Song Name");
+		JButton RPSONG_5 = new JButton("");
+		RPSONG_5.setEnabled(false);
 		RPSONG_5.setHorizontalAlignment(SwingConstants.LEFT);
 		RPSONG_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RPSONG_5.setBackground(new Color(242, 203, 155));
 		RPSONG_5.setBounds(0, 146, 186, 30);
 		RecentlyPlayedPanel.add(RPSONG_5);
 		
-		JButton MPSONG_3 = new JButton("Song Name");
+		JButton MPSONG_3 = new JButton("");
+		MPSONG_3.setEnabled(false);
 		MPSONG_3.setHorizontalAlignment(SwingConstants.LEFT);
 		MPSONG_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		MPSONG_3.setBackground(new Color(254, 254, 250));
 		MPSONG_3.setBounds(0, 344, 186, 30);
 		RecentlyPlayedPanel.add(MPSONG_3);
 		
-		JButton MPSONG_2 = new JButton("Song Name");
+		JButton MPSONG_2 = new JButton("");
+		MPSONG_2.setEnabled(false);
 		MPSONG_2.setHorizontalAlignment(SwingConstants.LEFT);
 		MPSONG_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		MPSONG_2.setBackground(new Color(242, 203, 155));
 		MPSONG_2.setBounds(0, 315, 186, 30);
 		RecentlyPlayedPanel.add(MPSONG_2);
 		
-		JButton MPSONG_1 = new JButton("Song Name");
+		JButton MPSONG_1 = new JButton("");
+		MPSONG_1.setEnabled(false);
 		MPSONG_1.setHorizontalAlignment(SwingConstants.LEFT);
 		MPSONG_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		MPSONG_1.setBackground(new Color(254, 254, 250));
 		MPSONG_1.setBounds(0, 287, 186, 30);
 		RecentlyPlayedPanel.add(MPSONG_1);
 		
-		JButton MPSONG_5 = new JButton("Song Name");
+		JButton MPSONG_5 = new JButton("");
+		MPSONG_5.setEnabled(false);
 		MPSONG_5.setHorizontalAlignment(SwingConstants.LEFT);
 		MPSONG_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		MPSONG_5.setBackground(new Color(254, 254, 250));
 		MPSONG_5.setBounds(0, 401, 186, 30);
 		RecentlyPlayedPanel.add(MPSONG_5);
 		
-		JButton MPSONG_4 = new JButton("Song Name");
+		JButton MPSONG_4 = new JButton("");
+		MPSONG_4.setEnabled(false);
 		MPSONG_4.setHorizontalAlignment(SwingConstants.LEFT);
 		MPSONG_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		MPSONG_4.setBackground(new Color(242, 203, 155));
@@ -412,6 +500,14 @@ public class ListenerView extends JFrame {
 		MostPlayedSongs.setBackground(new Color(254, 254, 250));
 		MostPlayedSongs.setBounds(0, 231, 186, 61);
 		RecentlyPlayedPanel.add(MostPlayedSongs);
+		
+		JList FaveSongslist = new JList();
+		FaveSongslist.setBounds(0, 33, 186, 200);
+		RecentlyPlayedPanel.add(FaveSongslist);
+		
+		JList MostPlayed_list = new JList();
+		MostPlayed_list.setBounds(0, 291, 186, 140);
+		RecentlyPlayedPanel.add(MostPlayed_list);
 		
 		JPanel Dashboard = new JPanel();
 		Dashboard.setBackground(new Color(254, 254, 250));

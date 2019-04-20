@@ -218,6 +218,45 @@ public class Database{
 		return loggedIn;
 		
 	}
+	
+	public boolean artistloggingAccount(account registeredAccount)
+	{
+		Connection cnt = getConnection(); 
+		boolean loggedIn = false;
+		
+		String query = "SELECT * FROM udc.artist WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
+		
+		try {
+			//create prepared statement
+			PreparedStatement ps = cnt.prepareStatement(query);
+			
+			//get result and store in result set
+			ResultSet rs = ps.executeQuery();
+			
+			
+			if(rs.next()) {
+				loggedIn = true;
+			}
+			else {
+				loggedIn = false;
+				
+			}
+			
+			//close all the resources
+			ps.close();
+			rs.close();
+			cnt.close();
+			
+			
+		
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		return loggedIn;
+		
+	}
 
 	public void writeSongBLOB(int SongID, String path) {
 			

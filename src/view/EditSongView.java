@@ -22,6 +22,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.Toolkit;
+import java.awt.Color;
 
 public class EditSongView extends JFrame {
 	private volatile static EditSongView instance = null;
@@ -59,6 +60,7 @@ public class EditSongView extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 429, 195);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255,255, 250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

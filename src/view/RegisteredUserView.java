@@ -336,31 +336,29 @@ public class RegisteredUserView extends JFrame {
 	     public void actionPerformed(ActionEvent e) 
 	     {	 
 	    	 System.out.println("songChanged: "+songChanged);
-	    	 if(songChanged) {
-		    	 mp3.pause();
-		    	 int SongID = userSongs.get(yourSongsList.getSelectedIndex()).getSongID();
-		    	 generalModel.getInstance().readSongData(SongID);
-		    	 mp3 = new MP3Player(new File("currentSong.mp3"));
-		    	 mp3.play();
-		    	 songChanged = false;
-		    	 generalModel.getInstance().updateCount(SongID);
-		    	 
-	    	 }else {
-	    		 mp3.play();
-	    	 }
-	    	 
-	    	 System.out.println("playSongInPlaylist: "+playSongInPlaylist);
-	    	 if(playSongInPlaylist) {
-		    	 mp3.pause();
-		    	 int SongID = pl.getPlaylistList().get(playlistListJList.getSelectedIndex()).getSongInPlaylist().get(yourSongsListJList.getSelectedIndex()).getSongID();
-		    	 generalModel.getInstance().readSongData(SongID);
-		    	 mp3 = new MP3Player(new File("currentSong.mp3"));
-		    	 mp3.play();
-		    	 
-		    	 playSongInPlaylist = false;
-	    	 }else {
-	    		 mp3.play();
-	    	 }
+		    	if(songChanged == true) {
+			    	 mp3.pause();
+			    	 int SongID = userSongs.get(yourSongsList.getSelectedIndex()).getSongID();
+		    		 generalModel.getInstance().readSongData(SongID);
+		    		 generalModel.getInstance().updateCount(SongID);
+		    		 mp3 = new MP3Player(new File("currentSong.mp3"));
+			    	 mp3.play();
+			    	 songChanged = false;
+
+		    	 }
+		    	 else if(playSongInPlaylist == true)
+			     {
+		    		 mp3.pause();
+			    	 int SongID2 = userPlaylists.get(playlistListJList.getSelectedIndex()).getSongInPlaylist().get(yourSongsListJList.getSelectedIndex()).getSongID();
+			    	 generalModel.getInstance().readSongData(SongID2);
+			    	 generalModel.getInstance().updateCount(SongID2);
+			    	 mp3 = new MP3Player(new File("currentSong.mp3"));
+				     mp3.play();
+				   	 playSongInPlaylist = false;
+			     }else 
+		    	 {
+		    		 mp3.play();
+		    	 }
 	    	 
 	    	 
 
@@ -552,10 +550,9 @@ public class RegisteredUserView extends JFrame {
 			 String s;
 			 userSongs = generalModel.getInstance().getSongsByGenre();
 			 DefaultListModel DLM = new DefaultListModel();
-			 for(int i = 0; i < generalModel.getInstance().getSongsByGenre().size(); i++)
+			 for(int i = 0; i < userSongs.size(); i++)
 			 {
-				 s = generalModel.getInstance().getSongsByGenre().get(i).getSongName();
-				 DLM.addElement(s);
+				 DLM.addElement(userSongs.get(i).getSongName());
 			 }
 			 
 			 yourSongsList.setModel(DLM);
@@ -570,10 +567,9 @@ public class RegisteredUserView extends JFrame {
 			 String s;
 			 userSongs = generalModel.getInstance().getSongsByAlbum();
 			 DefaultListModel DLM = new DefaultListModel();
-			 for(int i = 0; i < generalModel.getInstance().getSongsByAlbum().size(); i++)
+			 for(int i = 0; i < userSongs.size(); i++)
 			 {
-				 s = generalModel.getInstance().getSongsByAlbum().get(i).getSongName();
-				 DLM.addElement(s);
+				 DLM.addElement(userSongs.get(i).getSongName());
 			 }
 			 
 			 yourSongsList.setModel(DLM);
@@ -588,10 +584,9 @@ public class RegisteredUserView extends JFrame {
 			 String s;
 			 userSongs = generalModel.getInstance().getSongsByYear();
 			 DefaultListModel DLM = new DefaultListModel();
-			 for(int i = 0; i < generalModel.getInstance().getSongsByYear().size(); i++)
+			 for(int i = 0; i < userSongs.size(); i++)
 			 {
-				 s = generalModel.getInstance().getSongsByYear().get(i).getSongName();
-				 DLM.addElement(s);
+				 DLM.addElement(userSongs.get(i).getSongName());
 			 }
 			 
 			 yourSongsList.setModel(DLM);

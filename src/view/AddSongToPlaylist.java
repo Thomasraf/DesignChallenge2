@@ -20,6 +20,7 @@ import model.generalModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class AddSongToPlaylist extends JFrame {
 	private volatile static AddSongToPlaylist instance = null;
@@ -43,8 +44,9 @@ public class AddSongToPlaylist extends JFrame {
 	 */
 	public AddSongToPlaylist() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 451, 189);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255,255,250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -53,21 +55,21 @@ public class AddSongToPlaylist extends JFrame {
 		comboBoxSongs.setBounds(46, 40, 127, 28);
 		contentPane.add(comboBoxSongs);
 		
-		JLabel lblSongs = new JLabel("Songs:");
+		JLabel lblSongs = new JLabel("Song:");
 		lblSongs.setBounds(46, 15, 58, 14);
 		contentPane.add(lblSongs);
 		
 		btnAddToPlaylist = new JButton("Add to Playlist");
 		btnAddToPlaylist.addActionListener(new btn_AddToPlaylist());
-		btnAddToPlaylist.setBounds(171, 182, 192, 28);
+		btnAddToPlaylist.setBounds(102, 94, 192, 28);
 		contentPane.add(btnAddToPlaylist);
 		
 		 comboBoxPlaylists = new JComboBox();
-		comboBoxPlaylists.setBounds(46, 112, 127, 28);
+		comboBoxPlaylists.setBounds(236, 40, 127, 28);
 		contentPane.add(comboBoxPlaylists);
 		
 		JLabel lblPlaylist = new JLabel("Playlist");
-		lblPlaylist.setBounds(46, 95, 58, 14);
+		lblPlaylist.setBounds(236, 23, 58, 14);
 		contentPane.add(lblPlaylist);
 	}
 	

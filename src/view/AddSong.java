@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ import model.generalModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import java.awt.Toolkit;
@@ -36,6 +38,7 @@ public class AddSong extends JFrame {
 	private JTextField textFieldSongName;
 	private JLabel lblSongName;
 	private JComboBox yearComboBox;
+	ArrayList<Song> userSongsMostPlayed, userSongs;
 	/**
 	 * Launch the application.
 	 */
@@ -93,8 +96,11 @@ public class AddSong extends JFrame {
 		btnNewButton.setBounds(306, 203, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		btnChooseFile = new JButton("Choose File");
-		btnChooseFile.addActionListener(new btn_ChooseFile());
+
+		 btnChooseFile = new JButton("Choose File");
+		 btnChooseFile.setBackground(Color.WHITE);
+		 btnChooseFile.addActionListener(new btn_ChooseFile());
+
 		btnChooseFile.setBounds(33, 73, 140, 25);
 		contentPane.add(btnChooseFile);
 		
@@ -144,7 +150,7 @@ public class AddSong extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 int songID = 0;
-			 String username = RegisteredUserView.getInstance().currentUser;
+			 String username = HomeView.getInstance().currentUser;
 			 String songName = textFieldSongName.getText();
 			 String artistName = textFieldArtistName.getText();
 			 String albumName = textFieldAlbum.getText();
@@ -179,6 +185,43 @@ public class AddSong extends JFrame {
 			 
 			 JOptionPane.showMessageDialog(null,"Added " + songName + ".mp3");
 			 closingWindow();
+			 //==========================================================   FOR LIBRARY STUFF
+			 userSongs = generalModel.getInstance().gettingSongs(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < userSongs.size(); x++) {
+				 DLMTitle.addElement(userSongs.get(x).getSongName());
+				 DLMArtist.addElement(userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(userSongs.get(x).getAlbum());
+				 DLMYear.addElement(userSongs.get(x).getYear());
+				 DLMFavorite.addElement(userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 //==========================================================  FOR MOST PLAYED STUFF
+			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed();
+			 
+			 DefaultListModel DLMMostPlayed = new DefaultListModel();
+			 
+			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
+				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName());
+			 
+			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
+			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
+			 //==========================================================
+			 
 			 
 		 }
 		

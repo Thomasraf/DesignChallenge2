@@ -693,7 +693,31 @@ private volatile static HomeViewA modelInstance = null;
 	{
 		this.currentUser = username;
 		Profile.setText(currentUser);
-		System.out.println("new username set");
+		Profile.repaint();
+	}
+	
+	class btnProfile implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			profileView.getInstance().run();
+			profileView.setUsername(currentUser);
+			closeWindow();
+			
+		}
+		
+	}
+	
+	public void closeWindow()
+	{
+		this.setVisible(false);
+	}
+	
+	public void openWindow()
+	{
+		this.setVisible(true);
 	}
 	
 	class btnProfile implements ActionListener

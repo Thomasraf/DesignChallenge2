@@ -146,19 +146,26 @@ public class SigningUpView extends JFrame{
 				String path = textFieldChosenFile.getText();
 						
 				signUp = new account(username,password); 
-//				int x = generalController.getInstance().gettingAccountData(username, password,path);
+
+
+				int x = generalController.getInstance().gettingAccountData(username, password,path);
 				
-//				if(x == 1) {
-//					JOptionPane.showMessageDialog(null, "Signing Up Successful!");
-//					HomeView.getInstance().setVisible(true);
-//				}
-//				else {
-//					JOptionPane.showMessageDialog(null, "Username already exisits! Please Try Again!");
-//				}
+				if(x == 1) {
+					JOptionPane.showMessageDialog(null, "Signing Up Successful!");
+					HomeView.getInstance().setVisible(true);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Username already exisits! Please Try Again!");
+				}
+
 				
 				HomeView.getInstance().setUserName(username);
+				HomeView.getInstance().setDisplayPicture(path);
 				closingWindow();
 				SelectAccount.getInstance().setVisible(false);
+
+        HomeView.getInstance().realPath = path;
+
 			}
 		}
 		

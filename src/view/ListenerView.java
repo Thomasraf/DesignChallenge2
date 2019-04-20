@@ -39,10 +39,10 @@ public class ListenerView extends JFrame {
 	public JLabel lblUser;
 	private JButton btnRefresh,btnFavoritePlaylist,btnFavoriteSong,ProfileName_Dashboard,Profile,btnPrivate;
 	ArrayList<Song> userSongs,userSongsFavorites;
-	ArrayList<Playlist> userPlaylist,userPlaylistFavorites,userPlaylistPrivacy;
+	ArrayList<Playlist> userPlaylist,userPlaylist2,userPlaylistFavorites,userPlaylistPrivacy;
 	PlaylistList pl;
 	JList songJlist,playlistJList,FavoriteplaylistJList,FavoritesongJList, mostPlayedList;
-	JList publicPlaylistJList,myPlaylistJList;
+	JList publicPlaylistJList,myPlaylistJList,myPlaylistJList2;
 	boolean songChanged;
 	
 	public static ListenerView getInstance() {
@@ -291,6 +291,7 @@ public class ListenerView extends JFrame {
 		Albums_Music.setBounds(0, 90, 186, 30);
 		MusicPanel.add(Albums_Music);
 		
+
 		JButton Playlist_Name3 = new JButton("");
 		Playlist_Name3.setEnabled(false);
 		Playlist_Name3.setHorizontalAlignment(SwingConstants.LEFT);
@@ -315,6 +316,7 @@ public class ListenerView extends JFrame {
 		Playlist_Name1.setBounds(0, 175, 186, 30);
 		MusicPanel.add(Playlist_Name1);
 		
+
 		JButton Playlists_Music = new JButton("Playlists");
 		Playlists_Music.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlists_Music.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -322,6 +324,7 @@ public class ListenerView extends JFrame {
 		Playlists_Music.setBounds(0, 146, 186, 30);
 		MusicPanel.add(Playlists_Music);
 		
+
 		JButton Playlist_Name7 = new JButton("");
 		Playlist_Name7.setEnabled(false);
 		Playlist_Name7.setHorizontalAlignment(SwingConstants.LEFT);
@@ -369,6 +372,7 @@ public class ListenerView extends JFrame {
 		Playlist_Name8.setBackground(new Color(242, 203, 155));
 		Playlist_Name8.setBounds(0, 372, 186, 30);
 		MusicPanel.add(Playlist_Name8);
+
 		
 		JList Playlist_list = new JList();
 		Playlist_list.setBounds(0, 175, 186, 256);
@@ -708,23 +712,28 @@ public class ListenerView extends JFrame {
 		{
 			//============================================== General Playlists
 			userPlaylist = generalModel.getInstance().gettingPlaylists(currentUser);
+			userPlaylist2 = generalModel.getInstance().gettingPlaylists(currentUser);
 			
 			DefaultListModel DLM1 = new DefaultListModel();
+			DefaultListModel DLM2 = new DefaultListModel();
 			
 			for(int y = 0; y < userPlaylist.size(); y++)
 				DLM1.addElement(userPlaylist.get(y).getPlaylistName());
+			for(int b = 0; b < userPlaylist2.size(); b++)
+				DLM2.addElement(userPlaylist2.get(b).getPlaylistName());
 			
 			myPlaylistJList.setModel(DLM1);
+			myPlaylistJList2.setModel(DLM2);
 			
 			//============================================== Private Playlists
 			userPlaylistPrivacy = generalModel.getInstance().gettingPrivatePlaylists(currentUser);
 			
-			DefaultListModel DLM2 = new DefaultListModel();
+			DefaultListModel DLM3 = new DefaultListModel();
 			
 			for(int a = 0; a < userPlaylistPrivacy.size();a++)
-				DLM2.addElement(userPlaylistPrivacy.get(a).getPlaylistName());
+				DLM3.addElement(userPlaylistPrivacy.get(a).getPlaylistName());
 			
-			publicPlaylistJList.setModel(DLM2);
+			publicPlaylistJList.setModel(DLM3);
 			
 			//============================================== Favorite Playlists
 //			userPlaylistFavorites = generalModel.getInstance().gettingFavoritePlaylist(currentUser);

@@ -148,7 +148,7 @@ public class Database{
 		y = newAccount.getPassword();
 		
 		
-		String query2 = "SELECT * FROM swdespa.accounts WHERE username =('"+newAccount.getUsername()+"') AND password = ('"+newAccount.getPassword()+"')";
+		String query2 = "SELECT * FROM udc.accounts WHERE username =('"+newAccount.getUsername()+"') AND password = ('"+newAccount.getPassword()+"')";
 
 		//create string query
 		
@@ -185,7 +185,7 @@ public class Database{
 		Connection cnt = getConnection(); 
 		boolean loggedIn = false;
 		
-		String query = "SELECT * FROM swdespa.accounts WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
+		String query = "SELECT * FROM udc.accounts WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
 		
 		try {
 			//create prepared statement
@@ -709,7 +709,7 @@ public class Database{
 		Connection cnt = getConnection();
 		PreparedStatement myReadingStatement = null;
 		int ID = SongID;
-		String query = "UPDATE swdespa.songs SET Play_Count = Play_Count + 1 WHERE SongID = ('"+ID+"');";
+		String query = "UPDATE udc.songs SET Play_Count = Play_Count + 1 WHERE SongID = ('"+ID+"');";
 		ResultSet rs = null;
 		
 		try {
@@ -1185,7 +1185,7 @@ public ArrayList<Playlist> gettingUserPlaylist(String username) {
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM swdespa.user_playlists WHERE username = '"+username+"';";
+	String query = "SELECT * FROM udc.user_playlists WHERE username = '"+username+"';";
 	//create string qu
 	
 	try {

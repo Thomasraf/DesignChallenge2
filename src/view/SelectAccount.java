@@ -51,12 +51,12 @@ public class SelectAccount extends JFrame{
 		backgroundPanel.add(applicationName);
 		
 		btnGuestAccount = new JButton("Guest Account");
-		btnGuestAccount.setBounds(440, 343, 127, 38);
+
+		btnGuestAccount.setBounds(228, 334, 127, 38);
 		backgroundPanel.add(btnGuestAccount);
 		
 		btnRegisteredAccount = new JButton("Registered Account");
-
-		btnRegisteredAccount.setBounds(70, 268, 183, 62);
+		btnRegisteredAccount.setBounds(228, 236, 127, 38);
 
 		backgroundPanel.add(btnRegisteredAccount);
 		
@@ -65,7 +65,9 @@ public class SelectAccount extends JFrame{
 		backgroundPanel.add(btnArtistAccount);
 		
 		btnSignUp = new JButton("Sign Up");
-		btnSignUp.setBounds(440, 196, 127, 38);
+
+		btnSignUp.setBounds(228, 187, 127, 38);
+
 		backgroundPanel.add(btnSignUp);
 		
 		JLabel label = new JLabel("");
@@ -76,7 +78,9 @@ public class SelectAccount extends JFrame{
 		backgroundPanel.add(label);
 		
 		JButton ArtistAccountbtn = new JButton("Artist Account");
-		ArtistAccountbtn.setBounds(440, 294, 127, 38);
+
+		ArtistAccountbtn.setBounds(228, 285, 127, 38);
+
 		backgroundPanel.add(ArtistAccountbtn);
 
 		this.setVisible(true);

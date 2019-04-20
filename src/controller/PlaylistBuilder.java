@@ -13,6 +13,8 @@ public class PlaylistBuilder
 	String username;
 	String favorite;
 	String privacy;
+	String path;
+	String description;
 	
 	
 	public PlaylistBuilder setSongs(ArrayList<Song> SongInPlaylist) {
@@ -39,9 +41,19 @@ public class PlaylistBuilder
 		return this;
 	}
 	
+	public PlaylistBuilder setPath(String path) {
+		this.path = path;
+		return this;
+	}
+	
+	public PlaylistBuilder setDescription(String description) {
+		this.description = description;
+		return this;
+	}
+	
 	public Playlist getPlaylist()
 	{
-		return new Playlist(playlistName, username, favorite, privacy);
+		return new Playlist(playlistName, username, favorite, privacy,path,description);
 	}
 	
 	

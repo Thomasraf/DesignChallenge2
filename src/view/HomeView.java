@@ -14,6 +14,7 @@ import model.Song;
 import model.SongList;
 
 import model.generalModel;
+import view.RegisteredUserView.btn_CreatePlaylist;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -60,7 +61,7 @@ public class HomeView extends JFrame {
 	MP3Player mp3 = new MP3Player(new File("currentSong.mp3"));
 	RegisteredUserProfile profile;
 	public String currentUser;
-	JButton btnPickPlaylist, btnPickSong, btnCreatePlaylist, btnUploadSong, btnEditSong, btnPlay, btnPause, btnNextSong, btnPreviousSong, btnByGenre,Profile;
+	JButton btnPickPlaylist, btnPickSong,btnCreatePlaylist,btnUploadSong, btnEditSong, btnPlay, btnPause, btnNextSong, btnPreviousSong, btnByGenre,Profile;
 	JList yourSongsList, yourSongsListJList, playlistListJList;
 	JTextPane txtpnSongNameGenre;
 	private JButton btnRefresh;
@@ -75,6 +76,8 @@ public class HomeView extends JFrame {
 	private JButton btnByAlbum;
 	private JButton btnByYear;
 	ArrayList<Playlist> userPlaylists;
+	String path,realPath;
+	
 	
 
 	public static HomeView getInstance() {
@@ -227,7 +230,8 @@ public class HomeView extends JFrame {
 		
 
 		btnProfile = new JButton("");
-		btnProfile.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
+		btnProfile.setIcon(new ImageIcon(HomeView.class.getResource(realPath)));
+		//btnProfile.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
 		btnProfile.setBounds(478, 10, 40, 40);
 		TopBar.add(btnProfile);
 		btnProfile.setBackground(new Color(170, 187, 204));
@@ -265,13 +269,16 @@ public class HomeView extends JFrame {
 		contentPane.add(MusicPanel);
 		MusicPanel.setLayout(null);
 		
+
 		 btnCreatePlaylist = new JButton("New Playlist");
 		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
+
 		btnCreatePlaylist.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCreatePlaylist.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCreatePlaylist.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		btnCreatePlaylist.setBounds(0, 429, 186, 88);
 		MusicPanel.add(btnCreatePlaylist);
+
 		
 		JLabel MusicLbl = new JLabel("Music");
 		MusicLbl.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -609,6 +616,17 @@ public class HomeView extends JFrame {
 	 }
 	
 
+	 class btn_CreatePlaylist implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 CreatePlaylist cp = new CreatePlaylist();
+			 cp.setVisible(true);
+		 }
+	 }
+	
+
+
 	
 	class btn_Play implements ActionListener 
 	 {
@@ -645,6 +663,7 @@ public class HomeView extends JFrame {
 	     }
 	 }
 
+
 	class btn_Profile implements ActionListener{
 		 
 		 public void actionPerformed(ActionEvent e)
@@ -662,6 +681,14 @@ public class HomeView extends JFrame {
 	public void setUserName(String currentUser) {
 		this.currentUser = currentUser;
 		Profile.setText(currentUser);
+		HomeView.getInstance().realPath = currentUser;
+		generalModel.getInstance().readDisplayPicture(currentUser);
+		
+	}
+	
+	public void setDisplayPicture(String path) {
+		this.path = path;
+		
 	}
 
 }

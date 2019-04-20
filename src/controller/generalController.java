@@ -14,9 +14,9 @@ public class generalController {
 		return instance;
 	}
 	
-	public void gettingAccountData(String username, String password) { //SINGING UP
+	public int gettingAccountData(String username, String password,String path) { //SINGING UP
 		account newAccount = new account(username, password);
-		generalModel.getInstance().getAccountData(newAccount);
+		 return generalModel.getInstance().getAccountData(newAccount,path);
 	}
 	
 	public void gettingRegisteredAccountData(String registeredUsername,String registeredPassword) { //LOGGING IN
@@ -25,6 +25,7 @@ public class generalController {
 	}
 	
 
+
 	public void gettingRegisteredArtistAccountData(String registeredUsername, String registeredPassword) {
 		account artistAccount = new account(registeredUsername, registeredPassword);
 		generalModel.getInstance().checkingArtistAccountData(artistAccount);
@@ -32,8 +33,9 @@ public class generalController {
 	
 	public void gettingUserPlaylist(String username, String playlistName, String favorite, String privacy)
 
+
 	{
-		Playlist p = new Playlist(playlistName, username, favorite,privacy);
+		Playlist p = new Playlist(playlistName, username, favorite,privacy,path,description);
 		generalModel.getInstance().getUserPlaylistData(p);
 	}
 }

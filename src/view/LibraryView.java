@@ -40,11 +40,11 @@ public class LibraryView extends JFrame {
 	private JTextField txtSearch;
 	boolean evenClick = false;
 	private JButton Artist_Dashboard;
-	JButton btnCreatePlaylist, AddSongbtn, Profile, Refreshbtn, Playbtn;
+	JButton btnCreatePlaylist, AddSongbtn, Profile, Refreshbtn, Playbtn, Nextbtn, Prevbtn, StopBtn;
 	JList Title_list, Artist_list, Album_List, Genre_List, Year_List, Fave_List, Playlist_List, MP_List, RP_List;
 	ArrayList<Song> userSongsMostPlayed, userSongs;
 	ArrayList<Playlist> userPlaylists;
-	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP, songPaused;
+	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 	/**
 	 * Launch the application.
 	 */
@@ -124,14 +124,16 @@ public class LibraryView extends JFrame {
 		Shufflebtn.setBorder(null);
 		MainRectangle.add(Shufflebtn);
 		
-		JButton Nextbtn = new JButton("");
+		Nextbtn = new JButton("");
+		Nextbtn.addActionListener(new btn_nextSong());
 		Nextbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/next (2).png")));
 		Nextbtn.setBackground(new Color(30, 58, 42));
 		Nextbtn.setBounds(512, 31, 39, 39);
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
-		JButton Prevbtn = new JButton("");
+		Prevbtn = new JButton("");
+		Prevbtn.addActionListener(new btn_prevSong());
 		Prevbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/back (2).png")));
 		Prevbtn.setBackground(new Color(30, 58, 42));
 		Prevbtn.setBounds(355, 31, 39, 39);
@@ -173,7 +175,8 @@ public class LibraryView extends JFrame {
 		Queuebtn.setBounds(769, 31, 39, 39);
 		MainRectangle.add(Queuebtn);
 		
-		JButton StopBtn = new JButton("");
+		 StopBtn = new JButton("");
+		StopBtn.addActionListener(new btn_Stop());
 		StopBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/stop (3).png")));
 		StopBtn.setBorder(null);
 		StopBtn.setBackground(new Color(30, 58, 42));
@@ -537,7 +540,7 @@ public class LibraryView extends JFrame {
 				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName());
 			 
 			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
-			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
+			 MP_List.setModel(DLMMostPlayed);
 			 //========================================================== FOR PLAYLISTS
 			 userPlaylists = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
 			 DefaultListModel DLM2 = new DefaultListModel();
@@ -578,7 +581,7 @@ public class LibraryView extends JFrame {
 
 	     public void actionPerformed(ActionEvent e) 
 	     {	 
-	    	 
+	    	 HomeView.getInstance().userSongs = generalModel.getInstance().gettingSongs(HomeView.getInstance().currentUser);
 	    	 System.out.println("songChangedInLibrary: "+songChangedInLibrary);
 		    	if(songChangedInLibrary == true) {
 		    		HomeView.getInstance().mp3.pause();
@@ -624,6 +627,30 @@ public class LibraryView extends JFrame {
 	    	 
 		    	
 	     }
+	 }
+	class btn_Stop implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().mp3.stop();
+		 }
+	 }
+	class btn_nextSong implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().mp3.skipForward();
+			
+		 }
+	 }
+	 
+	 class btn_prevSong implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().mp3.skipBackward();
+			
+		 }
 	 }
 	
 	public void setUserName(String currentUser) {

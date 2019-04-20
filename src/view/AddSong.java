@@ -151,7 +151,7 @@ public class AddSong extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 int songID = 0;
-			 String username = RegisteredUserView.getInstance().currentUser;
+			 String username = HomeView.getInstance().currentUser;
 			 String songName = textFieldSongName.getText();
 			 String artistName = textFieldArtistName.getText();
 			 String albumName = textFieldAlbum.getText();
@@ -220,6 +220,7 @@ public class AddSong extends JFrame {
 				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName());
 			 
 			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
+			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //==========================================================
 			 
 			 

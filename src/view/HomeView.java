@@ -42,7 +42,7 @@ public class HomeView extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtSearch;
 	boolean evenClick = false;
-	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn;
+	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
 	JList Playlist_List, MP_List;
 	SongList sl = new SongList();
 	ArrayList<Song> userSongsMostPlayed, userSongs;
@@ -137,14 +137,16 @@ public class HomeView extends JFrame {
 		Shufflebtn.setBorder(null);
 		MainRectangle.add(Shufflebtn);
 		
-		JButton Nextbtn = new JButton("");
+		 Nextbtn = new JButton("");
+		Nextbtn.addActionListener(new btn_nextSong());
 		Nextbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/next (2).png")));
 		Nextbtn.setBackground(new Color(30, 58, 42));
 		Nextbtn.setBounds(512, 31, 39, 39);
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
-		JButton Prevbtn = new JButton("");
+		 Prevbtn = new JButton("");
+		Prevbtn.addActionListener(new btn_prevSong());
 		Prevbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/back (2).png")));
 		Prevbtn.setBackground(new Color(30, 58, 42));
 		Prevbtn.setBounds(355, 31, 39, 39);
@@ -588,12 +590,12 @@ public class HomeView extends JFrame {
 
 	     public void actionPerformed(ActionEvent e) 
 	     {	 
-	    	 
+	    	 userSongs = generalModel.getInstance().gettingSongs(HomeView.getInstance().currentUser);
 	    	 System.out.println("songChangedInMP: "+songChangedInMP);
 		    	if (songChangedInMP == true)
 		    	 {
 		    		 mp3.pause();
-			    	 int SongID = userSongs.get(HomeView.getInstance().MP_List.getSelectedIndex()).getSongID();
+			    	 int SongID = userSongs.get(MP_List.getSelectedIndex()).getSongID();
 		    		 generalModel.getInstance().readSongData(SongID);
 		    		 generalModel.getInstance().updateCount(SongID);
 		    		 mp3 = new MP3Player(new File("currentSong.mp3"));
@@ -634,6 +636,24 @@ public class HomeView extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 mp3.stop();
+		 }
+	 }
+	 
+	 class btn_nextSong implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			mp3.skipForward();
+			
+		 }
+	 }
+	 
+	 class btn_prevSong implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			mp3.skipBackward();
+			
 		 }
 	 }
 	 

@@ -1000,7 +1000,7 @@ public ArrayList<Song> getSongsByGenre(String username) {
 		
 		//get getConnection() from db
 		Connection cnt = getConnection();
-		String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Genre DESC;";
+		String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Genre;";
 		//create string qu
 		
 		try {
@@ -1047,7 +1047,7 @@ public ArrayList<Song> getSongsByAlbum(String username) {
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Album DESC;";
+	String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Album;";
 	//create string qu
 	
 	try {
@@ -1220,12 +1220,58 @@ public ArrayList<Playlist> gettingUserPlaylist(String username) {
 	
 }
 
-public ArrayList<Song> gettingSongs() {
+public ArrayList<Song> sortByTitle(String username) {
 	
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM songs";
+	String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Title;";
+	//create string qu
+	
+	try {
+		//create prepared statement	
+		PreparedStatement ps = cnt.prepareStatement(query);
+		
+		//get result and store in result set
+		ResultSet rs = ps.executeQuery();
+		
+		ArrayList<Song> sl = new ArrayList<>();
+		//transform set into list
+		while(rs.next()) {
+			 Song newSong = new SongBuilder()
+					 .setSongID(rs.getInt("SongID"))
+					 .setUserName(rs.getString("Username"))
+					 .setSongName(rs.getString("Title"))
+					 .setArtistName(rs.getString("Artist"))
+					 .setAlbum(rs.getString("Album"))
+					 .setGenre(rs.getString("Genre"))
+					 .setYear(rs.getString("Year"))
+					 .setPath("")
+					 .setCount(0)
+					 .getSong();
+			 sl.add(newSong);
+		}
+		
+		//close all the resources
+		ps.close();
+		rs.close();
+		cnt.close();
+		
+		return sl;
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return null; 
+	
+}
+
+public ArrayList<Song> sortByArtist(String username) {
+	
+	//get getConnection() from db
+	Connection cnt = getConnection();
+	
+	String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Artist;";
 	//create string qu
 	
 	try {

@@ -146,8 +146,12 @@ public class generalModel {
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
 	
-	public ArrayList<Song> getSongStuff() {
-		return Database.getInstance().gettingSongs();
+	public ArrayList<Song> getSortByTitle(String username) {
+		return Database.getInstance().sortByTitle(username);
+	}
+	
+	public ArrayList<Song> getSortByArtist(String username) {
+		return Database.getInstance().sortByArtist(username);
 	}
 	
 	//=========================================================================== Everything Editing

@@ -2,6 +2,7 @@ package view;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,7 +13,7 @@ import jaco.mp3.player.MP3Player;
 import model.Playlist;
 import model.Song;
 import model.generalModel;
-import view.HomeView.btn_CreatePlaylist;
+//import view.HomeView.btn_CreatePlaylist;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -45,15 +46,6 @@ public class LibraryView extends JFrame {
 	ArrayList<Song> userSongsMostPlayed, userSongs;
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
-
-	private volatile static LibraryView instance = null;
-	public static LibraryView getInstance() {
-        if (instance == null) {
-        	instance = new LibraryView();
-        }
-		return instance;
-
-	}
 
 	public static LibraryView getInstance() {
         if (instance == null) {

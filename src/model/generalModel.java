@@ -52,15 +52,15 @@ public class generalModel {
 		}
 	}
 	
-	public void checkingArtistAccountData(account w) { //LOGGING IN
-		if(Database.getInstance().loggingArtistAccount(w) == true) {
-			ArtistLoggingInView.getInstance().entranceAllowed();
-		}
-		else {
-			ArtistLoggingInView.getInstance().entranceDenied();
-		}
-	}
-	
+//	public void checkingArtistAccountData(account w) { //LOGGING IN
+//		if(Database.getInstance().loggingArtistAccount(w) == true) {
+//			ArtistLoggingInView.getInstance().entranceAllowed();
+//		}
+//		else {
+//			ArtistLoggingInView.getInstance().entranceDenied();
+//		}
+//	}
+//	
 
 	public void getPlaylistData(Playlist p)
 	{

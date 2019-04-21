@@ -8,8 +8,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controller.RecentlyPlayedBuilder;
+import controller.SongBuilder;
 import jaco.mp3.player.MP3Player;
 import model.Playlist;
+import model.RecentlyPlayed;
+import model.RecentlyPlayedList;
 import model.Song;
 import model.SongList;
 import model.generalModel;
@@ -43,9 +47,10 @@ public class HomeView extends JFrame {
 	private JTextField txtSearch;
 	boolean evenClick = false;
 	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
-	JList Playlist_List, MP_List;
+	JList Playlist_List, MP_List, RecentlyPlayedList;
 	SongList sl = new SongList();
 	ArrayList<Song> userSongsMostPlayed, userSongs;
+	ArrayList<RecentlyPlayed> userRecentlyPlayed;
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 	boolean songPaused;
@@ -357,7 +362,7 @@ public class HomeView extends JFrame {
 		MostPlayedSongs.setBounds(0, 231, 186, 61);
 		RecentlyPlayedPanel.add(MostPlayedSongs);
 		
-		JList RecentlyPlayedList = new JList();
+		 RecentlyPlayedList = new JList();
 		RecentlyPlayedList.setBounds(0, 33, 186, 197);
 		RecentlyPlayedPanel.add(RecentlyPlayedList);
 		
@@ -601,7 +606,28 @@ public class HomeView extends JFrame {
 		    		 mp3 = new MP3Player(new File("currentSong.mp3"));
 			    	 mp3.play();
 			    	 songChangedInMP = false;
-			    	 songPaused = false;
+			    	 
+			    	 RecentlyPlayed addedSong = new RecentlyPlayedBuilder()
+							 .setSongID(userSongs.get(MP_List.getSelectedIndex()).getSongID())
+							 .setUserName(userSongs.get(MP_List.getSelectedIndex()).getUserName())
+							 .setSongName(userSongs.get(MP_List.getSelectedIndex()).getSongName())
+							 .setArtistName(userSongs.get(MP_List.getSelectedIndex()).getArtistName())
+							 .setAlbum(userSongs.get(MP_List.getSelectedIndex()).getAlbum())
+							 .setGenre(userSongs.get(MP_List.getSelectedIndex()).getGenre())
+							 .setYear(userSongs.get(MP_List.getSelectedIndex()).getYear())
+							 .setPath(userSongs.get(MP_List.getSelectedIndex()).getPath())
+							 .setCount(userSongs.get(MP_List.getSelectedIndex()).getCount())
+							 .setFavorite(userSongs.get(MP_List.getSelectedIndex()).getFavorite())
+							 .getSong();
+			    	 
+			    	 RecentlyPlayedList sList = new RecentlyPlayedList();
+			    	 sList.addSong(addedSong);
+			    	 DefaultListModel DLM2 = new DefaultListModel();
+					 for(int i = 0; i < sList.getSongListSize(); i++)
+					 {
+						 DLM2.addElement(sList.getSongList().get(i).getSongName());
+					 }
+					 RecentlyPlayedList.setModel(DLM2);
 		    	 }
 		    	/* else if(playSongInPlaylist == true)
 			     {
@@ -625,9 +651,9 @@ public class HomeView extends JFrame {
 			    	 songPaused = true;
 			    	 }
 		    	 }
-	    	 
-	    	 
-
+		    	
+		    	
+		    	
 	     }
 	 }
 	 

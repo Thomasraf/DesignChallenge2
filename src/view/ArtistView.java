@@ -64,7 +64,7 @@ private volatile static ArtistView modelInstance = null;
 	/**
 	 * Create the frame.
 	 */
-	public ArtistView() {
+	private ArtistView() {
 		createAlbumView = new CreateAlbum();
 		setBackground(new Color(254,254,250));
 		setResizable(false);
@@ -744,6 +744,17 @@ private volatile static ArtistView modelInstance = null;
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			createAlbumView.setVisible(true);
+		}
+		
+	}
+	
+	class playlistsbtn implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 	}

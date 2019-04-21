@@ -15,9 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.JTextComponent;
 
+import controller.ArtistPlaylistBuilder;
 import controller.PlaylistBuilder;
 import controller.SongBuilder;
 import controller.generalController;
+import model.ArtistPlaylist;
+import model.Database;
 import model.Playlist;
 import model.PlaylistList;
 import model.Song;
@@ -36,21 +39,22 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class CreatePlaylist extends JFrame {
-	private volatile static CreatePlaylist instance = null;
+public class CreateArtistPlaylist extends JFrame {
+	private volatile static CreateArtistPlaylist instance = null;
 	private JPanel contentPane;
 	private JTextField textFieldEnterPlaylistName;
 	JButton btnCreatePlaylist,btnChoosePicture;
 	String textField,fileName;
 	private JTextField textFieldChosenFile;
 	private JTextField descriptionTextField;
+	private int playlistctr = 1;
 
 	/**
 	 * Launch the application.
 	 */
-	public static CreatePlaylist getInstance() {
+	public static CreateArtistPlaylist getInstance() {
         if (instance == null) {
-        	instance = new CreatePlaylist();
+        	instance = new CreateArtistPlaylist();
         }
 		return instance;
 	}
@@ -59,7 +63,7 @@ public class CreatePlaylist extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	private CreatePlaylist() {
+	private CreateArtistPlaylist() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 463, 301);
 		contentPane = new JPanel();
@@ -142,69 +146,25 @@ public class CreatePlaylist extends JFrame {
 		 {
 			 
 			 String playlistName = textFieldEnterPlaylistName.getText();
-			 String username = HomeViewA.getInstance().currentUser;
+			 int userid = Database.getInstance().getIDforArtist(HomeViewA.getInstance().currentUser);
 			 String path = textFieldChosenFile.getText();
-			 String favorite = "0";
 			 String description = descriptionTextField.getText();
-			 String privacy = "0";
+			 			 
+			 ArtistPlaylistBuilder build = new ArtistPlaylistBuilder();
+			 build.setID(playlistctr);
+			 build.setName(playlistName);
+			 build.setUserID(userid);
+			 build.setDescription(description);
+			 build.setPath(path);
 			 
-			 boolean isTrue = true;
 			 
-
+			 ArtistPlaylist newPlaylist = build.getPlaylist();
 			 
-
-
-			 Playlist addedPlaylist = new PlaylistBuilder()
-					 .setPlaylistName(playlistName)
-					 .setUsername(username)
-					 .setFavorite(favorite)
-					 .setPrivacy(privacy)
-
-					 .setPath(path)
-					 .setDescription(description)
-
-					 .getPlaylist();
-
-			 PlaylistList pList = new PlaylistList();
-			 
-			 for(int i = 0; i < generalModel.getInstance().getUserPlaylist(username).size();i++)
-			 {
-				 if(playlistName.equals(generalModel.getInstance().getUserPlaylist(username).get(i).getPlaylistName()))
-				 {
-					 JOptionPane.showMessageDialog(null,"Playlist already exists");
-					 dispose();
-					 isTrue = false;
-				 }
-			 }
-			 
-			 if(isTrue != false)
-			 {
-				 pList.addEvent(addedPlaylist);
-				 int index = pList.getIndex(addedPlaylist);
-			 
-				 generalModel.getInstance().getPlaylistData(addedPlaylist);
-
-				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite,privacy,path,description);
-
-				 JOptionPane.showMessageDialog(null, "Added " + playlistName + " playlist!");
-				 
-				 dispose();
-			 
-			 }
-
-			 //===================
-//			 userPlaylist = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
-//			 DefaultListModel DLM2 = new DefaultListModel();
-//			
-//			 for(int y = 0; y < userPlaylist.size(); y++)
-//				 DLM2.addElement(userPlaylist.get(y).getPlaylistName());
-//
-//			 HomeView.getInstance().Playlist_List.setModel(DLM2);
-//			 //=====================
-
+			 generalController.getInstance().addArtistPlaylist(newPlaylist);
+			 setVisible(false);
 
 		 }
-		 }
+		}
 	 
 	
 	public void closingWindow() {

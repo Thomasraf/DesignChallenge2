@@ -74,7 +74,7 @@ public class CreateAlbum extends JFrame {
 
 
 		JButton btnCreateAlbum = new JButton("Create Album");
-		btnCreateAlbum.addActionListener(new btn_CreateAlbum());
+//		btnCreateAlbum.addActionListener(new btn_CreateAlbum());
 		btnCreateAlbum.setBounds(336, 228, 101, 23);
 		contentPane.add(btnCreateAlbum);
 
@@ -149,7 +149,7 @@ public class CreateAlbum extends JFrame {
 			 
 				 generalModel.getInstance().getPlaylistData(addedPlaylist);
 
-				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite);
+//				 generalController.getInstance().gettingUserPlaylist(username, playlistName, favorite);
 				 JOptionPane.showMessageDialog(null, "Added " + albumName + " playlist!");
 
 			 

@@ -1,5 +1,6 @@
 package view;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,7 +55,7 @@ public class AddSong extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AddSong() {
+	private AddSong() {
 		setTitle("Not So Spotify");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Antonello Santos\\Documents\\DesignChallenge2\\src\\images\\spotify.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -203,12 +204,12 @@ public class AddSong extends JFrame {
 				 DLMYear.addElement(userSongs.get(x).getYear());
 				 DLMFavorite.addElement(userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed();
@@ -218,8 +219,8 @@ public class AddSong extends JFrame {
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
 				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName());
 			 
-			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
-			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
+//			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
+//			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //==========================================================
 			 
 			 

@@ -24,9 +24,9 @@ import javax.swing.JList;
 public class LibraryViewA extends JFrame {
 
 	private JPanel contentPane;
-boolean evenClick = false;
+	boolean evenClick = false;
 	private JButton Artist_Dashboard;
-
+	JTextField txtSearch;
 	
 	private volatile static LibraryViewA instance = null;
 	public static LibraryViewA getInstance() {
@@ -40,7 +40,7 @@ boolean evenClick = false;
 	/**
 	 * Create the frame.
 	 */
-	public LibraryViewA() {
+	private LibraryViewA() {
 		setBackground(new Color(254,254,250));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

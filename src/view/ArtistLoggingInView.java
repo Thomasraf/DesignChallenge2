@@ -29,7 +29,7 @@ public class ArtistLoggingInView extends JFrame{
 	account logIn;
 	Boolean entrance;
 	Database theAccounts;
-	HomeViewA artistHomeView = new HomeViewA();
+	HomeViewA artistHomeView = HomeViewA.getInstance();
 	
 	private volatile static ArtistLoggingInView modelInstance = null;
 	
@@ -103,7 +103,6 @@ public class ArtistLoggingInView extends JFrame{
 			generalController.getInstance().gettingRegisteredArtistAccountData(registeredUsername, registeredPassword);
 //			RegisteredUserView.getInstance().setUserName(registeredUsername);
 			artistHomeView.getInstance().setUsername(gettingUsername());
-			System.out.println(gettingUsername());
 			closingWindow();
 			SelectAccount.getInstance().closingWindow();
 		}

@@ -45,7 +45,11 @@ public class HomeViewA extends JFrame {
 			AddSongbtn, AlbumName_1, AlbumName_2, AlbumName_3, AlbumName_4, AlbumName_5,
 			AlbumName_6;
 	
-	ArtistView profileView = new ArtistView();
+	ArtistView profileView = ArtistView.getInstance();
+	LibraryViewA libraryView = LibraryViewA.getInstance();
+	CreateArtistPlaylist newPlaylistView = CreateArtistPlaylist.getInstance();
+	AddSong addSongView = AddSong.getInstance();
+	NotificationViewA notifs = NotificationViewA.getInstance();
 
 	/**
 	 * Launch the application.
@@ -90,7 +94,7 @@ private volatile static HomeViewA modelInstance = null;
 	/**
 	 * Create the frame.
 	 */
-	public HomeViewA() {
+	private HomeViewA() {
 		setBackground(new Color(254,254,250));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -669,6 +673,10 @@ private volatile static HomeViewA modelInstance = null;
 		
 		ProfilePic.addActionListener(new btnProfile());
 		Profile.addActionListener(new btnProfile());
+		Library.addActionListener(new btnLibrary());
+		btnNewButton.addActionListener(new btnNewPlaylist());
+		AddSongbtn.addActionListener(new btnAddSong());
+		Notificationbtn.addActionListener(new btnNotifs());
 		
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
@@ -703,37 +711,59 @@ private volatile static HomeViewA modelInstance = null;
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			profileView.getInstance().run();
-			profileView.setUsername(currentUser);
+			profileView.getInstance().setUsername(currentUser);
+//			profileView.setUsername(currentUser);
 			closeWindow();
 			
 		}
 		
 	}
 	
-	public void closeWindow()
-	{
-		this.setVisible(false);
-	}
-	
-	public void openWindow()
-	{
-		this.setVisible(true);
-	}
-	
-	class btnProfile implements ActionListener
+	class btnLibrary implements ActionListener
 	{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			profileView.getInstance().run();
-			profileView.setUsername(currentUser);
-			closeWindow();
-			
+			libraryView.getInstance().setVisible(true);
+//			libraryView.getInstance()
+			setVisible(false);
 		}
 		
 	}
 	
+	class btnNewPlaylist implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			newPlaylistView.getInstance().setVisible(true);
+		}
+		
+	}
+	
+	class btnAddSong implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			addSongView.getInstance().setVisible(true);
+		}
+		
+	}
+	
+	class btnNotifs implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			notifs.getInstance().setVisible(true);
+		}
+		
+	}
 	public void closeWindow()
 	{
 		this.setVisible(false);
@@ -744,4 +774,5 @@ private volatile static HomeViewA modelInstance = null;
 		this.setVisible(true);
 	}
 	
+
 }

@@ -19,17 +19,22 @@ public class generalModel {
 	
 	}
 	
+	public int getIDForArtist(String username)
+	{
+		return Database.getInstance().getIDforArtist(username);
+	}
+	
 	public void getSongData(Song s)
 	{
 		int SongID = Database.getInstance().addingSong(s);
 		Database.getInstance().writeSongBLOB(SongID, s.getPath());
 	}
 	
-	public void getPlaylistData(Playlist p)
-	{
-		Database.getInstance().addingPlaylist(p);
-		Database.getInstance().writePlaylistBLOB(p.getPlaylistName(),p.getPath(),p.getDescription());
-	}
+//	public void getPlaylistData(Playlist p)
+//	{
+//		Database.getInstance().addingPlaylist(p);
+//		Database.getInstance().writePlaylistBLOB(p.getPlaylistName(),p.getPath(),p.getDescription());
+//	}
 	
 	public int getAccountData(account x, String path) { //SIGNING UP
 		if(Database.getInstance().addingAccount(x) == false) {
@@ -71,6 +76,11 @@ public class generalModel {
 	public void getUserPlaylistData(Playlist p)
 	{
 		Database.getInstance().addingUserPlaylist(p);
+	}
+	
+	public void addArtistPlaylist(ArtistPlaylist ap)
+	{
+		Database.getInstance().addArtistPlaylist(ap);
 	}
 	
 	public ArrayList<Song> gettingSongs(String t) {
@@ -145,6 +155,11 @@ public class generalModel {
 	{
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
+	
+//	public ArrayList<Playlist> getArtistPlaylist(String username)
+//	{
+//		
+//	}
 	
 	public ArrayList<Song> getSongStuff() {
 		return Database.getInstance().gettingSongs();

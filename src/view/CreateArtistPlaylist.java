@@ -162,6 +162,7 @@ public class CreateArtistPlaylist extends JFrame {
 			 
 			 generalController.getInstance().addArtistPlaylist(newPlaylist);
 			 setVisible(false);
+			 playlistctr++;
 
 		 }
 		}

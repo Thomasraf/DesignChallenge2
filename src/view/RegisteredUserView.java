@@ -550,11 +550,11 @@ public class RegisteredUserView extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 String s;
-			 userSongs = generalModel.getInstance().getSongsByGenre();
+			 userSongs = generalModel.getInstance().getSongsByGenre(currentUser);
 			 DefaultListModel DLM = new DefaultListModel();
-			 for(int i = 0; i < generalModel.getInstance().getSongsByGenre().size(); i++)
+			 for(int i = 0; i < generalModel.getInstance().getSongsByGenre(currentUser).size(); i++)
 			 {
-				 s = generalModel.getInstance().getSongsByGenre().get(i).getSongName();
+				 s = generalModel.getInstance().getSongsByGenre(currentUser).get(i).getSongName();
 				 DLM.addElement(s);
 			 }
 			 
@@ -568,11 +568,11 @@ public class RegisteredUserView extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 String s;
-			 userSongs = generalModel.getInstance().getSongsByAlbum();
+			 userSongs = generalModel.getInstance().getSongsByAlbum(currentUser);
 			 DefaultListModel DLM = new DefaultListModel();
-			 for(int i = 0; i < generalModel.getInstance().getSongsByAlbum().size(); i++)
+			 for(int i = 0; i < generalModel.getInstance().getSongsByAlbum(currentUser).size(); i++)
 			 {
-				 s = generalModel.getInstance().getSongsByAlbum().get(i).getSongName();
+				 s = generalModel.getInstance().getSongsByAlbum(currentUser).get(i).getSongName();
 				 DLM.addElement(s);
 			 }
 			 
@@ -586,11 +586,11 @@ public class RegisteredUserView extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 String s;
-			 userSongs = generalModel.getInstance().getSongsByYear();
+			 userSongs = generalModel.getInstance().getSongsByYear(currentUser);
 			 DefaultListModel DLM = new DefaultListModel();
-			 for(int i = 0; i < generalModel.getInstance().getSongsByYear().size(); i++)
+			 for(int i = 0; i < generalModel.getInstance().getSongsByYear(currentUser).size(); i++)
 			 {
-				 s = generalModel.getInstance().getSongsByYear().get(i).getSongName();
+				 s = generalModel.getInstance().getSongsByYear(currentUser).get(i).getSongName();
 				 DLM.addElement(s);
 			 }
 			 

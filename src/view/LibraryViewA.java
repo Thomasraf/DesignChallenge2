@@ -175,7 +175,7 @@ boolean evenClick = false;
 		button.setBackground(new Color(30, 58, 42));
 		TopBar.add(button);
 
-		txtSearch = new JTextField();
+		JTextField txtSearch = new JTextField();
 		txtSearch.setForeground(SystemColor.desktop);
 		txtSearch.setText("Search");
 		txtSearch.setHorizontalAlignment(SwingConstants.LEFT);

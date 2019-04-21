@@ -62,7 +62,7 @@ public class generalModel {
 	}
 	
 
-	public void getPlaylistData(Playlist p)
+	public void gettingPlaylistData(Playlist p)
 	{
 		Database.getInstance().addingPlaylist(p);
 	}
@@ -121,24 +121,24 @@ public class generalModel {
 
 	//=========================================================================== Everything Sorting
 	
-	public ArrayList<Song> getSongsByGenre()
+	public ArrayList<Song> getSongsByGenre(String username)
 	{
-		return Database.getInstance().getSongsByGenre();
+		return Database.getInstance().getSongsByGenre(username);
 	}
 	
-	public ArrayList<Song> getSongsByAlbum()
+	public ArrayList<Song> getSongsByAlbum(String username)
 	{
-		return Database.getInstance().getSongsByAlbum();
+		return Database.getInstance().getSongsByAlbum(username);
 	}
 	
-	public ArrayList<Song> getSongsByYear()
+	public ArrayList<Song> getSongsByYear(String username)
 	{
-		return Database.getInstance().getSongsByYear();
+		return Database.getInstance().getSongsByYear(username);
 	}
 	
-	public ArrayList<Song> getMostPlayed()
+	public ArrayList<Song> getMostPlayed(String username)
 	{
-		return Database.getInstance().getMostPlayed();
+		return Database.getInstance().getMostPlayed(username);
 	}
 	
 	public ArrayList<Playlist> getUserPlaylist(String username)

@@ -996,11 +996,11 @@ public class Database{
 		//return null;
 	}
 	
-public ArrayList<Song> getSongsByGenre() {
+public ArrayList<Song> getSongsByGenre(String username) {
 		
 		//get getConnection() from db
 		Connection cnt = getConnection();
-		String query = "SELECT * FROM songs ORDER BY genre";
+		String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Genre DESC;";
 		//create string qu
 		
 		try {
@@ -1042,12 +1042,12 @@ public ArrayList<Song> getSongsByGenre() {
 		
 	}
 	
-public ArrayList<Song> getSongsByAlbum() {
+public ArrayList<Song> getSongsByAlbum(String username) {
 	
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM songs ORDER BY album";
+	String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Album DESC;";
 	//create string qu
 	
 	try {
@@ -1088,12 +1088,12 @@ public ArrayList<Song> getSongsByAlbum() {
 	
 }
 
-public ArrayList<Song> getSongsByYear() {
+public ArrayList<Song> getSongsByYear(String username) {
 	
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM songs ORDER BY year";
+	String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Year DESC;";
 	//create string qu
 	
 	try {
@@ -1134,12 +1134,12 @@ public ArrayList<Song> getSongsByYear() {
 	
 }
 
-public ArrayList<Song> getMostPlayed() {
+public ArrayList<Song> getMostPlayed(String username) {
 	
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM songs ORDER BY Play_Count DESC";
+	String query = "SELECT * FROM songs WHERE username = ('"+username+"') ORDER BY Play_Count DESC;";
 	//create string qu
 	
 	try {
@@ -1161,7 +1161,7 @@ public ArrayList<Song> getMostPlayed() {
 					 .setGenre(rs.getString("Genre"))
 					 .setYear(rs.getString("Year"))
 					 .setPath("")
-					 .setCount(0)
+					 .setCount(rs.getInt("Play_Count"))
 					 .getSong();
 			 sl.add(newSong);
 		}

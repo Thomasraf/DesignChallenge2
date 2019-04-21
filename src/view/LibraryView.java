@@ -46,14 +46,6 @@ public class LibraryView extends JFrame {
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 
-	private volatile static LibraryView instance = null;
-	public static LibraryView getInstance() {
-        if (instance == null) {
-        	instance = new LibraryView();
-        }
-		return instance;
-
-	}
 
 	public static LibraryView getInstance() {
         if (instance == null) {
@@ -205,7 +197,7 @@ public class LibraryView extends JFrame {
 		TopBar.add(button);
 		
 
-		txtSearch = new JTextField();
+		JTextField txtSearch = new JTextField();
 		txtSearch.setForeground(SystemColor.desktop);
 		txtSearch.setText("Search");
 		txtSearch.setHorizontalAlignment(SwingConstants.LEFT);
@@ -528,12 +520,12 @@ public class LibraryView extends JFrame {
 			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
-			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed();
+			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(HomeView.getInstance().currentUser);
 			 
 			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 			 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
-				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName());
+				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName()  + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
 			 
 			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 MP_List.setModel(DLMMostPlayed);

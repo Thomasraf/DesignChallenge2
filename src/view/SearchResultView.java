@@ -1,5 +1,6 @@
 package view;
-
+import model.Song;
+import model.generalModel;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,13 +9,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JButton;
-
-
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
@@ -26,7 +28,9 @@ public class SearchResultView extends JFrame {
 	private JPanel contentPane;
 	boolean evenClick = false;
 	private JButton Artist_Dashboard;
-
+	JButton Refreshbtn;
+	JList SongsList;
+	ArrayList<Song> allSongs;
 	private volatile static SearchResultView instance = null;
 	public static SearchResultView getInstance() {
         if (instance == null) {
@@ -34,6 +38,8 @@ public class SearchResultView extends JFrame {
         }
 		return instance;
 	}
+	JLabel searchingTextTrial;
+	
 	
 	/**
 	 * Create the frame.
@@ -202,12 +208,14 @@ public class SearchResultView extends JFrame {
 		button_2.setBounds(1084, 11, 39, 39);
 		TopBar.add(button_2);
 		
-		JButton Refreshbtn = new JButton("");
+		Refreshbtn = new JButton("");
 		Refreshbtn.setIcon(new ImageIcon(SearchResultView.class.getResource("/images2/reload.png")));
 		Refreshbtn.setBorder(null);
 		Refreshbtn.setBackground(new Color(30, 58, 42));
 		Refreshbtn.setBounds(1035, 11, 39, 39);
 		TopBar.add(Refreshbtn);
+		Refreshbtn.addActionListener(new btn_Refresh());
+	
 		
 		JPanel MusicPanel = new JPanel();
 		MusicPanel.setBackground(new Color(254, 254, 250));
@@ -509,7 +517,7 @@ public class SearchResultView extends JFrame {
 		Follower_Dashboard.setBounds(384, 50, 196, 30);
 		Dashboard.add(Follower_Dashboard);
 		
-		JList SongsList = new JList();
+		SongsList = new JList();
 		SongsList.setBounds(12, 79, 177, 417);
 		Dashboard.add(SongsList);
 		
@@ -520,7 +528,7 @@ public class SearchResultView extends JFrame {
 		Dashboard.add(btnNewButton_1);
 		
 		JList Artist_list = new JList();
-		Artist_list.setBounds(224, 79, 158, 417);
+		Artist_list.setBounds(206, 79, 176, 417);
 		Dashboard.add(Artist_list);
 		
 		JButton button_1 = new JButton("");
@@ -555,9 +563,29 @@ public class SearchResultView extends JFrame {
 		button_5.setBackground(new Color(254, 254, 250));
 		button_5.setBounds(582, 79, 172, 417);
 		Dashboard.add(button_5);
-		
-
-		
-
 	}
+	
+	class btn_Refresh implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("First");
+			String trial = null;
+			String searchingText = SearchView.getInstance().getText(trial);
+			System.out.println(searchingText);
+			System.out.println("Second");
+			
+			allSongs = generalModel.getInstance().getSearchSongs(searchingText);
+			DefaultListModel DLM1 = new DefaultListModel();
+			
+			for(int a = 0; a < allSongs.size(); a++)
+				DLM1.addElement(allSongs.get(a).getSongName());
+			
+			SongsList.setModel(DLM1);
+			
+		}
+	}
+//	public void setText(String text) {
+//		this.searchingText = text;
+//	}
 }

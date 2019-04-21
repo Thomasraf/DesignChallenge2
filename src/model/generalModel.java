@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+
 import controller.SongBuilder;
 import view.LoggingInView;
 import view.SigningUpView;
-import view.ArtistLoggingInView;
+//import view.ArtistLoggingInView;
 
 public class generalModel {
 
@@ -24,6 +25,7 @@ public class generalModel {
 		int SongID = Database.getInstance().addingSong(s);
 		Database.getInstance().writeSongBLOB(SongID, s.getPath());
 	}
+	
 	
 	public void getPlaylistData(Playlist p)
 	{
@@ -62,11 +64,6 @@ public class generalModel {
 //	}
 //	
 
-	public void getPlaylistData(Playlist p)
-	{
-		Database.getInstance().addingPlaylist(p);
-	}
-
 
 	public void getUserPlaylistData(Playlist p)
 	{
@@ -76,6 +73,11 @@ public class generalModel {
 	public ArrayList<Song> gettingSongs(String t) {
 		return Database.getInstance().getSongs(t);
 	}
+	
+	public ArrayList<Song> getSearchSongs(String searchText) {
+		return Database.getInstance().getSearchSongs(searchText);
+	}
+	
 	
 	public ArrayList<Playlist> gettingPlaylists(String t){
 		return Database.getInstance().getPlaylist(t);

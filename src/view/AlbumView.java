@@ -35,7 +35,7 @@ public class AlbumView extends JFrame {
 			AlbumArt_1, AlbumArt_2, AlbumArt_3, AlbumArt_4,
 			AlbumArt_5, AlbumArt_6, lblMadeForYou;
 	JButton Shufflebtn, Nextbtn, Prevbtn, Playbtn, Repeatbtn, Queuebtn, 
-			StopBtn, Volumebtn, NewAlbumPic, button, SearchBtn, ProfilePic, 
+			StopBtn, Volumebtn, NewAlbumPic, btnLogout, SearchBtn, ProfilePic, 
 			Profile, Notificationbtn, Refreshbtn, verified, btnNewButton,
 			Library, Artist_Music, Genre_Music, Albums_Music, Playlist_Name3,
 			Playlist_Name2, Playlist_Name1, Playlists_Music, Playlist_Name7, 
@@ -206,12 +206,12 @@ private volatile static AlbumView modelInstance = null;
 		contentPane.add(TopBar);
 		TopBar.setLayout(null);
 		
-		button = new JButton("");
-		button.setBounds(10, 11, 39, 39);
-		button.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/expand-button.png")));
-		button.setBorder(null);
-		button.setBackground(new Color(30, 58, 42));
-		TopBar.add(button);
+		btnLogout = new JButton("");
+		btnLogout.setBounds(10, 11, 39, 39);
+		btnLogout.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/logout.png")));
+		btnLogout.setBorder(null);
+		btnLogout.setBackground(new Color(30, 58, 42));
+		TopBar.add(btnLogout);
 		
 		txtSearch = new JTextField();
 		txtSearch.setForeground(SystemColor.desktop);

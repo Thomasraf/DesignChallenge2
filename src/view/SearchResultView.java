@@ -1,5 +1,7 @@
 package view;
-
+import model.Playlist;
+import model.Song;
+import model.generalModel;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,13 +10,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JButton;
-
-
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
@@ -26,7 +29,11 @@ public class SearchResultView extends JFrame {
 	private JPanel contentPane;
 	boolean evenClick = false;
 	private JButton Artist_Dashboard;
-
+	JButton Refreshbtn,btnAddSong,btnAddPlaylist,btnGoToAccount;
+	JList SongsList,listPlaylist;
+	ArrayList<Song> searchSongs, userSongs;
+	String currentUser;
+	ArrayList<Playlist> searchPlaylist;
 	private volatile static SearchResultView instance = null;
 	public static SearchResultView getInstance() {
         if (instance == null) {
@@ -34,6 +41,8 @@ public class SearchResultView extends JFrame {
         }
 		return instance;
 	}
+	String searchingText;
+	
 	
 	/**
 	 * Create the frame.
@@ -202,12 +211,14 @@ public class SearchResultView extends JFrame {
 		button_2.setBounds(1084, 11, 39, 39);
 		TopBar.add(button_2);
 		
-		JButton Refreshbtn = new JButton("");
+		Refreshbtn = new JButton("");
 		Refreshbtn.setIcon(new ImageIcon(SearchResultView.class.getResource("/images2/reload.png")));
 		Refreshbtn.setBorder(null);
 		Refreshbtn.setBackground(new Color(30, 58, 42));
 		Refreshbtn.setBounds(1035, 11, 39, 39);
 		TopBar.add(Refreshbtn);
+		Refreshbtn.addActionListener(new btn_Refresh());
+	
 		
 		JPanel MusicPanel = new JPanel();
 		MusicPanel.setBackground(new Color(254, 254, 250));
@@ -509,7 +520,7 @@ public class SearchResultView extends JFrame {
 		Follower_Dashboard.setBounds(384, 50, 196, 30);
 		Dashboard.add(Follower_Dashboard);
 		
-		JList SongsList = new JList();
+		SongsList = new JList();
 		SongsList.setBounds(12, 79, 177, 417);
 		Dashboard.add(SongsList);
 		
@@ -520,7 +531,7 @@ public class SearchResultView extends JFrame {
 		Dashboard.add(btnNewButton_1);
 		
 		JList Artist_list = new JList();
-		Artist_list.setBounds(224, 79, 158, 417);
+		Artist_list.setBounds(206, 79, 176, 417);
 		Dashboard.add(Artist_list);
 		
 		JButton button_1 = new JButton("");
@@ -546,7 +557,7 @@ public class SearchResultView extends JFrame {
 		ListPlaylist.setBounds(580, 50, 174, 30);
 		Dashboard.add(ListPlaylist);
 		
-		JList listPlaylist = new JList();
+		listPlaylist = new JList();
 		listPlaylist.setBounds(582, 79, 170, 417);
 		Dashboard.add(listPlaylist);
 		
@@ -556,8 +567,72 @@ public class SearchResultView extends JFrame {
 		button_5.setBounds(582, 79, 172, 417);
 		Dashboard.add(button_5);
 		
-
+		btnAddSong = new JButton("Add Song");
+		btnAddSong.setBounds(224, 11, 89, 23);
+		Dashboard.add(btnAddSong);
+		btnAddSong.addActionListener(new btn_AddSong());
 		
-
+		btnAddPlaylist = new JButton("Add Playlist");
+		btnAddPlaylist.setBounds(328, 11, 89, 23);
+		Dashboard.add(btnAddPlaylist);
+		
+		btnGoToAccount = new JButton("Go To Account");
+		btnGoToAccount.setBounds(522, 11, 121, 23);
+		Dashboard.add(btnGoToAccount);
+		btnAddSong.addActionListener(new btn_GoToAccount());
+		
+	}
+	
+	class btn_Refresh implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+			searchSongs = generalModel.getInstance().getSearchSongs(searchingText);
+			searchPlaylist = generalModel.getInstance().getSearchPlaylist(searchingText);
+			
+			DefaultListModel DLM1 = new DefaultListModel();
+			DefaultListModel DLM2 = new DefaultListModel();
+			
+			for(int a = 0; a < searchSongs.size(); a++)
+				DLM1.addElement(searchSongs.get(a).getSongName());
+			
+			for(int b = 0; b < searchPlaylist.size();b++)
+				DLM2.addElement(searchPlaylist.get(b).getPlaylistName());
+			
+			SongsList.setModel(DLM1);
+			listPlaylist.setModel(DLM2);
+		}
+	}
+	
+	class btn_GoToAccount implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
+	}
+	
+	class btn_AddSong implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			generalModel.getInstance().addSearchSongs(searchingText,currentUser);		
+		}
+	}
+	
+	class btn_AddPlaylist implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			generalModel.getInstance().addSearchPlaylists(searchingText,currentUser);
+		}
+	}
+	public void setText(String text) {
+		this.searchingText = text;
+	}
+	
+	public void setUsername(String currentUser) {
+		this.currentUser = currentUser;
 	}
 }

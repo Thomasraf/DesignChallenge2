@@ -1,3 +1,4 @@
+
 package view;
 
 import java.awt.EventQueue;
@@ -765,3 +766,4 @@ private volatile static ArtistView modelInstance = null;
 		System.out.println(currentUser + " from artist view");
 	}
 }
+

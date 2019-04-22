@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+
 import controller.SongBuilder;
 import view.LoggingInView;
 import view.SigningUpView;
-import view.ArtistLoggingInView;
+//import view.ArtistLoggingInView;
 
 public class generalModel {
 
@@ -19,22 +20,21 @@ public class generalModel {
 	
 	}
 	
-	public int getIDForArtist(String username)
-	{
-		return Database.getInstance().getIDforArtist(username);
-	}
-	
-	public void getSongData(Song s)
+
+	public void getSongData(Song s,String songName)
+
 	{
 		int SongID = Database.getInstance().addingSong(s);
-		Database.getInstance().writeSongBLOB(SongID, s.getPath());
+		Database.getInstance().writeSongBLOB(SongID, s.getPath(),songName);
 	}
 	
-//	public void getPlaylistData(Playlist p)
-//	{
-//		Database.getInstance().addingPlaylist(p);
-//		Database.getInstance().writePlaylistBLOB(p.getPlaylistName(),p.getPath(),p.getDescription());
-//	}
+
+	
+	public void getPlaylistData(Playlist p)
+	{
+		Database.getInstance().addingPlaylist(p);
+		Database.getInstance().writePlaylistBLOB(p.getPlaylistName(),p.getPath(),p.getDescription());
+	}
 	
 	public int getAccountData(account x, String path) { //SIGNING UP
 		if(Database.getInstance().addingAccount(x) == false) {
@@ -57,20 +57,17 @@ public class generalModel {
 		}
 	}
 	
-	public void checkingArtistAccountData(account w) { //LOGGING IN
-		if(Database.getInstance().loggingArtistAccount(w) == true) {
-			ArtistLoggingInView.getInstance().entranceAllowed();
-		}
-		else {
-			ArtistLoggingInView.getInstance().entranceDenied();
-		}
-	}
-	
 
-	public void getPlaylistData(Playlist p)
-	{
-		Database.getInstance().addingPlaylist(p);
-	}
+//	public void checkingArtistAccountData(account w) { //LOGGING IN
+//		if(Database.getInstance().loggingArtistAccount(w) == true) {
+//			ArtistLoggingInView.getInstance().entranceAllowed();
+//		}
+//		else {
+//			ArtistLoggingInView.getInstance().entranceDenied();
+//		}
+//	}
+//	
+
 
 
 	public void getUserPlaylistData(Playlist p)
@@ -86,6 +83,23 @@ public class generalModel {
 	public ArrayList<Song> gettingSongs(String t) {
 		return Database.getInstance().getSongs(t);
 	}
+	
+	public ArrayList<Song> getSearchSongs(String searchText) {
+		return Database.getInstance().getSearchSongs(searchText);
+	}
+	
+	public void addSearchSongs(String songName,String username){
+		Database.getInstance().addSearchSongs(songName,username);
+	}
+	
+	public void addSearchPlaylists(String playlistName,String username){
+		Database.getInstance().addSearchPlaylists(playlistName,username);
+	}
+	
+	public ArrayList<Playlist> getSearchPlaylist(String searchText){
+		return Database.getInstance().getSearchPlaylist(searchText);
+	}
+	
 	
 	public ArrayList<Playlist> gettingPlaylists(String t){
 		return Database.getInstance().getPlaylist(t);
@@ -131,24 +145,24 @@ public class generalModel {
 
 	//=========================================================================== Everything Sorting
 	
-	public ArrayList<Song> getSongsByGenre()
+	public ArrayList<Song> getSongsByGenre(String username)
 	{
-		return Database.getInstance().getSongsByGenre();
+		return Database.getInstance().getSongsByGenre(username);
 	}
 	
-	public ArrayList<Song> getSongsByAlbum()
+	public ArrayList<Song> getSongsByAlbum(String username)
 	{
-		return Database.getInstance().getSongsByAlbum();
+		return Database.getInstance().getSongsByAlbum(username);
 	}
 	
-	public ArrayList<Song> getSongsByYear()
+	public ArrayList<Song> getSongsByYear(String username)
 	{
-		return Database.getInstance().getSongsByYear();
+		return Database.getInstance().getSongsByYear(username);
 	}
 	
-	public ArrayList<Song> getMostPlayed()
+	public ArrayList<Song> getMostPlayed(String username)
 	{
-		return Database.getInstance().getMostPlayed();
+		return Database.getInstance().getMostPlayed(username);
 	}
 	
 	public ArrayList<Playlist> getUserPlaylist(String username)
@@ -156,13 +170,18 @@ public class generalModel {
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
 	
-//	public ArrayList<Playlist> getArtistPlaylist(String username)
-//	{
-//		
-//	}
+
 	
 	public ArrayList<Song> getSongStuff() {
 		return Database.getInstance().gettingSongs();
+
+	public ArrayList<Song> getSortByTitle(String username) {
+		return Database.getInstance().sortByTitle(username);
+	}
+	
+	public ArrayList<Song> getSortByArtist(String username) {
+		return Database.getInstance().sortByArtist(username);
+
 	}
 	
 	//=========================================================================== Everything Editing

@@ -41,9 +41,11 @@ public class CreatePlaylist extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldEnterPlaylistName;
 	JButton btnCreatePlaylist,btnChoosePicture;
-	String textField,fileName;
+	JTextField textField;
+	String fileName;
 	private JTextField textFieldChosenFile;
 	private JTextField descriptionTextField;
+	private ArrayList<Playlist> userPlaylist;
 
 	/**
 	 * Launch the application.
@@ -84,10 +86,7 @@ public class CreatePlaylist extends JFrame {
 		contentPane.add(btnCreatePlaylist);
 
 
-//		textField = new JTextField();
-//		textField.setColumns(10);
-//		textField.setBounds(250, 95, 187, 122);
-//		contentPane.add(textField);
+
 
 
 		JLabel label = new JLabel("Description:");
@@ -159,7 +158,6 @@ public class CreatePlaylist extends JFrame {
 					 .setUsername(username)
 					 .setFavorite(favorite)
 					 .setPrivacy(privacy)
-
 					 .setPath(path)
 					 .setDescription(description)
 
@@ -193,14 +191,16 @@ public class CreatePlaylist extends JFrame {
 			 }
 
 			 //===================
-//			 userPlaylist = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
-//			 DefaultListModel DLM2 = new DefaultListModel();
-//			
-//			 for(int y = 0; y < userPlaylist.size(); y++)
-//				 DLM2.addElement(userPlaylist.get(y).getPlaylistName());
-//
-//			 HomeView.getInstance().Playlist_List.setModel(DLM2);
-//			 //=====================
+
+			 HomeView.getInstance().userPlaylists = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
+			 DefaultListModel DLM2 = new DefaultListModel();
+			
+			 for(int y = 0; y < HomeView.getInstance().userPlaylists.size(); y++)
+				 DLM2.addElement(HomeView.getInstance().userPlaylists.get(y).getPlaylistName());
+
+			 HomeView.getInstance().Playlist_List.setModel(DLM2);
+			 //=====================
+
 
 
 		 }

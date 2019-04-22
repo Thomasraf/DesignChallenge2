@@ -1,3 +1,4 @@
+
 package view;
 
 import java.awt.EventQueue;
@@ -56,6 +57,7 @@ public class HomeViewA extends JFrame {
 	 * Launch the application.
 	 */
 //	public static void main(String[] args) {
+
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
@@ -67,6 +69,7 @@ public class HomeViewA extends JFrame {
 //			}
 //		});
 //	}
+
 	
 private volatile static HomeViewA modelInstance = null;
 	
@@ -791,3 +794,4 @@ private volatile static HomeViewA modelInstance = null;
 	
 
 }
+

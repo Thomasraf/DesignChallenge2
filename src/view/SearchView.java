@@ -33,6 +33,9 @@ public class SearchView extends JFrame {
 	String fileName;
 	private JTextField textFieldSearchParameter;
 	private JLabel lblSearch;
+	String searchText;
+	String text;
+	String currentUser;
 
 	public static SearchView getInstance() {
         if (instance == null) {
@@ -59,6 +62,7 @@ public class SearchView extends JFrame {
 		btnSearch = new JButton("Search ");
 		btnSearch.setBounds(179, 70, 89, 23);
 		contentPane.add(btnSearch);
+		btnSearch.addActionListener(new btn_Search());
 		
 		textFieldSearchParameter = new JTextField();
 		textFieldSearchParameter.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -70,6 +74,20 @@ public class SearchView extends JFrame {
 		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblSearch.setBounds(10, 11, 95, 44);
 		contentPane.add(lblSearch);
-	
 		}
+	
+	class btn_Search implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 searchText = textFieldSearchParameter.getText();
+			 SearchResultView.getInstance().setText(searchText);
+			 SearchResultView.getInstance().setUsername(currentUser);
+			 SearchResultView.getInstance().setVisible(true);
+		 }
+	 }
+	
+	public void setUsername(String currentUser) {
+		this.currentUser = currentUser;
+	}
 }

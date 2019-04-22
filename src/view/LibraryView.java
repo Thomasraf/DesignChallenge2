@@ -1,3 +1,4 @@
+
 package view;
 
 import java.awt.EventQueue;
@@ -5,6 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import controller.RecentlyPlayedBuilder;
+import jaco.mp3.player.MP3Player;
+import model.Playlist;
+import model.RecentlyPlayed;
+import model.RecentlyPlayedList;
+import model.Song;
+import model.generalModel;
+import view.HomeView.btn_CreatePlaylist;
+
+
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -27,20 +42,21 @@ public class LibraryView extends JFrame {
 	private JTextField txtSearch;
 	boolean evenClick = false;
 	private JButton Artist_Dashboard;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LibraryView frame = new LibraryView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
+	JButton btnCreatePlaylist, AddSongbtn, Profile, Refreshbtn, Playbtn, Nextbtn, Prevbtn, StopBtn, Artist_Music,
+	Title_Dashboard, Genre_Dashboard, Album_Dashboard, Year_Dashboard;
+	JList Title_list, Artist_list, Album_List, Genre_List, Year_List, Fave_List, Playlist_List, MP_List, RP_List;
+	ArrayList<Song> userSongsMostPlayed, userSongs, userTitle, userArtist, userGenre, userAlbum, userYear, userFavorite;
+	ArrayList<Playlist> userPlaylists;
+	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
+
+
+	public static LibraryView getInstance() {
+        if (instance == null) {
+        	instance = new LibraryView();
+        }
+		return instance;
+
 	}
 
 	/**
@@ -181,7 +197,10 @@ public class LibraryView extends JFrame {
 		button.setBackground(new Color(30, 58, 42));
 		TopBar.add(button);
 		
-		txtSearch = new JTextField();
+
+
+		JTextField txtSearch = new JTextField();
+
 		txtSearch.setForeground(SystemColor.desktop);
 		txtSearch.setText("Search");
 		txtSearch.setHorizontalAlignment(SwingConstants.LEFT);
@@ -252,7 +271,8 @@ public class LibraryView extends JFrame {
 		Library.setBounds(0, 33, 186, 30);
 		MusicPanel.add(Library);
 		
-		JButton Artist_Music = new JButton("Artist");
+		 Artist_Music = new JButton("Artist");
+		Artist_Music.addActionListener(new Artist_Music_btn());
 		Artist_Music.setHorizontalAlignment(SwingConstants.LEFT);
 		Artist_Music.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Artist_Music.setBackground(new Color(254, 254, 250));
@@ -500,7 +520,8 @@ public class LibraryView extends JFrame {
 		Librarylbl.setBounds(12, 11, 186, 23);
 		Dashboard.add(Librarylbl);
 		
-		JButton Title_Dashboard = new JButton("Title");
+		 Title_Dashboard = new JButton("Title");
+		Title_Dashboard.addActionListener(new Title_Sort());
 		Title_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
 		Title_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Title_Dashboard.setBackground(new Color(254, 254, 250));
@@ -508,24 +529,23 @@ public class LibraryView extends JFrame {
 		Dashboard.add(Title_Dashboard);
 		
 		Artist_Dashboard = new JButton("Artist");
+		Artist_Dashboard.addActionListener(new Artist_Sort());
 		Artist_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
 		Artist_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Artist_Dashboard.setBackground(new Color(254, 254, 250));
 		Artist_Dashboard.setBounds(173, 50, 164, 30);
 		Dashboard.add(Artist_Dashboard);
 		
-		JButton Album_Dashboard = new JButton("Album");
+		 Album_Dashboard = new JButton("Album");
+		Album_Dashboard.addActionListener(new Album_Sort());
 		Album_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
 		Album_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Album_Dashboard.setBackground(new Color(254, 254, 250));
 		Album_Dashboard.setBounds(335, 50, 172, 30);
 		Dashboard.add(Album_Dashboard);
 		
-		JButton Genre_Dashboard = new JButton("Genre");
-		Genre_Dashboard.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		 Genre_Dashboard = new JButton("Genre");
+		Genre_Dashboard.addActionListener(new Genre_Sort());
 		Genre_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
 		Genre_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Genre_Dashboard.setBackground(new Color(254, 254, 250));
@@ -541,7 +561,8 @@ public class LibraryView extends JFrame {
 		RemoveSongfromLibrary.setToolTipText("Remove Song from Library");
 		Dashboard.add(RemoveSongfromLibrary);
 		
-		JButton Year_Dashboard = new JButton("Year");
+		 Year_Dashboard = new JButton("Year");
+		Year_Dashboard.addActionListener(new Year_Sort());
 		Year_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Year_Dashboard.setBackground(new Color(254, 254, 250));
 		Year_Dashboard.setBounds(600, 50, 80, 30);
@@ -618,4 +639,412 @@ public class LibraryView extends JFrame {
 		
 
 	}
+
+	
+	class Refresh_btn implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 
+			 //==========================================================   FOR LIBRARY STUFF
+			 HomeView.getInstance().userSongs = generalModel.getInstance().gettingSongs(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongs.size(); x++) {
+				 DLMTitle.addElement(HomeView.getInstance().userSongs.get(x).getSongName());
+				 DLMArtist.addElement(HomeView.getInstance().userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(HomeView.getInstance().userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(HomeView.getInstance().userSongs.get(x).getAlbum());
+				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
+				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 //==========================================================  FOR MOST PLAYED STUFF
+			 HomeView.getInstance().userSongsMostPlayed = generalModel.getInstance().getMostPlayed(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMMostPlayed = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongsMostPlayed.size(); x++)
+				 DLMMostPlayed.addElement(HomeView.getInstance().userSongsMostPlayed.get(x).getSongName()  + " (" + HomeView.getInstance().userSongsMostPlayed.get(x).getCount() + ") ");
+			 
+			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
+			 MP_List.setModel(DLMMostPlayed);
+			 //========================================================== FOR PLAYLISTS
+			 HomeView.getInstance().userPlaylists = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
+			 DefaultListModel DLM2 = new DefaultListModel();
+			
+			 for(int y = 0; y < HomeView.getInstance().userPlaylists.size(); y++)
+				 DLM2.addElement(HomeView.getInstance().userPlaylists.get(y).getPlaylistName());
+
+			 HomeView.getInstance().Playlist_List.setModel(DLM2);
+			 LibraryView.getInstance().Playlist_List.setModel(DLM2);
+			//==========================================================
+			 
+			 
+		 }
+	 }
+	
+	class btn_CreatePlaylist implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 
+			 CreatePlaylist cp = new CreatePlaylist();
+			 cp.setVisible(true);
+			 
+			 
+		 }
+	 }
+	
+	class btn_AddSong implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 AddSong.getInstance().setVisible(true);
+		 }
+	 }
+	
+	class btn_Play implements ActionListener 
+	 {
+
+	     public void actionPerformed(ActionEvent e) 
+	     {	 
+	    	 
+	    	 System.out.println("songChangedInLibrary: "+songChangedInLibrary);
+		    	if(songChangedInLibrary == true) {
+		    		HomeView.getInstance().mp3.pause();
+			    	 int SongID = HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getSongID();
+		    		 generalModel.getInstance().readSongData(SongID);
+		    		 generalModel.getInstance().updateCount(SongID);
+		    		 HomeView.getInstance().mp3 = new MP3Player(new File("currentSong.mp3"));
+		    		 HomeView.getInstance().mp3.play();
+			    	 songChangedInLibrary = false;
+			    	 
+			    	 RecentlyPlayed addedSong = new RecentlyPlayedBuilder()
+							 .setSongID(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getSongID())
+							 .setUserName(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getUserName())
+							 .setSongName(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getSongName())
+							 .setArtistName(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getArtistName())
+							 .setAlbum(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getAlbum())
+							 .setGenre(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getGenre())
+							 .setYear(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getYear())
+							 .setPath(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getPath())
+							 .setCount(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getCount())
+							 .setFavorite(HomeView.getInstance().userSongs.get(Title_list.getSelectedIndex()).getFavorite())
+							 .getSong();
+			    	 
+			    	 RecentlyPlayedList sList = new RecentlyPlayedList();
+			    	 sList.addSong(addedSong);
+			    	 DefaultListModel DLM2 = new DefaultListModel();
+			    	 
+					 for(int i = 0; i < sList.getSongListSize(); i++)
+					 {
+						 DLM2.addElement(sList.getSongList().get(i).getSongName());
+					 }
+					 RP_List.setModel(DLM2);
+			    	 
+
+		    	 }else if (songChangedInMP == true){
+		    		 HomeView.getInstance().mp3.pause();
+			    	 int SongID = HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getSongID();
+		    		 generalModel.getInstance().readSongData(SongID);
+		    		 generalModel.getInstance().updateCount(SongID);
+		    		 HomeView.getInstance().mp3 = new MP3Player(new File("currentSong.mp3"));
+		    		 HomeView.getInstance().mp3.play();
+			    	 songChangedInMP = false;
+			    	 
+			    	 RecentlyPlayed addedSong = new RecentlyPlayedBuilder()
+							 .setSongID(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getSongID())
+							 .setUserName(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getUserName())
+							 .setSongName(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getSongName())
+							 .setArtistName(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getArtistName())
+							 .setAlbum(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getAlbum())
+							 .setGenre(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getGenre())
+							 .setYear(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getYear())
+							 .setPath(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getPath())
+							 .setCount(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getCount())
+							 .setFavorite(HomeView.getInstance().userSongs.get(MP_List.getSelectedIndex()).getFavorite())
+							 .getSong();
+			    	 
+			    	 RecentlyPlayedList sList = new RecentlyPlayedList();
+			    	 sList.addSong(addedSong);
+			    	 DefaultListModel DLM2 = new DefaultListModel();
+			    	 
+					 for(int i = 0; i < sList.getSongListSize(); i++)
+					 {
+						 DLM2.addElement(sList.getSongList().get(i).getSongName());
+					 }
+					 RP_List.setModel(DLM2);
+		    	 }
+		    	/* else if(playSongInPlaylist == true)
+			     {
+		    		 mp3.pause();
+			    	 int SongID2 = userPlaylists.get(Playlist_List.getSelectedIndex()).getSongInPlaylist().get(yourSongsListJList.getSelectedIndex()).getSongID();
+			    	 generalModel.getInstance().readSongData(SongID2);
+			    	 generalModel.getInstance().updateCount(SongID2);
+			    	 mp3 = new MP3Player(new File("currentSong.mp3"));
+				     mp3.play();
+				   	 playSongInPlaylist = false;
+			     } */else 
+		    	 {
+			    	 if(HomeView.getInstance().songPaused == true)
+			    	 {
+			    	 HomeView.getInstance().mp3.pause();
+			    	 HomeView.getInstance().songPaused = false;
+			    	 }
+			    	 else
+			    	 {
+			    	 HomeView.getInstance().mp3.play();
+			    	 HomeView.getInstance().songPaused = true;
+			    	 }
+		    	 }
+		    	
+		    	 
+	    	 
+		    	
+	     }
+	 }
+	class btn_Stop implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().mp3.stop();
+		 }
+	 }
+	class btn_nextSong implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().mp3.skipForward();
+			
+		 }
+	 }
+	 
+	 class btn_prevSong implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().mp3.skipBackward();
+			
+		 }
+	 }
+	 
+	 class Artist_Music_btn implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 
+		 }
+	 }
+	 
+	 class Title_Sort implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().userSongs = generalModel.getInstance().getSortByTitle(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongs.size(); x++) {
+				 DLMTitle.addElement(HomeView.getInstance().userSongs.get(x).getSongName());
+				 DLMArtist.addElement(HomeView.getInstance().userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(HomeView.getInstance().userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(HomeView.getInstance().userSongs.get(x).getAlbum());
+				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
+				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 
+		 }
+	 }
+	 
+	 class Artist_Sort implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().userSongs = generalModel.getInstance().getSortByArtist(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongs.size(); x++) {
+				 DLMTitle.addElement(HomeView.getInstance().userSongs.get(x).getSongName());
+				 DLMArtist.addElement(HomeView.getInstance().userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(HomeView.getInstance().userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(HomeView.getInstance().userSongs.get(x).getAlbum());
+				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
+				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 
+		 }
+	 }
+	 
+	 class Genre_Sort implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().userSongs = generalModel.getInstance().getSongsByGenre(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongs.size(); x++) {
+				 DLMTitle.addElement(HomeView.getInstance().userSongs.get(x).getSongName());
+				 DLMArtist.addElement(HomeView.getInstance().userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(HomeView.getInstance().userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(HomeView.getInstance().userSongs.get(x).getAlbum());
+				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
+				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 
+		 }
+	 }
+	 
+	 class Album_Sort implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().userSongs = generalModel.getInstance().getSongsByAlbum(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongs.size(); x++) {
+				 DLMTitle.addElement(HomeView.getInstance().userSongs.get(x).getSongName());
+				 DLMArtist.addElement(HomeView.getInstance().userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(HomeView.getInstance().userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(HomeView.getInstance().userSongs.get(x).getAlbum());
+				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
+				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 
+		 }
+	 }
+	
+	 class Year_Sort implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().userSongs = generalModel.getInstance().getSongsByYear(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongs.size(); x++) {
+				 DLMTitle.addElement(HomeView.getInstance().userSongs.get(x).getSongName());
+				 DLMArtist.addElement(HomeView.getInstance().userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(HomeView.getInstance().userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(HomeView.getInstance().userSongs.get(x).getAlbum());
+				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
+				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 
+		 }
+	 }
+	 
+	 class Favorite_Sort implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 HomeView.getInstance().userSongs = generalModel.getInstance().getSongsByYear(HomeView.getInstance().currentUser);
+			 
+			 DefaultListModel DLMTitle = new DefaultListModel();
+			 DefaultListModel DLMArtist = new DefaultListModel();
+			 DefaultListModel DLMGenre = new DefaultListModel();
+			 DefaultListModel DLMAlbum = new DefaultListModel();
+			 DefaultListModel DLMYear = new DefaultListModel();
+			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 
+			 for(int x = 0; x < HomeView.getInstance().userSongs.size(); x++) {
+				 DLMTitle.addElement(HomeView.getInstance().userSongs.get(x).getSongName());
+				 DLMArtist.addElement(HomeView.getInstance().userSongs.get(x).getArtistName());
+				 DLMGenre.addElement(HomeView.getInstance().userSongs.get(x).getGenre());
+				 DLMAlbum.addElement(HomeView.getInstance().userSongs.get(x).getAlbum());
+				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
+				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
+			 }
+			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+			 
+			 
+		 }
+	 }
+	 
+	public void setUserName(String currentUser) {
+		this.currentUser = currentUser;
+		Profile.setText("Current User: " + currentUser);
+	}
+
 }
+

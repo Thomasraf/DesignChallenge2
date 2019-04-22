@@ -158,7 +158,7 @@ public class AddSong extends JFrame {
 			 
 			 int songid = songctr;
 			 String name = textFieldSongName.getText();
-	//		 int artistid = generalController.getInstance().getIDWithUsername(currentUser);
+
 			 int songID = 0;
 			 String username = HomeView.getInstance().currentUser;
 			 String songName = textFieldSongName.getText();
@@ -221,7 +221,9 @@ public class AddSong extends JFrame {
 			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
+
 		 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(HomeView.getInstance().currentUser);
+
 			 
 			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 			 

@@ -1045,7 +1045,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String y = "1";
 		
 		
-		String query = "UPDATE swdespa.user_playlists SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
+		String query = "UPDATE udc.user_playlists SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
 
 		System.out.print(query);
 		//create string query
@@ -1071,7 +1071,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String y = "1";
 		
 		
-		String query = "UPDATE swdespa.user_playlists SET Privacy = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
+		String query = "UPDATE udc.user_playlists SET Privacy = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
 
 		System.out.print(query);
 		//create string query
@@ -1097,7 +1097,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String y = "1";
 		
 		
-		String query = "UPDATE swdespa.songs SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND Title = ('"+Name+"');";
+		String query = "UPDATE udc.songs SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND Title = ('"+Name+"');";
 		System.out.println(ID);
 		System.out.println(Name);
 
@@ -1123,7 +1123,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 	
 		
 		
-		String query = "UPDATE swdespa.songs SET Title = ('"+newSong+"') WHERE username = ('"+username+"') AND Title = ('"+oldSong+"');";
+		String query = "UPDATE udc.songs SET Title = ('"+newSong+"') WHERE username = ('"+username+"') AND Title = ('"+oldSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1143,7 +1143,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newArtist = newArtistName;
 		
-		String query = "UPDATE swdespa.songs SET Artist = ('"+newArtist+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE udc.songs SET Artist = ('"+newArtist+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1160,7 +1160,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newAlbum = newAlbumName;
 		
-		String query = "UPDATE swdespa.songs SET Album = ('"+newAlbum+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE udc.songs SET Album = ('"+newAlbum+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1177,7 +1177,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newGenre = newGenreName;
 		
-		String query = "UPDATE swdespa.songs SET Genre = ('"+newGenre+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE udc.songs SET Genre = ('"+newGenre+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1194,7 +1194,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newYear = newYearDate;
 		
-		String query = "UPDATE swdespa.songs SET Year = ('"+newYear+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE udc.songs SET Year = ('"+newYear+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1438,7 +1438,7 @@ public ArrayList<Playlist> gettingUserPlaylist(String username) {
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM swdespa.user_playlists WHERE username = '"+username+"';";
+	String query = "SELECT * FROM udc.user_playlists WHERE username = '"+username+"';";
 	//create string qu
 	
 	try {

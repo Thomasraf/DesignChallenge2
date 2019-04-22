@@ -169,7 +169,6 @@ public class generalModel {
 	{
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
-	
 
 	public ArrayList<Song> getSortByTitle(String username) {
 		return Database.getInstance().sortByTitle(username);

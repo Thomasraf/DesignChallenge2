@@ -1,7 +1,7 @@
 
-//package view;
-//
-//import java.awt.EventQueue;
+package view;
+
+import java.awt.EventQueue;
 //
 //import javax.swing.JFrame;
 //import javax.swing.JPanel;
@@ -645,7 +645,6 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
-
 public class LibraryViewA extends JFrame {
 
 	private JPanel contentPane;

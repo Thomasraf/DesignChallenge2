@@ -41,8 +41,13 @@ public class generalController {
 	{
 		generalModel.getInstance().addArtistPlaylist(ap);
 	}
+
+/*	
+	public int getIDWithUsername(String username)
+
 	
 /*	public int getIDWithUsername(String username)
+
 	{
 		int result = generalModel.getInstance().getIDForArtist(username);
 		System.out.println(result);

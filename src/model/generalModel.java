@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 
 import controller.SongBuilder;
-import view.ArtistLoggingInView;
 import view.LoggingInView;
 import view.SigningUpView;
 //import view.ArtistLoggingInView;
@@ -29,11 +28,7 @@ public class generalModel {
 		Database.getInstance().writeSongBLOB(SongID, s.getPath(),songName);
 	}
 	
-	public int getIDForArtist(String username)
-	{
-		int result = Database.getInstance().getIDforArtist(username);
-		return result;
-	}
+
 	
 	public void getPlaylistData(Playlist p)
 	{
@@ -43,12 +38,12 @@ public class generalModel {
 	
 	public int getAccountData(account x, String path) { //SIGNING UP
 		if(Database.getInstance().addingAccount(x) == false) {
-			//SigningUpView.getInstance().signingSuccessful();
+			SigningUpView.getInstance().signingSuccessful();
 			Database.getInstance().writeDisplayPictureBLOB(x.getUsername(),path);
 			return 1;
 		}
 		else{
-			//SigningUpView.getInstance().signingFailed();
+			SigningUpView.getInstance().signingFailed();
 			return 0;
 		}
 	}
@@ -63,15 +58,15 @@ public class generalModel {
 	}
 	
 
-	public void checkingArtistAccountData(account w) { //LOGGING IN
-		if(Database.getInstance().loggingArtistAccount(w) == true) {
-			ArtistLoggingInView.getInstance().entranceAllowed();
-		}
-		else {
-			ArtistLoggingInView.getInstance().entranceDenied();
-		}
-	}
-	
+//	public void checkingArtistAccountData(account w) { //LOGGING IN
+//		if(Database.getInstance().loggingArtistAccount(w) == true) {
+//			ArtistLoggingInView.getInstance().entranceAllowed();
+//		}
+//		else {
+//			ArtistLoggingInView.getInstance().entranceDenied();
+//		}
+//	}
+//	
 
 
 
@@ -175,10 +170,6 @@ public class generalModel {
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
 	
-
-	
-//	public ArrayList<Song> getSongStuff() {
-//		return Database.getInstance().gettingSongs();
 
 	public ArrayList<Song> getSortByTitle(String username) {
 		return Database.getInstance().sortByTitle(username);

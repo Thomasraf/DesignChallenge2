@@ -20,7 +20,7 @@ public class SelectAccount extends JFrame{
 	SigningUpView signingUpViewing;
 	account signUpData,registeredData;
 	LoggingInView loggingInViewing;
-	ArtistLoggingInView artistLoggingInView = ArtistLoggingInView.getInstance();
+	ArtistLoggingInView artistLoggingInView;
 	public JButton btnSignUp,btnGuestAccount,btnRegisteredAccount, ArtistAccountbtn;
 	
 	

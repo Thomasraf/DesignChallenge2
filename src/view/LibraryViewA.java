@@ -1,3 +1,4 @@
+
 //package view;
 //
 //import java.awt.EventQueue;
@@ -624,7 +625,7 @@
 //
 //	}
 //}
-package view;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

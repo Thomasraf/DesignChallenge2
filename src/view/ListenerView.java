@@ -188,12 +188,12 @@ public class ListenerView extends JFrame {
 		contentPane.add(TopBar);
 		TopBar.setLayout(null);
 		
-		JButton button = new JButton("");
-		button.setBounds(10, 11, 39, 39);
-		button.setIcon(new ImageIcon(HomeView.class.getResource("/images2/expand-button.png")));
-		button.setBorder(null);
-		button.setBackground(new Color(30, 58, 42));
-		TopBar.add(button);
+		JButton btnLogout = new JButton("");
+		btnLogout.setBounds(10, 11, 39, 39);
+		btnLogout.setIcon(new ImageIcon(ListenerView.class.getResource("/images2/logout.png")));
+		btnLogout.setBorder(null);
+		btnLogout.setBackground(new Color(30, 58, 42));
+		TopBar.add(btnLogout);
 		
 		txtSearch = new JTextField();
 		txtSearch.setForeground(SystemColor.desktop);

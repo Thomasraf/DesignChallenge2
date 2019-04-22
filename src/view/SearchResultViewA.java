@@ -88,37 +88,37 @@ public class SearchResultViewA extends JFrame {
 		SongDetails.add(Album);
 		
 		JButton Shufflebtn = new JButton("");
-		Shufflebtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/shuffle (4).png")));
+		Shufflebtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/shuffle (4).png")));
 		Shufflebtn.setBackground(new Color(30,58,42));
 		Shufflebtn.setBounds(290, 31, 39, 39);
 		Shufflebtn.setBorder(null);
 		MainRectangle.add(Shufflebtn);
 		
 		JButton Nextbtn = new JButton("");
-		Nextbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/next (2).png")));
+		Nextbtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/next (2).png")));
 		Nextbtn.setBackground(new Color(30, 58, 42));
 		Nextbtn.setBounds(512, 31, 39, 39);
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
 		JButton Prevbtn = new JButton("");
-		Prevbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/back (2).png")));
+		Prevbtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/back (2).png")));
 		Prevbtn.setBackground(new Color(30, 58, 42));
 		Prevbtn.setBounds(355, 31, 39, 39);
 		Prevbtn.setBorder(null);
 		MainRectangle.add(Prevbtn);
 		
 		JButton Playbtn = new JButton("");
-		Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
+		Playbtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/play-button (2).png")));
 		Playbtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(evenClick) {
-				Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
+				Playbtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/play-button (2).png")));
 				evenClick = false;
 			}
 				else {
-					Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
+					Playbtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/rounded-pause-button.png")));
 					evenClick = true;
 				}
 				}
@@ -129,28 +129,28 @@ public class SearchResultViewA extends JFrame {
 		MainRectangle.add(Playbtn);
 		
 		JButton Repeatbtn = new JButton("");
-		Repeatbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/repeat.png")));
+		Repeatbtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/repeat.png")));
 		Repeatbtn.setBackground(new Color(30, 58, 42));
 		Repeatbtn.setBounds(577, 31, 39, 39);
 		Repeatbtn.setBorder(null);
 		MainRectangle.add(Repeatbtn);
 		
 		JButton Queuebtn = new JButton("");
-		Queuebtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/list (1).png")));
+		Queuebtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/list (1).png")));
 		Queuebtn.setBorder(null);
 		Queuebtn.setBackground(new Color(30, 58, 42));
 		Queuebtn.setBounds(769, 31, 39, 39);
 		MainRectangle.add(Queuebtn);
 		
 		JButton StopBtn = new JButton("");
-		StopBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/stop (3).png")));
+		StopBtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/stop (3).png")));
 		StopBtn.setBorder(null);
 		StopBtn.setBackground(new Color(30, 58, 42));
 		StopBtn.setBounds(818, 31, 39, 39);
 		MainRectangle.add(StopBtn);
 		
 		JButton Volumebtn = new JButton("");
-		Volumebtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/speaker (2).png")));
+		Volumebtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/speaker (2).png")));
 		Volumebtn.setBorder(null);
 		Volumebtn.setBackground(new Color(30, 58, 42));
 		Volumebtn.setBounds(867, 31, 39, 39);
@@ -158,7 +158,7 @@ public class SearchResultViewA extends JFrame {
 		
 		
 		JButton NewAlbumPic = new JButton("");
-		NewAlbumPic.setIcon(new ImageIcon(HomeView.class.getResource("/images2/photo.png")));
+		NewAlbumPic.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/photo.png")));
 		NewAlbumPic.setBounds(0, 579, 119, 92);
 		contentPane.add(NewAlbumPic);
 		NewAlbumPic.setBackground(new Color(170, 187, 204));
@@ -169,15 +169,15 @@ public class SearchResultViewA extends JFrame {
 		contentPane.add(TopBar);
 		TopBar.setLayout(null);
 		
-		JButton button = new JButton("");
-		button.setBounds(10, 11, 39, 39);
-		button.setIcon(new ImageIcon(HomeView.class.getResource("/images2/expand-button.png")));
-		button.setBorder(null);
-		button.setBackground(new Color(30, 58, 42));
-		TopBar.add(button);
+		JButton btnLogout = new JButton("");
+		btnLogout.setBounds(10, 11, 39, 39);
+		btnLogout.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/logout.png")));
+		btnLogout.setBorder(null);
+		btnLogout.setBackground(new Color(30, 58, 42));
+		TopBar.add(btnLogout);
 		
 		JButton SearchBtn = new JButton("");
-		SearchBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/magnifying-glass (1).png")));
+		SearchBtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/magnifying-glass (1).png")));
 		SearchBtn.setBorder(null);
 		SearchBtn.setBackground(new Color(30,58,42));
 		SearchBtn.setBounds(55, 11, 39, 39);
@@ -185,7 +185,7 @@ public class SearchResultViewA extends JFrame {
 		TopBar.add(SearchBtn);
 		
 		JButton ProfilePic = new JButton("");
-		ProfilePic.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
+		ProfilePic.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/user-avatar-main-picture.png")));
 		ProfilePic.setBounds(478, 10, 40, 40);
 		TopBar.add(ProfilePic);
 		ProfilePic.setBackground(new Color(170, 187, 204));
@@ -207,7 +207,7 @@ public class SearchResultViewA extends JFrame {
 		TopBar.add(Profile);
 		
 		JButton button_2 = new JButton("");
-		button_2.setIcon(new ImageIcon(HomeView.class.getResource("/images2/notifications-button.png")));
+		button_2.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/notifications-button.png")));
 		button_2.setBorder(null);
 		button_2.setBackground(new Color(30, 58, 42));
 		button_2.setBounds(1084, 11, 39, 39);
@@ -229,7 +229,7 @@ public class SearchResultViewA extends JFrame {
 		JButton btnNewButton = new JButton("New Playlist");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
+		btnNewButton.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		btnNewButton.setBounds(0, 429, 186, 88);
 		MusicPanel.add(btnNewButton);
 		
@@ -461,7 +461,7 @@ public class SearchResultViewA extends JFrame {
 		RecentlyPlayedPanel.add(MPSONG_4);
 		
 		JButton AddSongbtn = new JButton("Add Song");
-		AddSongbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
+		AddSongbtn.setIcon(new ImageIcon(SearchResultViewA.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		AddSongbtn.setHorizontalAlignment(SwingConstants.LEFT);
 		AddSongbtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		AddSongbtn.setBounds(0, 426, 186, 88);

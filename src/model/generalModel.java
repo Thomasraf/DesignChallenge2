@@ -38,12 +38,12 @@ public class generalModel {
 	
 	public int getAccountData(account x, String path) { //SIGNING UP
 		if(Database.getInstance().addingAccount(x) == false) {
-			//SigningUpView.getInstance().signingSuccessful();
+			SigningUpView.getInstance().signingSuccessful();
 			Database.getInstance().writeDisplayPictureBLOB(x.getUsername(),path);
 			return 1;
 		}
 		else{
-			//SigningUpView.getInstance().signingFailed();
+			SigningUpView.getInstance().signingFailed();
 			return 0;
 		}
 	}
@@ -169,11 +169,7 @@ public class generalModel {
 	{
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
-	
 
-	
-	public ArrayList<Song> getSongStuff() {
-		return Database.getInstance().gettingSongs();
 
 	public ArrayList<Song> getSortByTitle(String username) {
 		return Database.getInstance().sortByTitle(username);

@@ -131,4 +131,4 @@ public class ArtistLoggingInView extends JFrame{
 		this.setVisible(false);
 	}
 }
-=======
+

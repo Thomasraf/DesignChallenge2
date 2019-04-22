@@ -22,7 +22,7 @@ public class generalController {
 	
 	public void gettingRegisteredAccountData(String registeredUsername,String registeredPassword) { //LOGGING IN
 		account registeredAccount = new account(registeredUsername, registeredPassword);
-
+		generalModel.getInstance().checkingAccountData(registeredAccount);
 	//	generalModel.getInstance().checkingArtistAccountData(registeredAccount);
 
 	}
@@ -41,11 +41,11 @@ public class generalController {
 	{
 		generalModel.getInstance().addArtistPlaylist(ap);
 	}
-	
+/*	
 	public int getIDWithUsername(String username)
 	{
 		int result = generalModel.getInstance().getIDForArtist(username);
 		System.out.println(result);
 		return result;
-	}
+	} */
 }

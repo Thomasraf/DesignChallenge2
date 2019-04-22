@@ -69,7 +69,7 @@ public class CreateAlbum extends JFrame {
 		
 		btnCreatePlaylist = new JButton("Create Album");
 		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
-		btnCreatePlaylist.setBounds(277, 228, 160, 23);
+		btnCreatePlaylist.setBounds(250, 228, 187, 23);
 		contentPane.add(btnCreatePlaylist);
 		
 		textField = new JTextField();
@@ -83,7 +83,7 @@ public class CreateAlbum extends JFrame {
 		contentPane.add(label);
 		
 		JButton btnChooseImg = new JButton("Choose Image");
-		btnChooseImg.setBounds(30, 228, 122, 23);
+		btnChooseImg.setBounds(20, 228, 150, 23);
 		contentPane.add(btnChooseImg);
 		
 		JLabel PlaylistImagelbl = new JLabel("Image:");

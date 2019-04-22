@@ -21,7 +21,8 @@ public class SelectAccount extends JFrame{
 	account signUpData,registeredData;
 	LoggingInView loggingInViewing;
 	ArtistLoggingInView artistLoggingInView;
-	public JButton btnSignUp,btnGuestAccount,btnRegisteredAccount, ArtistAccountbtn;
+	public JButton btnSignUp,btnRegisteredAccount, ArtistAccountbtn;
+	private JButton button;
 	
 	
 	public static SelectAccount getInstance() {
@@ -50,20 +51,17 @@ public class SelectAccount extends JFrame{
 		applicationName.setBounds(162, 55, 87, 62);
 		backgroundPanel.add(applicationName);
 		
-		btnGuestAccount = new JButton("Guest Account");
-
-		btnGuestAccount.setBounds(228, 334, 127, 38);
-		backgroundPanel.add(btnGuestAccount);
-		
 		btnRegisteredAccount = new JButton("Registered Account");
+		btnRegisteredAccount.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		btnRegisteredAccount.setBounds(228, 236, 127, 38);
+		btnRegisteredAccount.setBounds(162, 236, 246, 38);
 		backgroundPanel.add(btnRegisteredAccount);
 		
 		
 		btnSignUp = new JButton("Sign Up");
+		btnSignUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		btnSignUp.setBounds(228, 187, 127, 38);
+		btnSignUp.setBounds(162, 187, 246, 38);
 
 		backgroundPanel.add(btnSignUp);
 		
@@ -75,10 +73,21 @@ public class SelectAccount extends JFrame{
 		backgroundPanel.add(label);
 		
 		ArtistAccountbtn = new JButton("Artist Account");
+		ArtistAccountbtn.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		ArtistAccountbtn.setBounds(228, 285, 127, 38);
+		ArtistAccountbtn.setBounds(162, 334, 246, 38);
 
 		backgroundPanel.add(ArtistAccountbtn);
+		
+		button = new JButton("Sign Up (Artist)");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		button.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		button.setBounds(162, 283, 246, 38);
+		backgroundPanel.add(button);
 
 		this.setVisible(true);
 		this.setSize(593, 485);
@@ -86,7 +95,6 @@ public class SelectAccount extends JFrame{
 		//Making the action listeners
 		btnSignUp.addActionListener(new signUpButton());
 		btnRegisteredAccount.addActionListener(new registeredButton());
-		btnGuestAccount.addActionListener(new guestButton());
 		ArtistAccountbtn.addActionListener(new btnArtist());
 
 	}
@@ -115,18 +123,6 @@ public class SelectAccount extends JFrame{
 }
 	public void loggingInAccount(LoggingInView loggingInViewing) {
 		this.loggingInViewing = loggingInViewing;
-	}
-	
-	class guestButton implements ActionListener //SIGNING UP
-	{
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("Click Three");
-			GuestView.getInstance().setVisible(true);
-			System.out.println("After Click Three");
-			JOptionPane.showMessageDialog(null,"Logged in as Guest!");
-			closingWindow();
-			
-		}
 	}
 	
 	class btnArtist implements ActionListener

@@ -84,7 +84,7 @@ public class CreateArtistPlaylist extends JFrame {
 		
 		btnCreatePlaylist = new JButton("Create Playlist");
 		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
-		btnCreatePlaylist.setBounds(336, 228, 101, 23);
+		btnCreatePlaylist.setBounds(277, 228, 160, 23);
 		contentPane.add(btnCreatePlaylist);
 
 
@@ -100,7 +100,7 @@ public class CreateArtistPlaylist extends JFrame {
 		contentPane.add(label);
 
 		btnChoosePicture = new JButton("Choose Image");
-		btnChoosePicture.setBounds(30, 228, 101, 23);
+		btnChoosePicture.setBounds(30, 228, 160, 23);
 		contentPane.add(btnChoosePicture);
 		btnChoosePicture.addActionListener(new btn_ChoosePicture());
 

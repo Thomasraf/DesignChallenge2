@@ -25,7 +25,7 @@ import java.awt.Color;
 public class DeleteAlbum extends JFrame {
 	private volatile static DeleteAlbum instance = null;
 	private JPanel contentPane;
-	JButton btnRemoveFromQueue;
+	JButton btnDeleteAlbum;
 	JComboBox comboBoxSongs;
 
 	/**
@@ -55,15 +55,15 @@ public class DeleteAlbum extends JFrame {
 		comboBoxSongs.setBounds(53, 56, 127, 28);
 		contentPane.add(comboBoxSongs);
 		
-		JLabel lblSongs = new JLabel("Song:");
-		lblSongs.setBounds(92, 31, 58, 14);
-		contentPane.add(lblSongs);
+		JLabel lblAlbums = new JLabel("Album:");
+		lblAlbums.setBounds(92, 31, 58, 14);
+		contentPane.add(lblAlbums);
 		
-		btnRemoveFromQueue = new JButton("Remove from Queue");
-		btnRemoveFromQueue.setBackground(new Color(255, 255, 255));
-		btnRemoveFromQueue.addActionListener(new btn_AddToPlaylist());
-		btnRemoveFromQueue.setBounds(40, 95, 154, 28);
-		contentPane.add(btnRemoveFromQueue);
+		btnDeleteAlbum = new JButton("Delete Album");
+		btnDeleteAlbum.setBackground(new Color(255, 255, 255));
+		btnDeleteAlbum.addActionListener(new btn_AddToPlaylist());
+		btnDeleteAlbum.setBounds(40, 95, 154, 28);
+		contentPane.add(btnDeleteAlbum);
 	}
 	
 	class btn_AddToPlaylist implements ActionListener

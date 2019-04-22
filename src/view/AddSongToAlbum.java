@@ -59,7 +59,7 @@ public class AddSongToAlbum extends JFrame {
 		lblSongs.setBounds(46, 15, 58, 14);
 		contentPane.add(lblSongs);
 		
-		btnAddToAlbum = new JButton("Add to Playlist");
+		btnAddToAlbum = new JButton("Add to Album");
 		btnAddToAlbum.addActionListener(new btn_AddToPlaylist());
 		btnAddToAlbum.setBounds(102, 94, 192, 28);
 		contentPane.add(btnAddToAlbum);

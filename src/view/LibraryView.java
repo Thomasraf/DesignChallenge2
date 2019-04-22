@@ -50,7 +50,6 @@ public class LibraryView extends JFrame {
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 
-
 	public static LibraryView getInstance() {
         if (instance == null) {
         	instance = new LibraryView();

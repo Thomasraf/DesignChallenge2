@@ -1,4 +1,4 @@
-	package controller;
+package controller;
 import model.Database;
 import view.SelectAccount;
 
@@ -13,19 +13,13 @@ public class Driver {
 
 		String URL = "jdbc:mysql://localhost:3306/";
 
-		String USERNAME = "root";
+		String USERNAME = "ariel";
+		String PASSWORD = "arielariel0";
+		String DATABASE = "swdespa";
 
-		String PASSWORD = "hatdog23";
-		String DATABASE = "udc";
-
-
-//		String PASSWORD = "1234";
-//		String DATABASE = "swdespa";
 
 
 		Database.getInstance().setConnection(URL, USERNAME, PASSWORD, DATABASE);
-		//Database.getInstance().testerTemplate();
-		//Database.getInstance().readBLOB(1);	
 		SelectAccount sa = new SelectAccount();
 		
 	}

@@ -159,7 +159,7 @@ public class Database{
 //		}
 //	}
 	
-	public boolean addingAccount(account newAccount){ //Signing Up
+	public boolean addingAccount(account newAccount,String type){ //Signing Up
 		String x,y;
 		boolean unique = false;
 		//get getConnection() from db
@@ -168,7 +168,7 @@ public class Database{
 		y = newAccount.getPassword();
 		
 		
-		String query2 = "SELECT * FROM udc.accounts WHERE username =('"+newAccount.getUsername()+"') AND password = ('"+newAccount.getPassword()+"')";
+		String query2 = "SELECT * FROM swdespa.accounts WHERE username =('"+newAccount.getUsername()+"') AND password = ('"+newAccount.getPassword()+"')";
 
 		//create string query
 		
@@ -184,7 +184,7 @@ public class Database{
 			}
 			else {
 				unique = false;
-				String query = "insert into accounts values ('"+x+"','"+y+"')";
+				String query = "insert into accounts values ('"+x+"','"+y+"','"+type+"')";
 				PreparedStatement ps = getConnection().prepareStatement(query);
 				ps.execute();		
 				ps.close();
@@ -205,7 +205,7 @@ public class Database{
 		Connection cnt = getConnection(); 
 		boolean loggedIn = false;
 		
-		String query = "SELECT * FROM udc.accounts WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
+		String query = "SELECT * FROM swdespa.accounts WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
 		
 		try {
 			//create prepared statement
@@ -244,7 +244,7 @@ public class Database{
 	{
 		int result = 0;
 		Connection cnt = getConnection();
-		String query = "SELECT artistid FROM udc.artist WHERE username = '" + username + "'";
+		String query = "SELECT artistid FROM swdespa.artist WHERE username = '" + username + "'";
 		try {
 			//create prepared statement
 			PreparedStatement ps = cnt.prepareStatement(query);
@@ -277,7 +277,7 @@ public class Database{
 		Connection cnt = getConnection(); 
 		boolean loggedIn = false;
 		
-		String query = "SELECT * FROM udc.accounts WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"') AND Type = 'artist'";
+		String query = "SELECT * FROM swdespa.accounts WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"') AND Type = 'artist'";
 		
 		try {
 			//create prepared statement
@@ -662,7 +662,7 @@ public class Database{
 		Connection cnt = getConnection();
 		int x = 0;
 		int y = 0;
-		String query = "INSERT INTO udc.songs (Title,Artist,Album,Genre,Year,Username,Play_Count,Favorite) SELECT Title,Artist,Album,Genre,Year,('"+username+"'),('"+x+"'),('"+y+"') FROM swdespa.songs WHERE Title = ('"+songName+"');";
+		String query = "INSERT INTO swdespa.songs (Title,Artist,Album,Genre,Year,Username,Play_Count,Favorite) SELECT Title,Artist,Album,Genre,Year,('"+username+"'),('"+x+"'),('"+y+"') FROM swdespa.songs WHERE Title = ('"+songName+"');";
 		//create string qu
 		
 		try {
@@ -692,7 +692,7 @@ public void addSearchPlaylists(String playlistName,String username) {
 		int x = 0;
 		int y = 0;
 		int z = 0;
-		String query = "INSERT INTO udc.playlists (Username,Playlist,Favorite,Privacy) SELECT ('"+username+"'),PlaylistName,('"+x+"'),('"+y+"'), FROM swdespa.playlists WHERE PlaylistName = ('"+playlistName+"') AND Privacy = ('"+z+"');";
+		String query = "INSERT INTO swdespa.playlists (Username,Playlist,Favorite,Privacy) SELECT ('"+username+"'),PlaylistName,('"+x+"'),('"+y+"'), FROM swdespa.playlists WHERE PlaylistName = ('"+playlistName+"') AND Privacy = ('"+z+"');";
 		
 		try {
 			//create prepared statement	
@@ -714,13 +714,54 @@ public void addSearchPlaylists(String playlistName,String username) {
 		
 	}
 	
-public ArrayList<Playlist> getSearchPlaylist(String searchText) {
+	public ArrayList<Playlist> getSearchPlaylist(String searchText) {
+			
+			//get getConnection() from db
+			Connection cnt = getConnection();
+			String x = "0";
+			
+			String query = "SELECT * FROM user_playlists WHERE PlaylistName =('"+searchText+"') AND Privacy = ('"+x+"');";
+			//create string qu
+			
+			try {
+				//create prepared statement	
+				PreparedStatement ps = cnt.prepareStatement(query);
+				
+				//get result and store in result set
+				ResultSet rs = ps.executeQuery();
+				
+				ArrayList<Playlist> p = new ArrayList<>();
+				//transform set into list
+				while(rs.next()) {
+					 Playlist newPlaylist = new PlaylistBuilder()
+							 .setPlaylistName(searchText)
+							 .setUsername("username")
+							 .getPlaylist();
+					 p.add(newPlaylist);
+				}
+				
+				//close all the resources
+				ps.close();
+				rs.close();
+				cnt.close();
+				
+				return p;
+	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return null; 
+			
+		}
+	
+public boolean getSearchAccount(String searchText) {
 		
 		//get getConnection() from db
 		Connection cnt = getConnection();
-		String x = "0";
+		String x = "Listener";
+		boolean proceed = false;
 		
-		String query = "SELECT * FROM user_playlists WHERE PlaylistName =('"+searchText+"') AND Privacy = ('"+x+"');";
+		String query = "SELECT * FROM swdespa.accounts WHERE Username =('"+searchText+"') AND Type = ('"+x+"');";
 		//create string qu
 		
 		try {
@@ -729,28 +770,20 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 			
 			//get result and store in result set
 			ResultSet rs = ps.executeQuery();
-			
-			ArrayList<Playlist> p = new ArrayList<>();
-			//transform set into list
-			while(rs.next()) {
-				 Playlist newPlaylist = new PlaylistBuilder()
-						 .setPlaylistName(searchText)
-						 .setUsername("username")
-						 .getPlaylist();
-				 p.add(newPlaylist);
-			}
-			
+			if(rs.next())
+				proceed = true;
+			else
+				proceed = false;
 			//close all the resources
 			ps.close();
 			rs.close();
 			cnt.close();
 			
-			return p;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null; 
+		return proceed; 
 		
 	}
 	
@@ -758,7 +791,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		//get getConnection() from db
 				Connection cnt = getConnection();
 				
-				String query = "SELECT * FROM udc.playlists WHERE username = '"+username+"';";
+				String query = "SELECT * FROM swdespa.playlists WHERE username = '"+username+"';";
 				//create string qu
 				
 				try {
@@ -958,7 +991,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		Connection cnt = getConnection();
 		PreparedStatement myReadingStatement = null;
 		int ID = SongID;
-		String query = "UPDATE udc.songs SET Play_Count = Play_Count + 1 WHERE SongID = ('"+ID+"');";
+		String query = "UPDATE swdespa.songs SET Play_Count = Play_Count + 1 WHERE SongID = ('"+ID+"');";
 		ResultSet rs = null;
 		
 		try {
@@ -1045,7 +1078,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String y = "1";
 		
 		
-		String query = "UPDATE udc.user_playlists SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
+		String query = "UPDATE swdespa.user_playlists SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
 
 		System.out.print(query);
 		//create string query
@@ -1071,7 +1104,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String y = "1";
 		
 		
-		String query = "UPDATE udc.user_playlists SET Privacy = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
+		String query = "UPDATE swdespa.user_playlists SET Privacy = ('"+y+"') WHERE Username = ('"+ID+"') AND PlaylistName = ('"+Name+"');";
 
 		System.out.print(query);
 		//create string query
@@ -1097,7 +1130,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String y = "1";
 		
 		
-		String query = "UPDATE udc.songs SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND Title = ('"+Name+"');";
+		String query = "UPDATE swdespa.songs SET Favorite = ('"+y+"') WHERE Username = ('"+ID+"') AND Title = ('"+Name+"');";
 		System.out.println(ID);
 		System.out.println(Name);
 
@@ -1123,7 +1156,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 	
 		
 		
-		String query = "UPDATE udc.songs SET Title = ('"+newSong+"') WHERE username = ('"+username+"') AND Title = ('"+oldSong+"');";
+		String query = "UPDATE swdespa.songs SET Title = ('"+newSong+"') WHERE username = ('"+username+"') AND Title = ('"+oldSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1143,7 +1176,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newArtist = newArtistName;
 		
-		String query = "UPDATE udc.songs SET Artist = ('"+newArtist+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE swdespa.songs SET Artist = ('"+newArtist+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1160,7 +1193,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newAlbum = newAlbumName;
 		
-		String query = "UPDATE udc.songs SET Album = ('"+newAlbum+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE swdespa.songs SET Album = ('"+newAlbum+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1177,7 +1210,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newGenre = newGenreName;
 		
-		String query = "UPDATE udc.songs SET Genre = ('"+newGenre+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE swdespa.songs SET Genre = ('"+newGenre+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1194,7 +1227,7 @@ public ArrayList<Playlist> getSearchPlaylist(String searchText) {
 		String oldSong = oldSongName;
 		String newYear = newYearDate;
 		
-		String query = "UPDATE udc.songs SET Year = ('"+newYear+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
+		String query = "UPDATE swdespa.songs SET Year = ('"+newYear+"') WHERE username = ('"+username+"') AND Title = ('"+newSong+"');";
 		
 		try {
 			PreparedStatement ps = getConnection().prepareStatement(query);
@@ -1438,7 +1471,7 @@ public ArrayList<Playlist> gettingUserPlaylist(String username) {
 	//get getConnection() from db
 	Connection cnt = getConnection();
 	
-	String query = "SELECT * FROM udc.user_playlists WHERE username = '"+username+"';";
+	String query = "SELECT * FROM swdespa.user_playlists WHERE username = '"+username+"';";
 	//create string qu
 	
 	try {

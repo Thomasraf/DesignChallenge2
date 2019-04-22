@@ -52,24 +52,6 @@ public class HomeViewA extends JFrame {
 	AddSong addSongView = AddSong.getInstance();
 	NotificationViewA notifs = NotificationViewA.getInstance();
 	AlbumView albums = AlbumView.getInstance();
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					HomeViewA frame = new HomeViewA();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
 	
 private volatile static HomeViewA modelInstance = null;
 	

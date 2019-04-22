@@ -223,7 +223,7 @@ public class PlaylistViewA extends JFrame {
 		JButton verified = new JButton("");
 		verified.setToolTipText("Artist is Verified");
 		verified.setEnabled(false);
-		verified.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/correct (4).png")));
+		verified.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/correct (4).png")));
 		verified.setBorder(null);
 		verified.setBackground(new Color(30,58,42));
 		verified.setBounds(448, 22, 28, 28);

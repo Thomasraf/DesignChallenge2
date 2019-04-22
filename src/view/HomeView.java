@@ -60,21 +60,6 @@ public class HomeView extends JFrame {
 	JButton ProfilePic;
 	String profilePath;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HomeView frame = new HomeView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	public static HomeView getInstance() {
         if (instance == null) {

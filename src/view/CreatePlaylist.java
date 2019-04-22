@@ -45,6 +45,7 @@ public class CreatePlaylist extends JFrame {
 	String fileName;
 	private JTextField textFieldChosenFile;
 	private JTextField descriptionTextField;
+	private ArrayList<Playlist> userPlaylist;
 
 	/**
 	 * Launch the application.
@@ -85,10 +86,6 @@ public class CreatePlaylist extends JFrame {
 		contentPane.add(btnCreatePlaylist);
 
 
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(250, 95, 187, 122);
-		contentPane.add(textField);
 
 
 		JLabel label = new JLabel("Description:");
@@ -160,7 +157,6 @@ public class CreatePlaylist extends JFrame {
 					 .setUsername(username)
 					 .setFavorite(favorite)
 					 .setPrivacy(privacy)
-
 					 .setPath(path)
 					 .setDescription(description)
 

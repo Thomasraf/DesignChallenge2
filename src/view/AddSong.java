@@ -182,7 +182,7 @@ public class AddSong extends JFrame {
 			 sList.addSong(addedSong);
 			 int index = sList.getIndex(addedSong);
 			 
-			 generalModel.getInstance().getSongData(addedSong);
+			 generalModel.getInstance().getSongData(addedSong,songName);
 			 
 			 JOptionPane.showMessageDialog(null,"Added " + songName + ".mp3");
 			 closingWindow();
@@ -204,12 +204,12 @@ public class AddSong extends JFrame {
 				 DLMYear.addElement(userSongs.get(x).getYear());
 				 DLMFavorite.addElement(userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(HomeView.getInstance().currentUser);
@@ -220,7 +220,7 @@ public class AddSong extends JFrame {
 				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
 			 
 			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
-			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
+			// LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //==========================================================
 			 
 			 

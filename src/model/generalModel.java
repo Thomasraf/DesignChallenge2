@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+
 import controller.SongBuilder;
 import view.LoggingInView;
 import view.SigningUpView;
-import view.ArtistLoggingInView;
+//import view.ArtistLoggingInView;
 
 public class generalModel {
 
@@ -19,11 +20,12 @@ public class generalModel {
 	
 	}
 	
-	public void getSongData(Song s)
+	public void getSongData(Song s,String songName)
 	{
 		int SongID = Database.getInstance().addingSong(s);
-		Database.getInstance().writeSongBLOB(SongID, s.getPath());
+		Database.getInstance().writeSongBLOB(SongID, s.getPath(),songName);
 	}
+	
 	
 	public void getPlaylistData(Playlist p)
 	{
@@ -52,20 +54,17 @@ public class generalModel {
 		}
 	}
 	
-	public void checkingArtistAccountData(account w) { //LOGGING IN
-		if(Database.getInstance().loggingArtistAccount(w) == true) {
-			ArtistLoggingInView.getInstance().entranceAllowed();
-		}
-		else {
-			ArtistLoggingInView.getInstance().entranceDenied();
-		}
-	}
-	
 
-	public void gettingPlaylistData(Playlist p)
-	{
-		Database.getInstance().addingPlaylist(p);
-	}
+//	public void checkingArtistAccountData(account w) { //LOGGING IN
+//		if(Database.getInstance().loggingArtistAccount(w) == true) {
+//			ArtistLoggingInView.getInstance().entranceAllowed();
+//		}
+//		else {
+//			ArtistLoggingInView.getInstance().entranceDenied();
+//		}
+//	}
+//	
+
 
 
 	public void getUserPlaylistData(Playlist p)
@@ -76,6 +75,23 @@ public class generalModel {
 	public ArrayList<Song> gettingSongs(String t) {
 		return Database.getInstance().getSongs(t);
 	}
+	
+	public ArrayList<Song> getSearchSongs(String searchText) {
+		return Database.getInstance().getSearchSongs(searchText);
+	}
+	
+	public void addSearchSongs(String songName,String username){
+		Database.getInstance().addSearchSongs(songName,username);
+	}
+	
+	public void addSearchPlaylists(String playlistName,String username){
+		Database.getInstance().addSearchPlaylists(playlistName,username);
+	}
+	
+	public ArrayList<Playlist> getSearchPlaylist(String searchText){
+		return Database.getInstance().getSearchPlaylist(searchText);
+	}
+	
 	
 	public ArrayList<Playlist> gettingPlaylists(String t){
 		return Database.getInstance().getPlaylist(t);

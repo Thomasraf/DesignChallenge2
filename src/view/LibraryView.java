@@ -1,3 +1,4 @@
+
 package view;
 
 import java.awt.EventQueue;
@@ -900,3 +901,4 @@ public class LibraryView extends JFrame {
 		Profile.setText("Current User: " + currentUser);
 	}
 }
+

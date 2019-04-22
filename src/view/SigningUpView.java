@@ -164,14 +164,13 @@ public class SigningUpView extends JFrame{
 				closingWindow();
 				SelectAccount.getInstance().setVisible(false);
 
-        HomeView.getInstance().realPath = path;
+     //   HomeView.getInstance().realPath = path;
 
 			}
 		}
 		
 		public void signingSuccessful() {
 			JOptionPane.showMessageDialog(null, "Signing Up Successful!");
-			//generalModel.getInstance().getDisplayPictureData();
 			HomeView.getInstance().setVisible(true);
 		}
 //		

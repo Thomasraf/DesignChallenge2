@@ -54,6 +54,12 @@ public class HomeView extends JFrame {
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 	boolean songPaused;
+
+
+	JButton btnSearch;
+	JButton ProfilePic;
+	String profilePath;
+
 	/**
 	 * Launch the application.
 	 */
@@ -114,6 +120,7 @@ public class HomeView extends JFrame {
 		MainRectangle.add(SongDetails);
 		SongDetails.setLayout(null);
 		
+
 		JLabel SongName = new JLabel("(Song Name)");
 		SongName.setHorizontalAlignment(SwingConstants.CENTER);
 		SongName.setForeground(new Color(255, 255, 255));
@@ -150,7 +157,9 @@ public class HomeView extends JFrame {
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
+
 		 Prevbtn = new JButton("");
+
 		Prevbtn.addActionListener(new btn_prevSong());
 		Prevbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/back (2).png")));
 		Prevbtn.setBackground(new Color(30, 58, 42));
@@ -158,7 +167,9 @@ public class HomeView extends JFrame {
 		Prevbtn.setBorder(null);
 		MainRectangle.add(Prevbtn);
 		
+
 		 Playbtn = new JButton("");
+
 		Playbtn.addActionListener(new btn_Play());
 		Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
 		Playbtn.addMouseListener(new MouseAdapter() {
@@ -355,7 +366,10 @@ public class HomeView extends JFrame {
 		label.setBounds(0, 0, 186, 34);
 		RecentlyPlayedPanel.add(label);
 		
-		 AddSongbtn = new JButton("Add Song");
+
+
+		 AddSongbtn = new JButton("Add To Playlist");
+
 		AddSongbtn.addActionListener(new btn_AddSong());
 		AddSongbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		AddSongbtn.setHorizontalAlignment(SwingConstants.LEFT);
@@ -527,6 +541,7 @@ public class HomeView extends JFrame {
 			 DefaultListModel DLMAlbum = new DefaultListModel();
 			 DefaultListModel DLMYear = new DefaultListModel();
 			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 			 
 			 for(int x = 0; x < userSongs.size(); x++) {
 				 DLMTitle.addElement(userSongs.get(x).getSongName());
@@ -546,7 +561,9 @@ public class HomeView extends JFrame {
 			 //==========================================================  FOR MOST PLAYED STUFF
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
 			 
+
 			 DefaultListModel DLMMostPlayed = new DefaultListModel();
+
 			 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
 				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
@@ -556,13 +573,19 @@ public class HomeView extends JFrame {
 			 //========================================================== FOR PLAYLISTS
 			 userPlaylists = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
 			 DefaultListModel DLM2 = new DefaultListModel();
+
 			
 			 for(int y = 0; y < userPlaylists.size(); y++)
 				 DLM2.addElement(userPlaylists.get(y).getPlaylistName());
 
+
 			 HomeView.getInstance().Playlist_List.setModel(DLM2);
 			 LibraryView.getInstance().Playlist_List.setModel(DLM2);
 			//==========================================================
+
+
+			 Playlist_List.setModel(DLM2);
+
 			 
 			 
 		 }
@@ -572,10 +595,15 @@ public class HomeView extends JFrame {
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
+
+			 CreatePlaylist.getInstance().setVisible(true);
+			 CreatePlaylist.getInstance().setUsername(currentUser); 
+
 			 
 			 CreatePlaylist.getInstance().setVisible(true);
 			 
 			 
+
 		 }
 	 }
 	

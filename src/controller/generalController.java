@@ -42,6 +42,7 @@ public class generalController {
 		generalModel.getInstance().addArtistPlaylist(ap);
 	}
 
+
 /*	
 	public int getIDWithUsername(String username)
 
@@ -53,4 +54,5 @@ public class generalController {
 		System.out.println(result);
 		return result;
 	} */
+
 }

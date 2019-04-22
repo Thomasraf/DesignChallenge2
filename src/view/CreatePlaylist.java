@@ -43,6 +43,7 @@ public class CreatePlaylist extends JFrame {
 	JButton btnCreatePlaylist,btnChoosePicture;
 	JTextField textField;
 	String fileName;
+	String currentUser;
 	private JTextField textFieldChosenFile;
 	private JTextField descriptionTextField;
 	private ArrayList<Playlist> userPlaylist;
@@ -141,7 +142,7 @@ public class CreatePlaylist extends JFrame {
 		 {
 			 
 			 String playlistName = textFieldEnterPlaylistName.getText();
-			 String username = HomeViewA.getInstance().currentUser;
+			 String username = currentUser;
 			 String path = textFieldChosenFile.getText();
 			 String favorite = "0";
 			 String description = descriptionTextField.getText();
@@ -209,6 +210,10 @@ public class CreatePlaylist extends JFrame {
 	
 	public void closingWindow() {
 		this.setVisible(false);
+	}
+	
+	public void setUsername(String username) {
+		this.currentUser = username;
 	}
  }
  //songID, username, songName,artistName,albumName,genre,year,path,count,favorite

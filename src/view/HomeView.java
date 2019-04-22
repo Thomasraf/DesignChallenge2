@@ -541,7 +541,6 @@ public class HomeView extends JFrame {
 			 DefaultListModel DLMAlbum = new DefaultListModel();
 			 DefaultListModel DLMYear = new DefaultListModel();
 			 DefaultListModel DLMFavorite = new DefaultListModel();
-
 			 
 			 for(int x = 0; x < userSongs.size(); x++) {
 				 DLMTitle.addElement(userSongs.get(x).getSongName());
@@ -562,7 +561,7 @@ public class HomeView extends JFrame {
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
 			 
 
-//			 DefaultListModel DLMMostPlayed = new DefaultListModel();
+			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 
 			 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)

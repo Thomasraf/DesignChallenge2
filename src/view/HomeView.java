@@ -625,10 +625,8 @@ public class HomeView extends JFrame {
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
-			 
 			 CreatePlaylist.getInstance().setVisible(true);
-			 
-			 
+			 CreatePlaylist.getInstance().setUsername(currentUser); 
 		 }
 	 }
 	

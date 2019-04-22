@@ -29,7 +29,7 @@ public class SearchResultView extends JFrame {
 	private JPanel contentPane;
 	boolean evenClick = false;
 	private JButton Artist_Dashboard;
-	JButton Refreshbtn,btnAddSong,btnAddPlaylist,btnGoToAccount;
+	JButton Refreshbtn,btnAddSong,btnAddPlaylist,btnGoToListener;
 	JList SongsList,listPlaylist;
 	ArrayList<Song> searchSongs, userSongs;
 	String currentUser;
@@ -576,10 +576,15 @@ public class SearchResultView extends JFrame {
 		btnAddPlaylist.setBounds(328, 11, 89, 23);
 		Dashboard.add(btnAddPlaylist);
 		
-		btnGoToAccount = new JButton("Go To Account");
-		btnGoToAccount.setBounds(522, 11, 121, 23);
-		Dashboard.add(btnGoToAccount);
-		btnAddSong.addActionListener(new btn_GoToAccount());
+		btnGoToListener = new JButton("Go To Listener");
+		btnGoToListener.setBounds(452, 11, 121, 23);
+		Dashboard.add(btnGoToListener);
+		btnGoToListener.addActionListener(new btn_GoToListener());
+		
+		JButton btnGoToArtist = new JButton("Go To Artist");
+		btnGoToArtist.setBounds(595, 11, 121, 23);
+		Dashboard.add(btnGoToArtist);
+		
 		
 	}
 	
@@ -605,11 +610,13 @@ public class SearchResultView extends JFrame {
 		}
 	}
 	
-	class btn_GoToAccount implements ActionListener
+	class btn_GoToListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			
+			Listener_FollowView.getInstance().setText(searchingText);
+			Listener_FollowView.getInstance().setUsername(currentUser);
+			Listener_FollowView.getInstance().setVisible(true);
 		}
 	}
 	

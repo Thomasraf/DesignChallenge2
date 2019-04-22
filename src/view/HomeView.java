@@ -405,7 +405,7 @@ public class HomeView extends JFrame {
 		RecentlyPlayedPanel.add(label);
 		
 
-		 AddSongbtn = new JButton("Add Song");
+		 AddSongbtn = new JButton("Add To Playlist");
 		AddSongbtn.addActionListener(new btn_AddSong());
 		AddSongbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		AddSongbtn.setHorizontalAlignment(SwingConstants.LEFT);

@@ -56,7 +56,7 @@ public class Database{
 		String query3 = "CREATE TABLE IF NOT EXISTS songs(SongID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, Title varchar(255), "
 				+ "Artist varchar(255),Album varchar(255),Genre varchar(255), Year varchar(255), Username varchar(255), Play_Count int(11), Favorite varchar(255));";
 		String query4 = "CREATE TABLE IF NOT EXISTS user_playlists(PlaylistID int NOT NULL AUTO_INCREMENT PRIMARY KEY,Username varchar(255), PlaylistName varchar(255), Favorite varchar(255), Privacy varchar(255));";
-		String query5 = "CREATE TABLE IF NOT EXISTS songData(SongID int NOT NULL AUTO_INCREMENT PRIMARY KEY, data LONGBLOB);";
+		String query5 = "CREATE TABLE IF NOT EXISTS songData(SongID int NOT NULL AUTO_INCREMENT PRIMARY KEY, data LONGBLOB, SongName varchar(255));";
 		String query6 = "CREATE TABLE IF NOT EXISTS songs_in_playlist(PlaylistID int PRIMARY KEY, PlaylistName varchar(255),SongID int(11), SongName varchar(255));";
 		String query7 = "CREATE TABLE IF NOT EXISTS playlistData(PlaylistID int NOT NULL AUTO_INCREMENT PRIMARY KEY, picture BLOB,PlaylistName varchar(255), description varchar(255));";
 		String query8 = "CREATE TABLE IF NOT EXISTS accountData(Username varchar(255) PRIMARY KEY, Profile_Picture BLOB);";
@@ -257,13 +257,13 @@ public class Database{
 //		
 //	}
 
-	public void writeSongBLOB(int SongID, String path) {
+	public void writeSongBLOB(int SongID, String path,String songName) {
 			
 			Connection cnt = getConnection();
 			FileInputStream input = null;
 			PreparedStatement myStatement = null;
 			
-			String query = "INSERT INTO songData VALUES (?,?)";
+			String query = "INSERT INTO songData VALUES (?,?,?)";
 			
 			//create string qu
 			
@@ -274,6 +274,7 @@ public class Database{
 				input = new FileInputStream(theSongFile);
 				myStatement.setBinaryStream(2, input);
 				myStatement.setInt(1, SongID);
+				myStatement.setString(3,songName);
 				
 				System.out.println("Reading the MP3 file: " + theSongFile.getAbsolutePath());
 				System.out.println("Storing MP3 into the database " + theSongFile);
@@ -505,12 +506,117 @@ public class Database{
 		
 	}
 	
-public ArrayList<Song> getSearchSongs(String searchText) {
+	public ArrayList<Song> getSearchSongs(String searchText) {
+			
+			//get getConnection() from db
+			Connection cnt = getConnection();
+			
+			String query = "SELECT * FROM songs WHERE title =('"+searchText+"');";
+			//create string qu
+			
+			try {
+				//create prepared statement	
+				PreparedStatement ps = cnt.prepareStatement(query);
+				
+				//get result and store in result set
+				ResultSet rs = ps.executeQuery();
+				
+				ArrayList<Song> sl = new ArrayList<>();
+				//transform set into list
+				while(rs.next()) {
+					 Song newSong = new SongBuilder()
+							 .setSongID(rs.getInt("SongID"))
+							 .setUserName(rs.getString("Username"))
+							 .setSongName(rs.getString("Title"))
+							 .setArtistName(rs.getString("Artist"))
+							 .setAlbum(rs.getString("Album"))
+							 .setGenre(rs.getString("Genre"))
+							 .setYear(rs.getString("Year"))
+							 .setPath("")
+							 .setCount(0)
+							 .getSong();
+					 sl.add(newSong);
+				}
+				
+				//close all the resources
+				ps.close();
+				rs.close();
+				cnt.close();
+				
+				return sl;
+	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return null; 
+			
+		}
+	
+	public void addSearchSongs(String songName,String username) {
 		
 		//get getConnection() from db
 		Connection cnt = getConnection();
+		int x = 0;
+		int y = 0;
+		String query = "INSERT INTO swdespa.songs (Title,Artist,Album,Genre,Year,Username,Play_Count,Favorite) SELECT Title,Artist,Album,Genre,Year,('"+username+"'),('"+x+"'),('"+y+"') FROM swdespa.songs WHERE Title = ('"+songName+"');";
+		//create string qu
 		
-		String query = "SELECT * FROM songs WHERE title =('"+searchText+"');";
+		try {
+			//create prepared statement	
+			PreparedStatement ps = cnt.prepareStatement(query);
+			ps.execute();
+			//get result and store in result set
+			
+			
+			//close all the resources
+			ps.close();
+			cnt.close();
+			
+		
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//return null; 
+		
+	}
+	
+public void addSearchPlaylists(String playlistName,String username) {
+		
+		//get getConnection() from db
+		Connection cnt = getConnection();
+		int x = 0;
+		int y = 0;
+		int z = 0;
+		String query = "INSERT INTO swdespa.playlists (Username,Playlist,Favorite,Privacy) SELECT ('"+username+"'),PlaylistName,('"+x+"'),('"+y+"'), FROM swdespa.playlists WHERE PlaylistName = ('"+playlistName+"') AND Privacy = ('"+z+"');";
+		
+		try {
+			//create prepared statement	
+			PreparedStatement ps = cnt.prepareStatement(query);
+			ps.execute();
+			//get result and store in result set
+			
+			
+			//close all the resources
+			ps.close();
+			cnt.close();
+			
+		
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//return null; 
+		
+	}
+	
+public ArrayList<Playlist> getSearchPlaylist(String searchText) {
+		
+		//get getConnection() from db
+		Connection cnt = getConnection();
+		String x = "0";
+		
+		String query = "SELECT * FROM user_playlists WHERE PlaylistName =('"+searchText+"') AND Privacy = ('"+x+"');";
 		//create string qu
 		
 		try {
@@ -520,21 +626,14 @@ public ArrayList<Song> getSearchSongs(String searchText) {
 			//get result and store in result set
 			ResultSet rs = ps.executeQuery();
 			
-			ArrayList<Song> sl = new ArrayList<>();
+			ArrayList<Playlist> p = new ArrayList<>();
 			//transform set into list
 			while(rs.next()) {
-				 Song newSong = new SongBuilder()
-						 .setSongID(rs.getInt("SongID"))
-						 .setUserName(rs.getString("Username"))
-						 .setSongName(rs.getString("Title"))
-						 .setArtistName(rs.getString("Artist"))
-						 .setAlbum(rs.getString("Album"))
-						 .setGenre(rs.getString("Genre"))
-						 .setYear(rs.getString("Year"))
-						 .setPath("")
-						 .setCount(0)
-						 .getSong();
-				 sl.add(newSong);
+				 Playlist newPlaylist = new PlaylistBuilder()
+						 .setPlaylistName(searchText)
+						 .setUsername("username")
+						 .getPlaylist();
+				 p.add(newPlaylist);
 			}
 			
 			//close all the resources
@@ -542,7 +641,7 @@ public ArrayList<Song> getSearchSongs(String searchText) {
 			rs.close();
 			cnt.close();
 			
-			return sl;
+			return p;
 
 		} catch (SQLException e) {
 			e.printStackTrace();

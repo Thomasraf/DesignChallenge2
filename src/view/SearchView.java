@@ -35,6 +35,7 @@ public class SearchView extends JFrame {
 	private JLabel lblSearch;
 	String searchText;
 	String text;
+	String currentUser;
 
 	public static SearchView getInstance() {
         if (instance == null) {
@@ -80,16 +81,13 @@ public class SearchView extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 searchText = textFieldSearchParameter.getText();
-			 SearchResultView srv = new SearchResultView();
-			 //SearchResultView.getInstance().searchingText = searchText;
-			// SearchResultView.getInstance().setText(searchText);
-			 System.out.println(searchText);
-			 srv.setVisible(true);
+			 SearchResultView.getInstance().setText(searchText);
+			 SearchResultView.getInstance().setUsername(currentUser);
+			 SearchResultView.getInstance().setVisible(true);
 		 }
 	 }
 	
-	public String getText(String t) {
-		text = textFieldSearchParameter.getText();
-		return text;
+	public void setUsername(String currentUser) {
+		this.currentUser = currentUser;
 	}
 }

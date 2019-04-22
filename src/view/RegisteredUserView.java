@@ -339,6 +339,7 @@ public class RegisteredUserView extends JFrame {
 	    	 if(songChanged) {
 		    	 mp3.pause();
 		    	 int SongID = userSongs.get(yourSongsList.getSelectedIndex()).getSongID();
+		    	 String songName = userSongs.get(yourSongsList.getSelectedIndex()).getSongName();
 		    	 generalModel.getInstance().readSongData(SongID);
 		    	 mp3 = new MP3Player(new File("currentSong.mp3"));
 		    	 mp3.play();

@@ -1,4 +1,5 @@
 package view;
+import model.Playlist;
 import model.Song;
 import model.generalModel;
 import java.awt.EventQueue;
@@ -28,9 +29,11 @@ public class SearchResultView extends JFrame {
 	private JPanel contentPane;
 	boolean evenClick = false;
 	private JButton Artist_Dashboard;
-	JButton Refreshbtn;
-	JList SongsList;
-	ArrayList<Song> allSongs;
+	JButton Refreshbtn,btnAddSong,btnAddPlaylist,btnGoToAccount;
+	JList SongsList,listPlaylist;
+	ArrayList<Song> searchSongs, userSongs;
+	String currentUser;
+	ArrayList<Playlist> searchPlaylist;
 	private volatile static SearchResultView instance = null;
 	public static SearchResultView getInstance() {
         if (instance == null) {
@@ -38,7 +41,7 @@ public class SearchResultView extends JFrame {
         }
 		return instance;
 	}
-	JLabel searchingTextTrial;
+	String searchingText;
 	
 	
 	/**
@@ -554,7 +557,7 @@ public class SearchResultView extends JFrame {
 		ListPlaylist.setBounds(580, 50, 174, 30);
 		Dashboard.add(ListPlaylist);
 		
-		JList listPlaylist = new JList();
+		listPlaylist = new JList();
 		listPlaylist.setBounds(582, 79, 170, 417);
 		Dashboard.add(listPlaylist);
 		
@@ -563,29 +566,73 @@ public class SearchResultView extends JFrame {
 		button_5.setBackground(new Color(254, 254, 250));
 		button_5.setBounds(582, 79, 172, 417);
 		Dashboard.add(button_5);
+		
+		btnAddSong = new JButton("Add Song");
+		btnAddSong.setBounds(224, 11, 89, 23);
+		Dashboard.add(btnAddSong);
+		btnAddSong.addActionListener(new btn_AddSong());
+		
+		btnAddPlaylist = new JButton("Add Playlist");
+		btnAddPlaylist.setBounds(328, 11, 89, 23);
+		Dashboard.add(btnAddPlaylist);
+		
+		btnGoToAccount = new JButton("Go To Account");
+		btnGoToAccount.setBounds(522, 11, 121, 23);
+		Dashboard.add(btnGoToAccount);
+		btnAddSong.addActionListener(new btn_GoToAccount());
+		
 	}
 	
 	class btn_Refresh implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("First");
-			String trial = null;
-			String searchingText = SearchView.getInstance().getText(trial);
-			System.out.println(searchingText);
-			System.out.println("Second");
 			
-			allSongs = generalModel.getInstance().getSearchSongs(searchingText);
+			searchSongs = generalModel.getInstance().getSearchSongs(searchingText);
+			searchPlaylist = generalModel.getInstance().getSearchPlaylist(searchingText);
+			
 			DefaultListModel DLM1 = new DefaultListModel();
+			DefaultListModel DLM2 = new DefaultListModel();
 			
-			for(int a = 0; a < allSongs.size(); a++)
-				DLM1.addElement(allSongs.get(a).getSongName());
+			for(int a = 0; a < searchSongs.size(); a++)
+				DLM1.addElement(searchSongs.get(a).getSongName());
+			
+			for(int b = 0; b < searchPlaylist.size();b++)
+				DLM2.addElement(searchPlaylist.get(b).getPlaylistName());
 			
 			SongsList.setModel(DLM1);
+			listPlaylist.setModel(DLM2);
+		}
+	}
+	
+	class btn_GoToAccount implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
 			
 		}
 	}
-//	public void setText(String text) {
-//		this.searchingText = text;
-//	}
+	
+	class btn_AddSong implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			generalModel.getInstance().addSearchSongs(searchingText,currentUser);		
+		}
+	}
+	
+	class btn_AddPlaylist implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			generalModel.getInstance().addSearchPlaylists(searchingText,currentUser);
+		}
+	}
+	public void setText(String text) {
+		this.searchingText = text;
+	}
+	
+	public void setUsername(String currentUser) {
+		this.currentUser = currentUser;
+	}
 }

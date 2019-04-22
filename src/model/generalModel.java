@@ -20,10 +20,10 @@ public class generalModel {
 	
 	}
 	
-	public void getSongData(Song s)
+	public void getSongData(Song s,String songName)
 	{
 		int SongID = Database.getInstance().addingSong(s);
-		Database.getInstance().writeSongBLOB(SongID, s.getPath());
+		Database.getInstance().writeSongBLOB(SongID, s.getPath(),songName);
 	}
 	
 	
@@ -76,6 +76,18 @@ public class generalModel {
 	
 	public ArrayList<Song> getSearchSongs(String searchText) {
 		return Database.getInstance().getSearchSongs(searchText);
+	}
+	
+	public void addSearchSongs(String songName,String username){
+		Database.getInstance().addSearchSongs(songName,username);
+	}
+	
+	public void addSearchPlaylists(String playlistName,String username){
+		Database.getInstance().addSearchPlaylists(playlistName,username);
+	}
+	
+	public ArrayList<Playlist> getSearchPlaylist(String searchText){
+		return Database.getInstance().getSearchPlaylist(searchText);
 	}
 	
 	

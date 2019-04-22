@@ -50,6 +50,7 @@ public class HomeView extends JFrame {
 	boolean songPaused;
 	JButton btnSearch;
 	JButton ProfilePic;
+	String profilePath;
 	/**
 	 * Launch the application.
 	 */
@@ -221,6 +222,9 @@ public class HomeView extends JFrame {
 		TopBar.add(SearchBtn);
 		
 		ProfilePic = new JButton("");
+		//ProfilePic.setIcon(profilePath);
+		//ProfilePic.paint(profilePath);
+		//generalModel.getInstance().readDisplayPicture(currentUser);
 		ProfilePic.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
 		ProfilePic.setBounds(478, 10, 40, 40);
 		TopBar.add(ProfilePic);
@@ -631,8 +635,8 @@ public class HomeView extends JFrame {
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
-			 SearchView sv = new SearchView();
-			 sv.setVisible(true);
+			SearchView.getInstance().setUsername(currentUser);
+			SearchView.getInstance().setVisible(true);
 		 }
 	 }
 	 
@@ -666,5 +670,9 @@ public class HomeView extends JFrame {
 			this.currentUser = currentUser;
 			Profile.setText("Current User: " + currentUser);
 		}
+	 
+	 public void setDisplayPicture(String path) {
+		 this.profilePath = path;
+	 }
 	
 }

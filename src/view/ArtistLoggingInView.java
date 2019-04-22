@@ -42,7 +42,7 @@ public class ArtistLoggingInView extends JFrame{
 	
 	}
 	
-	public ArtistLoggingInView() {
+	private ArtistLoggingInView() {
 		getContentPane().setBackground(new Color(254,254,250));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GuestView.class.getResource("/images/spotify.png")));
 		setTitle("Not So Spotify");
@@ -131,4 +131,3 @@ public class ArtistLoggingInView extends JFrame{
 		this.setVisible(false);
 	}
 }
-=======

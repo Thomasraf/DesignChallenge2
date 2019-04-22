@@ -52,15 +52,15 @@ public class HomeView extends JFrame {
 	private JPanel contentPane;
 
 	private JTextField txtSearch;
-	boolean evenClick = false;
-	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
-	JList Playlist_List, MP_List, RecentlyPlayedList;
-	SongList sl = new SongList();
-	ArrayList<Song> userSongsMostPlayed, userSongs;
-	ArrayList<RecentlyPlayed> userRecentlyPlayed;
-	ArrayList<Playlist> userPlaylists;
-	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
-	boolean songPaused;
+//	boolean evenClick = false;
+//	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
+//	JList Playlist_List, MP_List, RecentlyPlayedList;
+//	SongList sl = new SongList();
+//	ArrayList<Song> userSongsMostPlayed, userSongs;
+//	ArrayList<RecentlyPlayed> userRecentlyPlayed;
+//	ArrayList<Playlist> userPlaylists;
+//	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
+//	boolean songPaused;
 
 
 	boolean evenClick = false;
@@ -127,10 +127,10 @@ public class HomeView extends JFrame {
 		SongDetails.setLayout(null);
 		
 
-		txtpnSongNameGenre = new JTextPane();
-		txtpnSongNameGenre.setBounds(0, 0, 191, 90);
-		SongDetails.add(txtpnSongNameGenre);
-		txtpnSongNameGenre.setText("Song Name:\r\nArtist:\r\nAlbum:\r\nGenre:\r\nYear:");
+//		txtpnSongNameGenre = new JTextPane();
+//		txtpnSongNameGenre.setBounds(0, 0, 191, 90);
+//		SongDetails.add(txtpnSongNameGenre);
+//		txtpnSongNameGenre.setText("Song Name:\r\nArtist:\r\nAlbum:\r\nGenre:\r\nYear:");
 
 		JLabel SongName = new JLabel("(Song Name)");
 		SongName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -171,8 +171,7 @@ public class HomeView extends JFrame {
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
-on Prevbtn = new JButton("");
-=======
+		Prevbtn = new JButton("");
 		 Prevbtn = new JButton("");
 		Prevbtn.addActionListener(new btn_prevSong());
 
@@ -195,15 +194,15 @@ on Prevbtn = new JButton("");
 				evenClick = false;
 			}
 				else {
-					btnPlay.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
+//					btnPlay.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
 					evenClick = true;
 				}
 				}
 		});
-		btnPlay.setBounds(413, 15, 78, 70);
-		btnPlay.setBackground(new Color(30, 58, 42));
-		btnPlay.setBorder(null);
-		MainRectangle.add(btnPlay);
+//		btnPlay.setBounds(413, 15, 78, 70);
+//		btnPlay.setBackground(new Color(30, 58, 42));
+//		btnPlay.setBorder(null);
+//		MainRectangle.add(btnPlay);
 		
 		JButton Repeatbtn = new JButton("");
 		Repeatbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/repeat.png")));
@@ -429,10 +428,10 @@ on Prevbtn = new JButton("");
 		MostPlayedSongs.setBackground(new Color(254, 254, 250));
 		MostPlayedSongs.setBounds(0, 231, 186, 61);
 		RecentlyPlayedPanel.add(MostPlayedSongs);
-		
-		 RecentlyPlayedList = new JList();
-		RecentlyPlayedList.setBounds(0, 33, 186, 197);
-		RecentlyPlayedPanel.add(RecentlyPlayedList);
+//		
+//		 RecentlyPlayedList = new JList();
+//		RecentlyPlayedList.setBounds(0, 33, 186, 197);
+//		RecentlyPlayedPanel.add(RecentlyPlayedList);
 		
 		JList RP_List = new JList();
 		RP_List.setBounds(0, 33, 186, 200);
@@ -602,13 +601,13 @@ on Prevbtn = new JButton("");
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
 
 			 
-			 userPlaylist = generalModel.getInstance().gettingPlaylists(currentUser);
+//			 userPlaylist = generalModel.getInstance().gettingPlaylists(currentUser);
 			 
 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
-				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
+//				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
 			 
-			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
+//			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //========================================================== FOR PLAYLISTS
 			 userPlaylists = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
@@ -616,15 +615,15 @@ on Prevbtn = new JButton("");
 			 DefaultListModel DLM2 = new DefaultListModel();
 			 
 
-			 for(int y = 0; y < userPlaylist.size(); y++)
-				 DLM2.addElement(userPlaylist.get(y).getPlaylistName());
+//			 for(int y = 0; y < userPlaylist.size(); y++)
+//				 DLM2.addElement(userPlaylist.get(y).getPlaylistName());
 
 
 			 HomeView.getInstance().Playlist_List.setModel(DLM2);
 			 //LibraryView.getInstance().Playlist_List.setModel(DLM2);
 			//==========================================================
 
-			 playlistListJList.setModel(DLM2);
+//			 playlistListJList.setModel(DLM2);
 			 
 
 		 }
@@ -635,8 +634,8 @@ on Prevbtn = new JButton("");
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 
-			 CreatePlaylist cp = new CreatePlaylist();
-			 cp.setVisible(true);
+//			 CreatePlaylist cp = new CreatePlaylist();
+//			 cp.setVisible(true);
 			 
 			 
 		 }
@@ -655,8 +654,8 @@ on Prevbtn = new JButton("");
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
-			 LibraryView.getInstance().setVisible(true);
-			 LibraryView.getInstance().setUserName(currentUser);
+//			 LibraryView.getInstance().setVisible(true);
+//			 LibraryView.getInstance().setUserName(currentUser);
 			 dispose();
 		 }
 	 }
@@ -708,7 +707,7 @@ on Prevbtn = new JButton("");
 					 {
 						 DLM2.addElement(sList.getSongList().get(i).getSongName());
 					 }
-					 RecentlyPlayedList.setModel(DLM2);
+//					 RecentlyPlayedList.setModel(DLM2);
 		    	 }
 		    	/* else if(playSongInPlaylist == true)
 			     {

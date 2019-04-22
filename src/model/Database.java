@@ -336,7 +336,6 @@ public class Database{
 		}
 	}
 	
-	public void writeSongBLOB(int SongID, String path) {
 
 	public void writeSongBLOB(int SongID, String path,String songName) {
 

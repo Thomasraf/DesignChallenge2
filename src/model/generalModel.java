@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 import controller.SongBuilder;
+import view.ArtistLoggingInView;
 import view.LoggingInView;
 import view.SigningUpView;
 //import view.ArtistLoggingInView;
@@ -28,7 +29,11 @@ public class generalModel {
 		Database.getInstance().writeSongBLOB(SongID, s.getPath(),songName);
 	}
 	
-
+	public int getIDForArtist(String username)
+	{
+		int result = Database.getInstance().getIDforArtist(username);
+		return result;
+	}
 	
 	public void getPlaylistData(Playlist p)
 	{
@@ -58,15 +63,15 @@ public class generalModel {
 	}
 	
 
-//	public void checkingArtistAccountData(account w) { //LOGGING IN
-//		if(Database.getInstance().loggingArtistAccount(w) == true) {
-//			ArtistLoggingInView.getInstance().entranceAllowed();
-//		}
-//		else {
-//			ArtistLoggingInView.getInstance().entranceDenied();
-//		}
-//	}
-//	
+	public void checkingArtistAccountData(account w) { //LOGGING IN
+		if(Database.getInstance().loggingArtistAccount(w) == true) {
+			ArtistLoggingInView.getInstance().entranceAllowed();
+		}
+		else {
+			ArtistLoggingInView.getInstance().entranceDenied();
+		}
+	}
+	
 
 
 
@@ -172,8 +177,8 @@ public class generalModel {
 	
 
 	
-	public ArrayList<Song> getSongStuff() {
-		return Database.getInstance().gettingSongs();
+//	public ArrayList<Song> getSongStuff() {
+//		return Database.getInstance().gettingSongs();
 
 	public ArrayList<Song> getSortByTitle(String username) {
 		return Database.getInstance().sortByTitle(username);

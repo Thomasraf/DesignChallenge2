@@ -79,24 +79,24 @@ public class DeleteAlbum extends JFrame {
 		 	 
 		 	 for(i = 0; i < generalModel.getInstance().getUserPlaylist(currUser).size(); i++)
 		 	 {	
-		 		 if(comboBoxPlaylists.getSelectedItem().equals(generalModel.getInstance().getUserPlaylist(currUser).get(i).getPlaylistName()))
-		 		 {
-		 			for(j = 0; j < generalModel.getInstance().gettingSongs(currUser).size(); j++)
-		 			{
-					 	if (comboBoxSongs.getSelectedItem().equals(generalModel.getInstance().gettingSongs(currUser).get(j).getSongName()))
-					 	{				
-					 		generalModel.getInstance().getUserPlaylist(currUser).get(i).addSongToPlaylist(generalModel.getInstance().gettingSongs(currUser).get(j));       
-					 		//System.out.print(generalModel.getInstance().getUserPlaylist(currUser).get(i).getSongInPlaylist().get(j).getSongName());
-					 		//System.out.print(pl.getPlaylistList().get(i).getSongInPlaylist().get(j).getSongName());
-					 		
-					 		
-					 	}
-		 			}
-		 		 }
+//		 		 if(comboBoxPlaylists.getSelectedItem().equals(generalModel.getInstance().getUserPlaylist(currUser).get(i).getPlaylistName()))
+//		 		 {
+//		 			for(j = 0; j < generalModel.getInstance().gettingSongs(currUser).size(); j++)
+//		 			{
+//					 	if (comboBoxSongs.getSelectedItem().equals(generalModel.getInstance().gettingSongs(currUser).get(j).getSongName()))
+//					 	{				
+//					 		generalModel.getInstance().getUserPlaylist(currUser).get(i).addSongToPlaylist(generalModel.getInstance().gettingSongs(currUser).get(j));       
+//					 		//System.out.print(generalModel.getInstance().getUserPlaylist(currUser).get(i).getSongInPlaylist().get(j).getSongName());
+//					 		//System.out.print(pl.getPlaylistList().get(i).getSongInPlaylist().get(j).getSongName());
+//					 		
+//					 		
+//					 	}
+//		 			}
+//		 		 }
 		 	 }
 		 	 
 		 	 
-		 		System.out.println(generalModel.getInstance().getUserPlaylist(currUser).get(comboBoxPlaylists.getSelectedIndex()).getSongInPlaylist().get(0).getSongName());
+//		 		System.out.println(generalModel.getInstance().getUserPlaylist(currUser).get(comboBoxPlaylists.getSelectedIndex()).getSongInPlaylist().get(0).getSongName());
 		 	 
 				
 		 		dispose();

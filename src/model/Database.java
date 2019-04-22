@@ -61,6 +61,7 @@ public class Database{
 		String query6 = "CREATE TABLE IF NOT EXISTS songs_in_playlist(PlaylistID int PRIMARY KEY, PlaylistName varchar(255),SongID int(11), SongName varchar(255));";
 		String query7 = "CREATE TABLE IF NOT EXISTS playlistData(PlaylistID int NOT NULL AUTO_INCREMENT PRIMARY KEY, picture BLOB,PlaylistName varchar(255), description varchar(255));";
 		String query8 = "CREATE TABLE IF NOT EXISTS accountData(Username varchar(255) PRIMARY KEY, Profile_Picture BLOB);";
+		String query9 = "CREATE TABLE IF NOT EXISTS album(albumid int NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(255), username varchar(255), albumcover LONGBLOB);";
 		
 		String packetQuery = "SET GLOBAL max_allowed_packet=16777216;";
 		
@@ -355,7 +356,30 @@ public class Database{
 		}
 	}
 	
-
+	public void addAlbum(Album a)
+	{
+		Connection cnt = getConnection();
+		String query = "INSERT INTO album (name, username, albumcover) VALUES (?,?,?)";
+		
+		try {
+			//create prepared statement
+			//insert to playlistdata
+			PreparedStatement ps = cnt.prepareStatement(query);
+			File image = new File(a.getPath());
+			FileInputStream fis = new FileInputStream(image);
+			ps.setBinaryStream(3, (InputStream)fis);
+			ps.setString(1, a.getAlbumName());
+			ps.setString(2, a.getUsername());
+			ps.execute();
+			
+			System.out.println("Successfully added album " + a.getAlbumName() + "!");
+		}
+		
+		catch (SQLException | FileNotFoundException e) {
+			e.printStackTrace();
+			
+		}
+	}
 
 	public void writeSongBLOB(int SongID, String path,String songName) {
 

@@ -1,5 +1,6 @@
 package controller;
 import model.generalModel;
+import model.Album;
 import model.ArtistPlaylist;
 import model.Playlist;
 import model.Song;
@@ -29,7 +30,7 @@ public class generalController {
 	
 	public void gettingRegisteredArtistAccountData(String registeredUsername,String registeredPassword) { //LOGGING IN
 		account registeredAccount = new account(registeredUsername, registeredPassword);
-		//generalModel.getInstance().checkingArtistAccountData(registeredAccount);
+		generalModel.getInstance().checkingArtistAccountData(registeredAccount);
 	}
 	public void gettingUserPlaylist(String username, String playlistName, String favorite,String privacy,String path,String description)
 	{
@@ -43,6 +44,10 @@ public class generalController {
 	}
 
 
+	public void addAlbum(Album a)
+	{
+		generalModel.getInstance().addAlbum(a);
+	}
 /*	
 	public int getIDWithUsername(String username)
 

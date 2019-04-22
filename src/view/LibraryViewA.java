@@ -1,3 +1,4 @@
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -355,6 +356,7 @@ public class LibraryViewA extends JFrame {
 		
 		JList Playlist_List = new JList();
 		Playlist_List.setBounds(0, 175, 186, 253);
+		Playlist_List.setOpaque(false);
 		MusicPanel.add(Playlist_List);
 		
 		JPanel RecentlyPlayedPanel = new JPanel();
@@ -482,10 +484,12 @@ public class LibraryViewA extends JFrame {
 		
 		JList RP_List = new JList();
 		RP_List.setBounds(0, 33, 186, 201);
+		RP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(RP_List);
 		
 		JList MP_List = new JList();
 		MP_List.setBounds(0, 287, 186, 138);
+		MP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(MP_List);
 		
 		JPanel Dashboard = new JPanel();
@@ -557,6 +561,7 @@ public class LibraryViewA extends JFrame {
 		
 		JList Title_list = new JList();
 		Title_list.setBounds(12, 79, 158, 417);
+		Title_list.setOpaque(false);
 		Dashboard.add(Title_list);
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -567,6 +572,7 @@ public class LibraryViewA extends JFrame {
 		
 		JList Artist_list = new JList();
 		Artist_list.setBounds(173, 79, 158, 417);
+		Artist_list.setOpaque(false);
 		Dashboard.add(Artist_list);
 		
 		JButton button_1 = new JButton("");
@@ -577,6 +583,7 @@ public class LibraryViewA extends JFrame {
 		
 		JList Album_List = new JList();
 		Album_List.setBounds(335, 79, 170, 417);
+		Album_List.setOpaque(false);
 		Dashboard.add(Album_List);
 		
 		JButton button_3 = new JButton("");
@@ -587,6 +594,7 @@ public class LibraryViewA extends JFrame {
 		
 		JList Genre_List = new JList();
 		Genre_List.setBounds(503, 79, 98, 417);
+		Genre_List.setOpaque(false);
 		Dashboard.add(Genre_List);
 		
 		JButton button_4 = new JButton("");
@@ -597,6 +605,7 @@ public class LibraryViewA extends JFrame {
 		
 		JList Year_List = new JList();
 		Year_List.setBounds(600, 79, 76, 417);
+		Year_List.setOpaque(false);
 		Dashboard.add(Year_List);
 		
 		JButton button_5 = new JButton("");
@@ -607,6 +616,7 @@ public class LibraryViewA extends JFrame {
 		
 		JList Fave_List = new JList();
 		Fave_List.setBounds(680, 79, 70, 417);
+		Fave_List.setOpaque(false);
 		Dashboard.add(Fave_List);
 		
 		JButton button_6 = new JButton("");

@@ -314,7 +314,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Albums_Music);
 		
 
-		Playlist_Name3 = new JButton("(PlaylistName)");
+		Playlist_Name3 = new JButton("");
 
 		Playlist_Name3.setEnabled(false);
 		Playlist_Name3.setHorizontalAlignment(SwingConstants.LEFT);
@@ -324,7 +324,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlist_Name3);
 		
 
-		Playlist_Name2 = new JButton("(PlaylistName)");
+		Playlist_Name2 = new JButton("");
 
 		Playlist_Name2.setEnabled(false);
 		Playlist_Name2.setHorizontalAlignment(SwingConstants.LEFT);
@@ -334,7 +334,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlist_Name2);
 		
 
-		Playlist_Name1 = new JButton("(PlaylistName)");
+		Playlist_Name1 = new JButton("");
 
 		Playlist_Name1.setEnabled(false);
 		Playlist_Name1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -351,7 +351,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlists_Music);
 		
 
-		Playlist_Name7 = new JButton("(PlaylistName)");
+		Playlist_Name7 = new JButton("");
 
 		Playlist_Name7.setEnabled(false);
 		Playlist_Name7.setHorizontalAlignment(SwingConstants.LEFT);
@@ -361,7 +361,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlist_Name7);
 		
 
-		Playlist_Name6 = new JButton("(PlaylistName)");
+		Playlist_Name6 = new JButton("");
 
 		Playlist_Name6.setEnabled(false);
 		Playlist_Name6.setHorizontalAlignment(SwingConstants.LEFT);
@@ -371,7 +371,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlist_Name6);
 		
 
-		Playlist_Name5 = new JButton("(PlaylistName)");
+		Playlist_Name5 = new JButton("");
 
 		Playlist_Name5.setEnabled(false);
 		Playlist_Name5.setHorizontalAlignment(SwingConstants.LEFT);
@@ -381,7 +381,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlist_Name5);
 		
 
-		Playlist_Name4 = new JButton("(PlaylistName)");
+		Playlist_Name4 = new JButton("");
 
 		Playlist_Name4.setEnabled(false);
 		Playlist_Name4.setHorizontalAlignment(SwingConstants.LEFT);
@@ -391,7 +391,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlist_Name4);
 		
 
-		Playlist_Name9 = new JButton("(PlaylistName)");
+		Playlist_Name9 = new JButton("");
 
 		Playlist_Name9.setEnabled(false);
 		Playlist_Name9.setHorizontalAlignment(SwingConstants.LEFT);
@@ -401,7 +401,7 @@ private volatile static AlbumView modelInstance = null;
 		MusicPanel.add(Playlist_Name9);
 		
 
-		Playlist_Name8 = new JButton("(PlaylistName)");
+		Playlist_Name8 = new JButton("");
 
 		Playlist_Name8.setEnabled(false);
 		Playlist_Name8.setHorizontalAlignment(SwingConstants.LEFT);
@@ -412,6 +412,7 @@ private volatile static AlbumView modelInstance = null;
 		
 		Playlist_List = new JList();
 		Playlist_List.setBounds(0, 175, 186, 253);
+		Playlist_List.setOpaque(false);
 		MusicPanel.add(Playlist_List);
 		
 		RecentlyPlayedPanel = new JPanel();
@@ -541,16 +542,14 @@ private volatile static AlbumView modelInstance = null;
 		MostPlayedSongs.setBounds(0, 231, 186, 61);
 		RecentlyPlayedPanel.add(MostPlayedSongs);
 		
-		RecentlyPlayedList = new JList();
-		RecentlyPlayedList.setBounds(0, 33, 186, 197);
-		RecentlyPlayedPanel.add(RecentlyPlayedList);
-		
 		RP_List = new JList();
 		RP_List.setBounds(0, 33, 186, 200);
+		RP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(RP_List);
 		
 		MP_List = new JList();
 		MP_List.setBounds(0, 287, 186, 139);
+		MP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(MP_List);
 		
 		Dashboard = new JPanel();

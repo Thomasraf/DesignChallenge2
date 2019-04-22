@@ -25,7 +25,7 @@ import java.awt.Color;
 public class AddSongToAlbum extends JFrame {
 	private volatile static AddSongToAlbum instance = null;
 	private JPanel contentPane;
-	JButton btnAddToPlaylist;
+	JButton btnAddToAlbum;
 	JComboBox comboBoxSongs, comboBoxPlaylists;
 
 	/**
@@ -59,18 +59,18 @@ public class AddSongToAlbum extends JFrame {
 		lblSongs.setBounds(46, 15, 58, 14);
 		contentPane.add(lblSongs);
 		
-		btnAddToPlaylist = new JButton("Add to Playlist");
-		btnAddToPlaylist.addActionListener(new btn_AddToPlaylist());
-		btnAddToPlaylist.setBounds(102, 94, 192, 28);
-		contentPane.add(btnAddToPlaylist);
+		btnAddToAlbum = new JButton("Add to Playlist");
+		btnAddToAlbum.addActionListener(new btn_AddToPlaylist());
+		btnAddToAlbum.setBounds(102, 94, 192, 28);
+		contentPane.add(btnAddToAlbum);
 		
 		 comboBoxPlaylists = new JComboBox();
 		comboBoxPlaylists.setBounds(236, 40, 127, 28);
 		contentPane.add(comboBoxPlaylists);
 		
-		JLabel lblPlaylist = new JLabel("Playlist");
-		lblPlaylist.setBounds(236, 23, 58, 14);
-		contentPane.add(lblPlaylist);
+		JLabel lblAlbum = new JLabel("Album");
+		lblAlbum.setBounds(236, 15, 58, 14);
+		contentPane.add(lblAlbum);
 	}
 	
 	class btn_AddToPlaylist implements ActionListener

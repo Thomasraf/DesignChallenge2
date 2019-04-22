@@ -254,7 +254,7 @@ public class ListenerView extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
-		btnNewButton.setBounds(0, 429, 186, 88);
+		btnNewButton.setBounds(0, 395, 186, 122);
 		MusicPanel.add(btnNewButton);
 		
 		JLabel MusicLbl = new JLabel("Music");
@@ -302,12 +302,64 @@ public class ListenerView extends JFrame {
 
 		
 		myPlaylistJList2 = new JList();
-		myPlaylistJList2.setBounds(0, 175, 186, 256);
+		myPlaylistJList2.setBounds(0, 175, 186, 219);
 		MusicPanel.add(myPlaylistJList2);
 		
-		JList list = new JList();
-		list.setBounds(0, 180, 186, 245);
-		MusicPanel.add(list);
+		JButton button = new JButton("");
+		button.setHorizontalAlignment(SwingConstants.LEFT);
+		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button.setBackground(new Color(242, 203, 155));
+		button.setBounds(0, 176, 186, 30);
+		MusicPanel.add(button);
+		
+		JButton button_1 = new JButton("");
+		button_1.setHorizontalAlignment(SwingConstants.LEFT);
+		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_1.setBackground(new Color(254, 254, 250));
+		button_1.setBounds(0, 205, 186, 30);
+		MusicPanel.add(button_1);
+		
+		JButton button_3 = new JButton("");
+		button_3.setHorizontalAlignment(SwingConstants.LEFT);
+		button_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_3.setBackground(new Color(242, 203, 155));
+		button_3.setBounds(0, 235, 186, 30);
+		MusicPanel.add(button_3);
+		
+		JButton button_4 = new JButton("");
+		button_4.setHorizontalAlignment(SwingConstants.LEFT);
+		button_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_4.setBackground(new Color(254, 254, 250));
+		button_4.setBounds(0, 264, 186, 30);
+		MusicPanel.add(button_4);
+		
+		JButton button_5 = new JButton("");
+		button_5.setHorizontalAlignment(SwingConstants.LEFT);
+		button_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_5.setBackground(new Color(242, 203, 155));
+		button_5.setBounds(0, 293, 186, 30);
+		MusicPanel.add(button_5);
+		
+		JButton button_6 = new JButton("");
+		button_6.setHorizontalAlignment(SwingConstants.LEFT);
+		button_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_6.setBackground(new Color(254, 254, 250));
+		button_6.setBounds(0, 322, 186, 30);
+		MusicPanel.add(button_6);
+		
+		JButton button_7 = new JButton("");
+		button_7.setHorizontalAlignment(SwingConstants.LEFT);
+		button_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_7.setBackground(new Color(242, 203, 155));
+		button_7.setBounds(0, 352, 186, 30);
+		MusicPanel.add(button_7);
+		
+		JButton button_8 = new JButton("");
+		button_8.setHorizontalAlignment(SwingConstants.LEFT);
+		button_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_8.setBackground(new Color(254, 254, 250));
+		button_8.setBounds(0, 381, 186, 30);
+		MusicPanel.add(button_8);
 		
 		JPanel RecentlyPlayedPanel = new JPanel();
 		RecentlyPlayedPanel.setLayout(null);
@@ -434,10 +486,12 @@ public class ListenerView extends JFrame {
 		
 		JList FaveSongslist = new JList();
 		FaveSongslist.setBounds(0, 33, 186, 200);
+		FaveSongslist.setOpaque(false);
 		RecentlyPlayedPanel.add(FaveSongslist);
 		
 		JList MostPlayed_list = new JList();
 		MostPlayed_list.setBounds(0, 291, 186, 140);
+		MostPlayed_list.setOpaque(false);
 		RecentlyPlayedPanel.add(MostPlayed_list);
 		
 		JPanel Dashboard = new JPanel();
@@ -532,108 +586,34 @@ public class ListenerView extends JFrame {
 		
 		JList LFollow1 = new JList();
 		LFollow1.setBackground(new Color(254,254,250));
-		LFollow1.setBounds(418, 199, 164, 30);
+		LFollow1.setBounds(418, 199, 164, 297);
+		LFollow1.setOpaque(false);
 		Dashboard.add(LFollow1);
 		
 		JList AFollow1 = new JList();
 		AFollow1.setBackground(new Color(254, 254, 250));
-		AFollow1.setBounds(580, 199, 164, 30);
+		AFollow1.setBounds(580, 199, 164, 297);
+		AFollow1.setOpaque(false);
 		Dashboard.add(AFollow1);
-		
-		JList LFollow2 = new JList();
-		LFollow2.setBackground(new Color(254, 254, 250));
-		LFollow2.setBounds(418, 229, 164, 30);
-		Dashboard.add(LFollow2);
-		
-		JList AFollow2 = new JList();
-		AFollow2.setBackground(new Color(254, 254, 250));
-		AFollow2.setBounds(580, 229, 164, 30);
-		Dashboard.add(AFollow2);
-		
-		JList LFollow3 = new JList();
-		LFollow3.setBackground(new Color(254, 254, 250));
-		LFollow3.setBounds(418, 262, 164, 30);
-		Dashboard.add(LFollow3);
-		
-		JList AFollow3 = new JList();
-		AFollow3.setBackground(new Color(254, 254, 250));
-		AFollow3.setBounds(580, 262, 164, 30);
-		Dashboard.add(AFollow3);
-		
-		JList LFollow4 = new JList();
-		LFollow4.setBackground(new Color(254, 254, 250));
-		LFollow4.setBounds(418, 292, 164, 30);
-		Dashboard.add(LFollow4);
-		
-		JList AFollow4 = new JList();
-		AFollow4.setBackground(new Color(254, 254, 250));
-		AFollow4.setBounds(580, 292, 164, 30);
-		Dashboard.add(AFollow4);
-		
-		JList LFollow5 = new JList();
-		LFollow5.setBackground(new Color(254, 254, 250));
-		LFollow5.setBounds(418, 323, 164, 30);
-		Dashboard.add(LFollow5);
-		
-		JList AFollow5 = new JList();
-		AFollow5.setBackground(new Color(254, 254, 250));
-		AFollow5.setBounds(580, 323, 164, 30);
-		Dashboard.add(AFollow5);
-		
-		JList LFollow6 = new JList();
-		LFollow6.setBackground(new Color(254, 254, 250));
-		LFollow6.setBounds(418, 353, 164, 30);
-		Dashboard.add(LFollow6);
-		
-		JList AFollow6 = new JList();
-		AFollow6.setBackground(new Color(254, 254, 250));
-		AFollow6.setBounds(580, 353, 164, 30);
-		Dashboard.add(AFollow6);
-		
-		JList LFollow7 = new JList();
-		LFollow7.setBackground(new Color(254, 254, 250));
-		LFollow7.setBounds(418, 386, 164, 30);
-		Dashboard.add(LFollow7);
-		
-		JList AFollow7 = new JList();
-		AFollow7.setBackground(new Color(254, 254, 250));
-		AFollow7.setBounds(580, 386, 164, 30);
-		Dashboard.add(AFollow7);
-		
-		JList LFollow8 = new JList();
-		LFollow8.setBackground(new Color(254, 254, 250));
-		LFollow8.setBounds(418, 416, 164, 30);
-		Dashboard.add(LFollow8);
-		
-		JList AFollow8 = new JList();
-		AFollow8.setBackground(new Color(254, 254, 250));
-		AFollow8.setBounds(580, 416, 164, 30);
-		Dashboard.add(AFollow8);
-		
-		JList LFollow9 = new JList();
-		LFollow9.setBackground(new Color(254, 254, 250));
-		LFollow9.setBounds(418, 444, 164, 30);
-		Dashboard.add(LFollow9);
-		
-		JList AFollow9 = new JList();
-		AFollow9.setBackground(new Color(254, 254, 250));
-		AFollow9.setBounds(580, 444, 164, 30);
-		Dashboard.add(AFollow9);
 		
 		publicPlaylistJList = new JList();
 		publicPlaylistJList.setBounds(10, 211, 206, 274);
+		publicPlaylistJList.setOpaque(false);
 		Dashboard.add(publicPlaylistJList);
 		
 		myPlaylistJList = new JList();
 		myPlaylistJList.setBounds(223, 211, 196, 274);
+		myPlaylistJList.setOpaque(false);
 		Dashboard.add(myPlaylistJList);
 		
 		JList listenerfollowJList = new JList();
 		listenerfollowJList.setBounds(418, 199, 164, 286);
+		listenerfollowJList.setOpaque(false);
 		Dashboard.add(listenerfollowJList);
 		
 		JList artistfollowJList = new JList();
 		artistfollowJList.setBounds(580, 199, 164, 286);
+		artistfollowJList.setOpaque(false);
 		Dashboard.add(artistfollowJList);
 	}
 	

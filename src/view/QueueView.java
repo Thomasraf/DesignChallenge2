@@ -29,19 +29,13 @@ public class QueueView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					QueueView frame = new QueueView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private volatile static QueueView instance = null;
+	public static QueueView getInstance() {
+        if (instance == null) {
+        	instance = new QueueView();
+        }
+		return instance;
 	}
-
 	/**
 	 * Create the frame.
 	 */

@@ -24,18 +24,6 @@ public class NotificationViewA extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NotificationViewA frame = new NotificationViewA();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	public static NotificationViewA getInstance() {
         if (instance == null) {

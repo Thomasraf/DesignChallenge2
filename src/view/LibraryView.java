@@ -50,7 +50,6 @@ public class LibraryView extends JFrame {
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 
-	private volatile static LibraryView instance = null;
 	public static LibraryView getInstance() {
         if (instance == null) {
         	instance = new LibraryView();
@@ -304,8 +303,9 @@ public class LibraryView extends JFrame {
 		Playlists_Music.setBounds(0, 146, 186, 30);
 		MusicPanel.add(Playlists_Music);
 		
-		 Playlist_List = new JList();
+		Playlist_List = new JList();
 		Playlist_List.setBounds(0, 175, 186, 253);
+		Playlist_List.setOpaque(false);
 		MusicPanel.add(Playlist_List);
 		
 		JPanel RecentlyPlayedPanel = new JPanel();
@@ -336,8 +336,9 @@ public class LibraryView extends JFrame {
 		MostPlayedSongs.setBounds(0, 231, 186, 61);
 		RecentlyPlayedPanel.add(MostPlayedSongs);
 		
-		 RP_List = new JList();
+		RP_List = new JList();
 		RP_List.setBounds(0, 33, 186, 201);
+		RP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(RP_List);
 		
 		 MP_List = new JList();
@@ -351,6 +352,7 @@ public class LibraryView extends JFrame {
 				}
 			});
 		MP_List.setBounds(0, 287, 186, 138);
+		MP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(MP_List);
 		
 		JPanel Dashboard = new JPanel();
@@ -432,6 +434,7 @@ public class LibraryView extends JFrame {
 				}
 			});
 		Title_list.setBounds(12, 79, 158, 417);
+		Title_list.setOpaque(false);
 		Dashboard.add(Title_list);
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -442,6 +445,7 @@ public class LibraryView extends JFrame {
 		
 		 Artist_list = new JList();
 		Artist_list.setBounds(173, 79, 158, 417);
+		Artist_list.setOpaque(false);
 		Dashboard.add(Artist_list);
 		
 		JButton button_1 = new JButton("");
@@ -452,6 +456,7 @@ public class LibraryView extends JFrame {
 		
 		 Album_List = new JList();
 		Album_List.setBounds(335, 79, 170, 417);
+		Album_List.setOpaque(false);
 		Dashboard.add(Album_List);
 		
 		JButton button_3 = new JButton("");
@@ -462,6 +467,7 @@ public class LibraryView extends JFrame {
 		
 		 Genre_List = new JList();
 		Genre_List.setBounds(503, 79, 98, 417);
+		Genre_List.setOpaque(false);
 		Dashboard.add(Genre_List);
 		
 		JButton button_4 = new JButton("");
@@ -480,8 +486,9 @@ public class LibraryView extends JFrame {
 		button_5.setBounds(600, 79, 80, 417);
 		Dashboard.add(button_5);
 		
-		 Fave_List = new JList();
+		Fave_List = new JList();
 		Fave_List.setBounds(680, 79, 70, 417);
+		Fave_List.setOpaque(false);
 		Dashboard.add(Fave_List);
 		
 		JButton button_6 = new JButton("");

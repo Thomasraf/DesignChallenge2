@@ -349,6 +349,7 @@ public class SearchResultView extends JFrame {
 		
 		JList Playlist_List = new JList();
 		Playlist_List.setBounds(0, 175, 186, 253);
+		Playlist_List.setOpaque(false);
 		MusicPanel.add(Playlist_List);
 		
 		JPanel RecentlyPlayedPanel = new JPanel();
@@ -476,10 +477,12 @@ public class SearchResultView extends JFrame {
 		
 		JList RP_List = new JList();
 		RP_List.setBounds(0, 33, 186, 201);
+		RP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(RP_List);
 		
 		JList MP_List = new JList();
 		MP_List.setBounds(0, 287, 186, 138);
+		MP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(MP_List);
 		
 		JPanel Dashboard = new JPanel();
@@ -522,6 +525,7 @@ public class SearchResultView extends JFrame {
 		
 		SongsList = new JList();
 		SongsList.setBounds(12, 79, 177, 417);
+		SongsList.setOpaque(false);
 		Dashboard.add(SongsList);
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -532,6 +536,7 @@ public class SearchResultView extends JFrame {
 		
 		JList Artist_list = new JList();
 		Artist_list.setBounds(206, 79, 176, 417);
+		Artist_list.setOpaque(false);
 		Dashboard.add(Artist_list);
 		
 		JButton button_1 = new JButton("");
@@ -542,6 +547,7 @@ public class SearchResultView extends JFrame {
 		
 		JList Followers_List = new JList();
 		Followers_List.setBounds(384, 79, 186, 417);
+		Followers_List.setOpaque(false);
 		Dashboard.add(Followers_List);
 		
 		JButton button_3 = new JButton("");

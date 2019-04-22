@@ -30,17 +30,12 @@ public class PlaylistViewA extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PlaylistViewA frame = new PlaylistViewA();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private volatile static PlaylistViewA instance = null;
+	public static PlaylistViewA getInstance() {
+        if (instance == null) {
+        	instance = new PlaylistViewA();
+        }
+		return instance;
 	}
 
 	/**
@@ -93,37 +88,37 @@ public class PlaylistViewA extends JFrame {
 		SongDetails.add(Album);
 		
 		JButton Shufflebtn = new JButton("");
-		Shufflebtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/shuffle (4).png")));
+		Shufflebtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/shuffle (4).png")));
 		Shufflebtn.setBackground(new Color(30,58,42));
 		Shufflebtn.setBounds(290, 31, 39, 39);
 		Shufflebtn.setBorder(null);
 		MainRectangle.add(Shufflebtn);
 		
 		JButton Nextbtn = new JButton("");
-		Nextbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/next (2).png")));
+		Nextbtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/next (2).png")));
 		Nextbtn.setBackground(new Color(30, 58, 42));
 		Nextbtn.setBounds(512, 31, 39, 39);
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
 		JButton Prevbtn = new JButton("");
-		Prevbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/back (2).png")));
+		Prevbtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/back (2).png")));
 		Prevbtn.setBackground(new Color(30, 58, 42));
 		Prevbtn.setBounds(355, 31, 39, 39);
 		Prevbtn.setBorder(null);
 		MainRectangle.add(Prevbtn);
 		
 		JButton Playbtn = new JButton("");
-		Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
+		Playbtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/play-button (2).png")));
 		Playbtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(evenClick) {
-				Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
+				Playbtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/play-button (2).png")));
 				evenClick = false;
 			}
 				else {
-					Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
+					Playbtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/rounded-pause-button.png")));
 					evenClick = true;
 				}
 				}
@@ -134,28 +129,28 @@ public class PlaylistViewA extends JFrame {
 		MainRectangle.add(Playbtn);
 		
 		JButton Repeatbtn = new JButton("");
-		Repeatbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/repeat.png")));
+		Repeatbtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/repeat.png")));
 		Repeatbtn.setBackground(new Color(30, 58, 42));
 		Repeatbtn.setBounds(577, 31, 39, 39);
 		Repeatbtn.setBorder(null);
 		MainRectangle.add(Repeatbtn);
 		
 		JButton Queuebtn = new JButton("");
-		Queuebtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/list (1).png")));
+		Queuebtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/list (1).png")));
 		Queuebtn.setBorder(null);
 		Queuebtn.setBackground(new Color(30, 58, 42));
 		Queuebtn.setBounds(769, 31, 39, 39);
 		MainRectangle.add(Queuebtn);
 		
 		JButton StopBtn = new JButton("");
-		StopBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/stop (3).png")));
+		StopBtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/stop (3).png")));
 		StopBtn.setBorder(null);
 		StopBtn.setBackground(new Color(30, 58, 42));
 		StopBtn.setBounds(818, 31, 39, 39);
 		MainRectangle.add(StopBtn);
 		
 		JButton Volumebtn = new JButton("");
-		Volumebtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/speaker (2).png")));
+		Volumebtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/speaker (2).png")));
 		Volumebtn.setBorder(null);
 		Volumebtn.setBackground(new Color(30, 58, 42));
 		Volumebtn.setBounds(867, 31, 39, 39);
@@ -163,7 +158,7 @@ public class PlaylistViewA extends JFrame {
 		
 		
 		JButton NewAlbumPic = new JButton("");
-		NewAlbumPic.setIcon(new ImageIcon(HomeView.class.getResource("/images2/photo.png")));
+		NewAlbumPic.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/photo.png")));
 		NewAlbumPic.setBounds(0, 579, 119, 92);
 		contentPane.add(NewAlbumPic);
 		NewAlbumPic.setBackground(new Color(170, 187, 204));
@@ -176,7 +171,7 @@ public class PlaylistViewA extends JFrame {
 		
 		JButton btnLogout = new JButton("");
 		btnLogout.setBounds(10, 11, 39, 39);
-		btnLogout.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/logout.png")));
+		btnLogout.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/logout.png")));
 		btnLogout.setBorder(null);
 		btnLogout.setBackground(new Color(30, 58, 42));
 		TopBar.add(btnLogout);
@@ -190,7 +185,7 @@ public class PlaylistViewA extends JFrame {
 		txtSearch.setColumns(10);
 		
 		JButton SearchBtn = new JButton("");
-		SearchBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/magnifying-glass (1).png")));
+		SearchBtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/magnifying-glass (1).png")));
 		SearchBtn.setBorder(null);
 		SearchBtn.setBackground(new Color(30,58,42));
 		SearchBtn.setBounds(55, 11, 39, 39);
@@ -198,7 +193,7 @@ public class PlaylistViewA extends JFrame {
 		TopBar.add(SearchBtn);
 		
 		JButton ProfilePic = new JButton("");
-		ProfilePic.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
+		ProfilePic.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/user-avatar-main-picture.png")));
 		ProfilePic.setBounds(478, 10, 40, 40);
 		TopBar.add(ProfilePic);
 		ProfilePic.setBackground(new Color(170, 187, 204));
@@ -212,7 +207,7 @@ public class PlaylistViewA extends JFrame {
 		TopBar.add(Profile);
 		
 		JButton button_2 = new JButton("");
-		button_2.setIcon(new ImageIcon(HomeView.class.getResource("/images2/notifications-button.png")));
+		button_2.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/notifications-button.png")));
 		button_2.setBorder(null);
 		button_2.setBackground(new Color(30, 58, 42));
 		button_2.setBounds(1084, 11, 39, 39);
@@ -226,10 +221,11 @@ public class PlaylistViewA extends JFrame {
 		TopBar.add(Refreshbtn);
 		
 		JButton verified = new JButton("");
-		verified.setIcon(new ImageIcon(QueueViewA.class.getResource("/images2/correct (4).png")));
+		verified.setToolTipText("Artist is Verified");
 		verified.setEnabled(false);
+		verified.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/correct (4).png")));
 		verified.setBorder(null);
-		verified.setBackground(new Color(30, 58, 42));
+		verified.setBackground(new Color(30,58,42));
 		verified.setBounds(448, 22, 28, 28);
 		TopBar.add(verified);
 		
@@ -242,7 +238,7 @@ public class PlaylistViewA extends JFrame {
 		JButton btnNewButton = new JButton("New Playlist");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
+		btnNewButton.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		btnNewButton.setBounds(0, 429, 186, 88);
 		MusicPanel.add(btnNewButton);
 		
@@ -362,6 +358,7 @@ public class PlaylistViewA extends JFrame {
 		
 		JList Playlist_List = new JList();
 		Playlist_List.setBounds(0, 175, 186, 253);
+		Playlist_List.setOpaque(false);
 		MusicPanel.add(Playlist_List);
 		
 		JPanel RecentlyPlayedPanel = new JPanel();
@@ -474,7 +471,7 @@ public class PlaylistViewA extends JFrame {
 		RecentlyPlayedPanel.add(MPSONG_4);
 		
 		JButton AddSongbtn = new JButton("Add Song to Playlist");
-		AddSongbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
+		AddSongbtn.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		AddSongbtn.setHorizontalAlignment(SwingConstants.LEFT);
 		AddSongbtn.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		AddSongbtn.setBounds(0, 426, 186, 88);
@@ -489,10 +486,12 @@ public class PlaylistViewA extends JFrame {
 		
 		JList RP_List = new JList();
 		RP_List.setBounds(0, 33, 186, 201);
+		RP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(RP_List);
 		
 		JList MP_List = new JList();
 		MP_List.setBounds(0, 287, 186, 138);
+		MP_List.setOpaque(false);
 		RecentlyPlayedPanel.add(MP_List);
 		
 		JPanel Dashboard = new JPanel();
@@ -503,7 +502,7 @@ public class PlaylistViewA extends JFrame {
 		Dashboard.setLayout(null);
 		
 		JLabel PlaylistArt_1 = new JLabel("ALBUM ART");
-		PlaylistArt_1.setIcon(new ImageIcon(HomeView.class.getResource("/images2/KDRLK.png")));
+		PlaylistArt_1.setIcon(new ImageIcon(PlaylistViewA.class.getResource("/images2/KDRLK.png")));
 		PlaylistArt_1.setBackground(new Color(254,254,250));
 		PlaylistArt_1.setHorizontalAlignment(SwingConstants.CENTER);
 		PlaylistArt_1.setBounds(10, 0, 164, 164);
@@ -609,9 +608,11 @@ public class PlaylistViewA extends JFrame {
 		Favorite_Dashboard.setBounds(680, 170, 74, 30);
 		Dashboard.add(Favorite_Dashboard);
 		
-		JList list = new JList();
-		list.setBounds(12, 197, 158, 299);
-		Dashboard.add(list);
+		JList Titlelist = new JList();
+		Titlelist.setBackground(new Color(254,254,250));
+		Titlelist.setBounds(12, 197, 160, 299);
+		Titlelist.setOpaque(false);
+		Dashboard.add(Titlelist);
 		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.setEnabled(false);
@@ -619,9 +620,11 @@ public class PlaylistViewA extends JFrame {
 		btnNewButton_1.setBounds(10, 197, 164, 299);
 		Dashboard.add(btnNewButton_1);
 		
-		JList list_1 = new JList();
-		list_1.setBounds(173, 197, 158, 299);
-		Dashboard.add(list_1);
+		JList Artistlist = new JList();
+		Artistlist.setBackground(new Color(254, 254, 250));
+		Artistlist.setBounds(173, 197, 160, 299);
+		Artistlist.setOpaque(false);
+		Dashboard.add(Artistlist);
 		
 		JButton button_1 = new JButton("");
 		button_1.setEnabled(false);
@@ -629,9 +632,11 @@ public class PlaylistViewA extends JFrame {
 		button_1.setBounds(173, 197, 164, 299);
 		Dashboard.add(button_1);
 		
-		JList list_2 = new JList();
-		list_2.setBounds(335, 197, 170, 299);
-		Dashboard.add(list_2);
+		JList Albumlist = new JList();
+		Albumlist.setBackground(new Color(254, 254, 250));
+		Albumlist.setBounds(335, 199, 169, 297);
+		Albumlist.setOpaque(false);
+		Dashboard.add(Albumlist);
 		
 		JButton button_3 = new JButton("");
 		button_3.setEnabled(false);
@@ -639,9 +644,11 @@ public class PlaylistViewA extends JFrame {
 		button_3.setBounds(335, 197, 172, 299);
 		Dashboard.add(button_3);
 		
-		JList list_3 = new JList();
-		list_3.setBounds(503, 197, 98, 299);
-		Dashboard.add(list_3);
+		JList Genrelist = new JList();
+		Genrelist.setBackground(new Color(254, 254, 250));
+		Genrelist.setBounds(503, 197, 97, 299);
+		Genrelist.setOpaque(false);
+		Dashboard.add(Genrelist);
 		
 		JButton button_4 = new JButton("");
 		button_4.setEnabled(false);
@@ -649,9 +656,11 @@ public class PlaylistViewA extends JFrame {
 		button_4.setBounds(503, 197, 100, 299);
 		Dashboard.add(button_4);
 		
-		JList list_4 = new JList();
-		list_4.setBounds(600, 197, 76, 299);
-		Dashboard.add(list_4);
+		JList Yearlist = new JList();
+		Yearlist.setBackground(new Color(254, 254, 250));
+		Yearlist.setBounds(600, 197, 76, 299);
+		Yearlist.setOpaque(false);
+		Dashboard.add(Yearlist);
 		
 		JButton button_5 = new JButton("");
 		button_5.setEnabled(false);
@@ -659,9 +668,11 @@ public class PlaylistViewA extends JFrame {
 		button_5.setBounds(600, 197, 80, 299);
 		Dashboard.add(button_5);
 		
-		JList list_5 = new JList();
-		list_5.setBounds(680, 197, 68, 299);
-		Dashboard.add(list_5);
+		JList Favoritelist = new JList();
+		Favoritelist.setBackground(new Color(254, 254, 250));
+		Favoritelist.setBounds(680, 197, 69, 299);
+		Favoritelist.setOpaque(false);
+		Dashboard.add(Favoritelist);
 		
 		JButton button_6 = new JButton("");
 		button_6.setEnabled(false);

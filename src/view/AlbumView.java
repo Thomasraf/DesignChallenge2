@@ -45,7 +45,7 @@ public class AlbumView extends JFrame {
 			AddSongbtn, AlbumName_1, AlbumName_2, AlbumName_3, AlbumName_4, AlbumName_5,
 			AlbumName_6;
 	
-//	ArtistView profileView = new ArtistView();
+	ArtistView profileView = ArtistView.getInstance();
 
 	/**
 	 * Launch the application.
@@ -73,19 +73,7 @@ private volatile static AlbumView modelInstance = null;
 	
 	}
 
-	public void run()
-	{
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AlbumView frame = new AlbumView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 	
 	/**
 	 * Create the frame.
@@ -702,8 +690,8 @@ private volatile static AlbumView modelInstance = null;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-//			profileView.getInstance().run();
-//			profileView.setUsername(currentUser);
+			profileView.getInstance().run();
+			profileView.setUsername(currentUser);
 			closeWindow();
 			
 		}

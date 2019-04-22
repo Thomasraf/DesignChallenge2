@@ -113,7 +113,7 @@ public class ArtistLoggingInView extends JFrame{
 //		RegisteredUserView.getInstance().setVisible(true);
 //		artistHomeView = new HomeViewA();
 		
-		artistHomeView.getInstance().run();
+		artistHomeView.getInstance().setVisible(true);
 //		artistHomeView.setVisible(true);
 	}
 	

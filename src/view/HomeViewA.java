@@ -78,19 +78,19 @@ private volatile static HomeViewA modelInstance = null;
 	
 	}
 
-	public void run()
-	{
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HomeViewA frame = new HomeViewA();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public void run()
+//	{
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					HomeViewA frame = new HomeViewA();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	
 	/**
 	 * Create the frame.
@@ -751,6 +751,7 @@ private volatile static HomeViewA modelInstance = null;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			addSongView.setCurrentUser(currentUser);
 			addSongView.getInstance().setVisible(true);
 		}
 		

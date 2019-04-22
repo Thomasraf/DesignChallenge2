@@ -34,10 +34,10 @@ public class AddSong extends JFrame {
 	private JTextField textFieldAlbum;
 	private JTextField textFieldGenre;
 	JButton btnChooseFile, btnNewButton;
-	String fileName;
+	String fileName, currentUser;
 	private JTextField textFieldChosenFile;
 	private JTextField textFieldSongName;
-	private JLabel lblSongName;
+	private JLabel lblSongName, lblArtist;
 	private JComboBox yearComboBox;
 	ArrayList<Song> userSongsMostPlayed, userSongs;
 	private int songctr = 1;
@@ -78,10 +78,13 @@ public class AddSong extends JFrame {
 		lblAlbum.setBounds(29, 167, 46, 14);
 		contentPane.add(lblAlbum);
 		
-		textFieldArtistName = new JTextField();
-		textFieldArtistName.setBounds(87, 137, 162, 20);
-		contentPane.add(textFieldArtistName);
-		textFieldArtistName.setColumns(10);
+//		textFieldArtistName = new JTextField();
+//		textFieldArtistName.setBounds(87, 137, 162, 20);
+//		contentPane.add(textFieldArtistName);
+//		textFieldArtistName.setColumns(10);
+		lblArtist = new JLabel(currentUser);
+		lblArtist.setBounds(87, 137, 162, 20);
+		contentPane.add(lblArtist);
 		
 		textFieldAlbum = new JTextField();
 		textFieldAlbum.setColumns(10);
@@ -93,15 +96,15 @@ public class AddSong extends JFrame {
 		textFieldGenre.setBounds(87, 191, 162, 20);
 		contentPane.add(textFieldGenre);
 		
-		 btnNewButton = new JButton("Add Song");
-		 btnNewButton.addActionListener(new btn_Add());
+		btnNewButton = new JButton("Add Song");
+		btnNewButton.addActionListener(new btn_Add());
 		btnNewButton.setBounds(306, 203, 89, 23);
 		contentPane.add(btnNewButton);
 		
 
-		 btnChooseFile = new JButton("Choose File");
-		 btnChooseFile.setBackground(Color.WHITE);
-		 btnChooseFile.addActionListener(new btn_ChooseFile());
+		btnChooseFile = new JButton("Choose File");
+		btnChooseFile.setBackground(Color.WHITE);
+		btnChooseFile.addActionListener(new btn_ChooseFile());
 
 		btnChooseFile.setBounds(33, 73, 140, 25);
 		contentPane.add(btnChooseFile);
@@ -152,7 +155,9 @@ public class AddSong extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 
-			 
+			 int songid = songctr;
+			 String name = textFieldSongName.getText();
+			 int artistid = generalController.getInstance().getIDWithUsername(currentUser);
 //			 int songID = 0;
 //			 String username = HomeView.getInstance().currentUser;
 //			 String songName = textFieldSongName.getText();
@@ -254,6 +259,12 @@ public class AddSong extends JFrame {
 	public String gettingYear() {
 		String year = (String) yearComboBox.getSelectedItem();
 		return year;
+	}
+	
+	public void setCurrentUser(String name)
+	{
+		currentUser = name;
+		lblArtist.setText(currentUser);
 	}
 	
 	public void closingWindow() {

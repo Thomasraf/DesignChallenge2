@@ -37,7 +37,7 @@ import javax.swing.JList;
 
 public class LibraryView extends JFrame {
 
-	private volatile static LibraryView instance = null;
+//	private volatile static LibraryView instance = null;
 	public String currentUser;
 	private JPanel contentPane;
 
@@ -49,6 +49,7 @@ public class LibraryView extends JFrame {
 	ArrayList<Song> userSongsMostPlayed, userSongs, userTitle, userArtist, userGenre, userAlbum, userYear, userFavorite;
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
+
 
 	public static LibraryView getInstance() {
         if (instance == null) {

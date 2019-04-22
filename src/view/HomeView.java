@@ -562,7 +562,7 @@ public class HomeView extends JFrame {
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
 			 
 
-			 DefaultListModel DLMMostPlayed = new DefaultListModel();
+//			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 
 			 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)

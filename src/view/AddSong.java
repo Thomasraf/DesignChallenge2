@@ -212,12 +212,12 @@ public class AddSong extends JFrame {
 //			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
-			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed();
+			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(HomeView.getInstance().currentUser);
 			 
 			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 			 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
-				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName());
+				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
 			 
 			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
 			// LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);

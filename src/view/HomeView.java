@@ -8,8 +8,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controller.RecentlyPlayedBuilder;
+import controller.SongBuilder;
 import jaco.mp3.player.MP3Player;
 import model.Playlist;
+
+import model.RecentlyPlayed;
+import model.RecentlyPlayedList;
+
 import model.Song;
 import model.SongList;
 import model.generalModel;
@@ -40,6 +46,19 @@ public class HomeView extends JFrame {
 	MP3Player mp3 = new MP3Player(new File("currentSong.mp3"));
 	public String currentUser;
 	private JPanel contentPane;
+
+	private JTextField txtSearch;
+	boolean evenClick = false;
+	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
+	JList Playlist_List, MP_List, RecentlyPlayedList;
+	SongList sl = new SongList();
+	ArrayList<Song> userSongsMostPlayed, userSongs;
+	ArrayList<RecentlyPlayed> userRecentlyPlayed;
+	ArrayList<Playlist> userPlaylists;
+	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
+	boolean songPaused;
+
+
 	boolean evenClick = false;
 	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
 	JList Playlist_List, MP_List;
@@ -54,6 +73,7 @@ public class HomeView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+
 	
 	public static HomeView getInstance() {
         if (instance == null) {
@@ -221,15 +241,19 @@ public class HomeView extends JFrame {
 		SearchBtn.setBorder(null);
 		TopBar.add(SearchBtn);
 		
+
 		ProfilePic = new JButton("");
 		//ProfilePic.setIcon(profilePath);
 		//ProfilePic.paint(profilePath);
 		//generalModel.getInstance().readDisplayPicture(currentUser);
+
 		ProfilePic.setIcon(new ImageIcon(HomeView.class.getResource("/images2/user-avatar-main-picture.png")));
 		ProfilePic.setBounds(478, 10, 40, 40);
 		TopBar.add(ProfilePic);
 		ProfilePic.setBackground(new Color(170, 187, 204));
+
 		ProfilePic.addActionListener(new btn_Profile());
+
 		
 		 Profile = new JButton("Profile Name");
 		Profile.setBackground(new Color(30,58,42));
@@ -253,11 +277,13 @@ public class HomeView extends JFrame {
 		Refreshbtn.setBackground(new Color(30, 58, 42));
 		Refreshbtn.setBounds(1035, 11, 39, 39);
 		TopBar.add(Refreshbtn);
+
 		
 		btnSearch = new JButton("Search");
 		btnSearch.setBounds(104, 11, 121, 39);
 		TopBar.add(btnSearch);
 		btnSearch.addActionListener(new btn_Search());
+
 		
 		JPanel MusicPanel = new JPanel();
 		MusicPanel.setBackground(new Color(254, 254, 250));
@@ -348,7 +374,7 @@ public class HomeView extends JFrame {
 		MostPlayedSongs.setBounds(0, 231, 186, 61);
 		RecentlyPlayedPanel.add(MostPlayedSongs);
 		
-		JList RecentlyPlayedList = new JList();
+		 RecentlyPlayedList = new JList();
 		RecentlyPlayedList.setBounds(0, 33, 186, 197);
 		RecentlyPlayedPanel.add(RecentlyPlayedList);
 		
@@ -522,12 +548,12 @@ public class HomeView extends JFrame {
 //			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
-			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed();
+			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
 			 
 			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 			 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
-				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName());
+				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
 			 
 			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
@@ -566,6 +592,17 @@ public class HomeView extends JFrame {
 		 }
 	 }
 	
+
+	class btn_Library implements ActionListener
+	 {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 LibraryView.getInstance().setVisible(true);
+			 LibraryView.getInstance().setUserName(currentUser);
+			 dispose();
+		 }
+	 }
+
 	class btn_Profile implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
@@ -574,16 +611,7 @@ public class HomeView extends JFrame {
 			ListenerView.getInstance().setVisible(true);
 		}
 	}
-	
-//	class btn_Library implements ActionListener
-//	 {
-//		 public void actionPerformed(ActionEvent e)
-//		 {
-//			 LibraryView.getInstance().setVisible(true);
-//			 LibraryView.getInstance().setUserName(currentUser);
-//			 dispose();
-//		 }
-//	 }
+
 	
 	 class btn_Play implements ActionListener 
 	 {
@@ -601,7 +629,28 @@ public class HomeView extends JFrame {
 		    		 mp3 = new MP3Player(new File("currentSong.mp3"));
 			    	 mp3.play();
 			    	 songChangedInMP = false;
-			    	 songPaused = false;
+			    	 
+			    	 RecentlyPlayed addedSong = new RecentlyPlayedBuilder()
+							 .setSongID(userSongs.get(MP_List.getSelectedIndex()).getSongID())
+							 .setUserName(userSongs.get(MP_List.getSelectedIndex()).getUserName())
+							 .setSongName(userSongs.get(MP_List.getSelectedIndex()).getSongName())
+							 .setArtistName(userSongs.get(MP_List.getSelectedIndex()).getArtistName())
+							 .setAlbum(userSongs.get(MP_List.getSelectedIndex()).getAlbum())
+							 .setGenre(userSongs.get(MP_List.getSelectedIndex()).getGenre())
+							 .setYear(userSongs.get(MP_List.getSelectedIndex()).getYear())
+							 .setPath(userSongs.get(MP_List.getSelectedIndex()).getPath())
+							 .setCount(userSongs.get(MP_List.getSelectedIndex()).getCount())
+							 .setFavorite(userSongs.get(MP_List.getSelectedIndex()).getFavorite())
+							 .getSong();
+			    	 
+			    	 RecentlyPlayedList sList = new RecentlyPlayedList();
+			    	 sList.addSong(addedSong);
+			    	 DefaultListModel DLM2 = new DefaultListModel();
+					 for(int i = 0; i < sList.getSongListSize(); i++)
+					 {
+						 DLM2.addElement(sList.getSongList().get(i).getSongName());
+					 }
+					 RecentlyPlayedList.setModel(DLM2);
 		    	 }
 		    	/* else if(playSongInPlaylist == true)
 			     {
@@ -625,9 +674,9 @@ public class HomeView extends JFrame {
 			    	 songPaused = true;
 			    	 }
 		    	 }
-	    	 
-	    	 
-
+		    	
+		    	
+		    	
 	     }
 	 }
 	 
@@ -640,6 +689,7 @@ public class HomeView extends JFrame {
 		 }
 	 }
 	 
+
 	 class btn_Stop implements ActionListener
 	 {
 		 public void actionPerformed(ActionEvent e)
@@ -648,6 +698,7 @@ public class HomeView extends JFrame {
 		 }
 	 }
 	 
+
 	 class btn_nextSong implements ActionListener
 	 {
 		 public void actionPerformed(ActionEvent e)
@@ -670,9 +721,11 @@ public class HomeView extends JFrame {
 			this.currentUser = currentUser;
 			Profile.setText("Current User: " + currentUser);
 		}
+
 	 
 	 public void setDisplayPicture(String path) {
 		 this.profilePath = path;
 	 }
 	
+
 }

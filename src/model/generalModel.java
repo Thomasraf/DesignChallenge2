@@ -54,6 +54,7 @@ public class generalModel {
 		}
 	}
 	
+
 //	public void checkingArtistAccountData(account w) { //LOGGING IN
 //		if(Database.getInstance().loggingArtistAccount(w) == true) {
 //			ArtistLoggingInView.getInstance().entranceAllowed();
@@ -63,6 +64,7 @@ public class generalModel {
 //		}
 //	}
 //	
+
 
 
 	public void getUserPlaylistData(Playlist p)
@@ -135,24 +137,24 @@ public class generalModel {
 
 	//=========================================================================== Everything Sorting
 	
-	public ArrayList<Song> getSongsByGenre()
+	public ArrayList<Song> getSongsByGenre(String username)
 	{
-		return Database.getInstance().getSongsByGenre();
+		return Database.getInstance().getSongsByGenre(username);
 	}
 	
-	public ArrayList<Song> getSongsByAlbum()
+	public ArrayList<Song> getSongsByAlbum(String username)
 	{
-		return Database.getInstance().getSongsByAlbum();
+		return Database.getInstance().getSongsByAlbum(username);
 	}
 	
-	public ArrayList<Song> getSongsByYear()
+	public ArrayList<Song> getSongsByYear(String username)
 	{
-		return Database.getInstance().getSongsByYear();
+		return Database.getInstance().getSongsByYear(username);
 	}
 	
-	public ArrayList<Song> getMostPlayed()
+	public ArrayList<Song> getMostPlayed(String username)
 	{
-		return Database.getInstance().getMostPlayed();
+		return Database.getInstance().getMostPlayed(username);
 	}
 	
 	public ArrayList<Playlist> getUserPlaylist(String username)
@@ -160,8 +162,12 @@ public class generalModel {
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
 	
-	public ArrayList<Song> getSongStuff() {
-		return Database.getInstance().gettingSongs();
+	public ArrayList<Song> getSortByTitle(String username) {
+		return Database.getInstance().sortByTitle(username);
+	}
+	
+	public ArrayList<Song> getSortByArtist(String username) {
+		return Database.getInstance().sortByArtist(username);
 	}
 	
 	//=========================================================================== Everything Editing

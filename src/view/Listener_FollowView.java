@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import model.Playlist;
 import model.Song;
 import model.generalModel;
@@ -14,12 +13,15 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.DefaultListModel;
+
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.util.ArrayList;
+
 
 import javax.swing.JTextField;
 import java.awt.SystemColor;
@@ -32,11 +34,13 @@ public class Listener_FollowView extends JFrame {
 	private JPanel contentPane;
 	boolean evenClick = false;
 	boolean evenClick2 = false;
+
 	JList playlistJList,songJList;
 	ArrayList<Song> userSongs;
 	ArrayList<Playlist> userPlaylists;
 	JButton btnFollow,Refreshbtn;
 	String searchingText,currentUser;
+
 	
 	private volatile static Listener_FollowView instance = null;
 	public static Listener_FollowView getInstance() {
@@ -213,13 +217,17 @@ public class Listener_FollowView extends JFrame {
 		button_2.setBounds(1084, 11, 39, 39);
 		TopBar.add(button_2);
 		
+
 		Refreshbtn = new JButton("");
+
 		Refreshbtn.setIcon(new ImageIcon(Listener_FollowView.class.getResource("/images2/reload.png")));
 		Refreshbtn.setBorder(null);
 		Refreshbtn.setBackground(new Color(30, 58, 42));
 		Refreshbtn.setBounds(1035, 11, 39, 39);
 		TopBar.add(Refreshbtn);
+
 		Refreshbtn.addActionListener(new btn_Refresh());
+
 		
 		JPanel MusicPanel = new JPanel();
 		MusicPanel.setBackground(new Color(254, 254, 250));
@@ -517,10 +525,12 @@ public class Listener_FollowView extends JFrame {
 		FavePlaylists_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
 		FavePlaylists_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		FavePlaylists_Dashboard.setBackground(new Color(254, 254, 250));
+
 		FavePlaylists_Dashboard.setBounds(0, 170, 377, 30);
 		Dashboard.add(FavePlaylists_Dashboard);
 		
 		JButton LFollow_Dashboard = new JButton("My Songs");
+
 		LFollow_Dashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -528,9 +538,11 @@ public class Listener_FollowView extends JFrame {
 		LFollow_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
 		LFollow_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		LFollow_Dashboard.setBackground(new Color(254, 254, 250));
+
 		LFollow_Dashboard.setBounds(377, 170, 377, 30);
 		Dashboard.add(LFollow_Dashboard);
 		
+
 		JList LFollow1 = new JList();
 		LFollow1.setBackground(new Color(254,254,250));
 		LFollow1.setBounds(418, 199, 164, 30);
@@ -621,7 +633,9 @@ public class Listener_FollowView extends JFrame {
 		AFollow9.setBounds(580, 444, 164, 30);
 		Dashboard.add(AFollow9);
 		
+
 		btnFollow = new JButton("Follow");
+
 		btnFollow.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -641,6 +655,7 @@ public class Listener_FollowView extends JFrame {
 		btnFollow.setBounds(603, 126, 136, 35);
 		Dashboard.add(btnFollow);
 		
+
 		playlistJList = new JList();
 		playlistJList.setBounds(0, 203, 369, 293);
 		Dashboard.add(playlistJList);
@@ -682,5 +697,6 @@ public class Listener_FollowView extends JFrame {
 	
 	public void setUsername(String username) {
 		this.currentUser = username;
+
 	}
 }

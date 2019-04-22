@@ -146,14 +146,13 @@ public class CreateArtistPlaylist extends JFrame {
 		 {
 			 
 			 String playlistName = textFieldEnterPlaylistName.getText();
-			 int userid = Database.getInstance().getIDforArtist(HomeViewA.getInstance().currentUser);
+			 String username = HomeViewA.getInstance().currentUser;
 			 String path = textFieldChosenFile.getText();
 			 String description = descriptionTextField.getText();
 			 			 
 			 ArtistPlaylistBuilder build = new ArtistPlaylistBuilder();
-			 build.setID(playlistctr);
 			 build.setName(playlistName);
-			 build.setUserID(userid);
+			 build.setUsername(username);
 			 build.setDescription(description);
 			 build.setPath(path);
 			 

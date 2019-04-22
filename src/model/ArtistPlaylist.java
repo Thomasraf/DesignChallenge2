@@ -1,29 +1,17 @@
 package model;
 
 public class ArtistPlaylist {
-	private int playlistid;
 	private String name;
-	private int userid;
+	private String username;
 	private String description;
 	private String path;
 	
-	public ArtistPlaylist(int playlistid, String name, int userid, String description, String path)
+	public ArtistPlaylist(String name, String username, String description, String path)
 	{
-		this.playlistid = playlistid;
 		this.name = name;
-		this.userid = userid;
+		this.username = username;
 		this.description = description;
 		this.path = path;
-	}
-	
-	public int getID()
-	{
-		return playlistid;
-	}
-	
-	public void setID(int id)
-	{
-		this.playlistid = id;
 	}
 	
 	public String getName()
@@ -36,14 +24,14 @@ public class ArtistPlaylist {
 		this.name = name;
 	}
 	
-	public int getUserID()
+	public String getUsername()
 	{
-		return userid;
+		return username;
 	}
 	
-	public void setUserID(int id)
+	public void setUsername(String username)
 	{
-		this.userid = id;
+		this.username = username;
 	}
 	
 	public String getDescription()

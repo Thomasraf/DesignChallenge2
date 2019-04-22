@@ -52,7 +52,7 @@ public class Database{
 			return false;
 		//CREATE TABLE IF NOT EXISTS
 		
-		String query = "CREATE TABLE IF NOT EXISTS accounts (Username varchar(255) PRIMARY KEY, Password varchar(255));"; //creating table
+		String query = "CREATE TABLE IF NOT EXISTS accounts (Username varchar(255) PRIMARY KEY, Password varchar(255), Type varchar(255));"; //creating table
 		String query2 = "CREATE TABLE IF NOT EXISTS playlists(PlaylistID int NOT NULL AUTO_INCREMENT PRIMARY KEY, PlaylistName varchar(255), Username varchar(255));";
 		String query3 = "CREATE TABLE IF NOT EXISTS songs(SongID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, Title varchar(255), "
 				+ "Artist varchar(255),Album varchar(255),Genre varchar(255), Year varchar(255), Username varchar(255), Play_Count int(11), Favorite varchar(255));";
@@ -277,7 +277,7 @@ public class Database{
 		Connection cnt = getConnection(); 
 		boolean loggedIn = false;
 		
-		String query = "SELECT * FROM udc.artist WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
+		String query = "SELECT * FROM udc.accounts WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"') AND Type = 'artist'";
 		
 		try {
 			//create prepared statement
@@ -313,24 +313,43 @@ public class Database{
 		Connection cnt = getConnection(); 
 		boolean loggedIn = false;
 		
-		String query = "INSERT INTO artist_playlist (playlistid, name, userid, description, picture) VALUES (?,?,?,?,?)";
+//		String query = "INSERT INTO artist_playlist (playlistid, name, userid, description, picture) VALUES (?,?,?,?,?)";
+		String query = "INSERT INTO playlistdata (picture, PlaylistName, description) VALUES (?,?,?)";
+		String query2 = "INSERT INTO user_playlists (Username, PlaylistName, Favorite, Privacy) VALUES (?,?,?,?)";
+		String query3 = "INSERT INTO playlists (PlaylistName, Username) VALUES (?,?)";
 		
 		try {
 			//create prepared statement
+			//insert to playlistdata
 			PreparedStatement ps = cnt.prepareStatement(query);
 			File image = new File(pl.getPath());
 			FileInputStream fis = new FileInputStream(image);
-			ps.setInt(1, pl.getID());
+			ps.setBinaryStream(1, (InputStream)fis);
 			ps.setString(2, pl.getName());
-			ps.setInt(3, pl.getUserID());
-			ps.setString(4, pl.getDescription());
-			ps.setBinaryStream(5, (InputStream)fis);
-			
-			//get result and store in result set
+			ps.setString(3, pl.getDescription());
 			ps.execute();
+			
+			//insert to user_playlists
+			PreparedStatement ps2 = cnt.prepareStatement(query2);
+			ps2.setString(1, pl.getUsername());
+			ps2.setString(2, pl.getName());
+			ps2.setString(3, "0");
+			ps2.setString(4, "0");
+			ps2.execute();
+			
+			//insert to playlists
+			PreparedStatement ps3 = cnt.prepareStatement(query3);
+			ps3.setString(1, pl.getName());
+			ps3.setString(2, pl.getUsername());
+			ps3.execute();
 			System.out.println("Successfully added artist playlist!");
 			
-		} catch (SQLException | FileNotFoundException e) {
+		}
+//		catch (SQLException e) {
+//			e.printStackTrace();
+//			
+//		}
+		catch (SQLException | FileNotFoundException e) {
 			e.printStackTrace();
 			
 		}

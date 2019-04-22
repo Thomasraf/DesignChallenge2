@@ -3,25 +3,19 @@ package controller;
 import model.ArtistPlaylist;
 
 public class ArtistPlaylistBuilder {
-	int playlistid;
 	String name;
-	int userid;
+	String username;
 	String description;
 	String path;
-	
-	public void setID(int id)
-	{
-		this.playlistid = id;
-	}
 	
 	public void setName(String name)
 	{
 		this.name = name;
 	}
 	
-	public void setUserID(int id)
+	public void setUsername(String name)
 	{
-		this.userid = id;
+		this.username = name;
 	}
 	
 	public void setDescription(String desc)
@@ -36,6 +30,6 @@ public class ArtistPlaylistBuilder {
 	
 	public ArtistPlaylist getPlaylist()
 	{
-		return new ArtistPlaylist(playlistid, name, userid, description, path);
+		return new ArtistPlaylist(name, username, description, path);
 	}
 }

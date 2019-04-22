@@ -15,10 +15,6 @@ public class Driver {
 
 
 
-		String USERNAME = "root";
-//
-//		String PASSWORD = "hatdog23";
-		String DATABASE = "udc";
 
 
 //		String PASSWORD = "1234";

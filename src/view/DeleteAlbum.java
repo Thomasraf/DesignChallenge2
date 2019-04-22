@@ -1,3 +1,4 @@
+
 package view;
 
 import java.awt.BorderLayout;
@@ -79,6 +80,7 @@ public class DeleteAlbum extends JFrame {
 		 	 
 		 	 for(i = 0; i < generalModel.getInstance().getUserPlaylist(currUser).size(); i++)
 		 	 {	
+
 //		 		 if(comboBoxPlaylists.getSelectedItem().equals(generalModel.getInstance().getUserPlaylist(currUser).get(i).getPlaylistName()))
 //		 		 {
 //		 			for(j = 0; j < generalModel.getInstance().gettingSongs(currUser).size(); j++)
@@ -93,6 +95,7 @@ public class DeleteAlbum extends JFrame {
 //					 	}
 //		 			}
 //		 		 }
+
 		 	 }
 		 	 
 		 	 
@@ -106,3 +109,4 @@ public class DeleteAlbum extends JFrame {
 		 }
 	 }
 }
+

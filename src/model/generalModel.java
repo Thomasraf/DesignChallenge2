@@ -172,9 +172,7 @@ public class generalModel {
 	
 
 	
-	public ArrayList<Song> getSongStuff() {
-		return Database.getInstance().gettingSongs();
-
+	
 	public ArrayList<Song> getSortByTitle(String username) {
 		return Database.getInstance().sortByTitle(username);
 	}

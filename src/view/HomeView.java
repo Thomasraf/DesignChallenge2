@@ -62,15 +62,6 @@ public class HomeView extends JFrame {
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 	boolean songPaused;
 
-
-	boolean evenClick = false;
-	JButton btnCreatePlaylist, AddSongbtn, Profile, Library, Refreshbtn, Playbtn, StopBtn, Nextbtn, Prevbtn;
-	JList Playlist_List, MP_List;
-	SongList sl = new SongList();
-	ArrayList<Song> userSongsMostPlayed, userSongs;
-	ArrayList<Playlist> userPlaylists;
-	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
-	boolean songPaused;
 	JButton btnSearch;
 	JButton ProfilePic;
 	String profilePath;
@@ -127,10 +118,10 @@ public class HomeView extends JFrame {
 		SongDetails.setLayout(null);
 		
 
-		txtpnSongNameGenre = new JTextPane();
-		txtpnSongNameGenre.setBounds(0, 0, 191, 90);
-		SongDetails.add(txtpnSongNameGenre);
-		txtpnSongNameGenre.setText("Song Name:\r\nArtist:\r\nAlbum:\r\nGenre:\r\nYear:");
+//		txtpnSongNameGenre = new JTextPane();
+//		txtpnSongNameGenre.setBounds(0, 0, 191, 90);
+//		SongDetails.add(txtpnSongNameGenre);
+//		txtpnSongNameGenre.setText("Song Name:\r\nArtist:\r\nAlbum:\r\nGenre:\r\nYear:");
 
 		JLabel SongName = new JLabel("(Song Name)");
 		SongName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -171,9 +162,8 @@ public class HomeView extends JFrame {
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
-on Prevbtn = new JButton("");
-=======
-		 Prevbtn = new JButton("");
+		Prevbtn = new JButton("");
+		Prevbtn = new JButton("");
 		Prevbtn.addActionListener(new btn_prevSong());
 
 		Prevbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/back (2).png")));
@@ -183,7 +173,7 @@ on Prevbtn = new JButton("");
 		MainRectangle.add(Prevbtn);
 		
 
-		 Playbtn = new JButton("");
+		Playbtn = new JButton("");
 		Playbtn.addActionListener(new btn_Play());
 		Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
 		Playbtn.addMouseListener(new MouseAdapter() {
@@ -195,15 +185,15 @@ on Prevbtn = new JButton("");
 				evenClick = false;
 			}
 				else {
-					btnPlay.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
+					Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
 					evenClick = true;
 				}
 				}
 		});
-		btnPlay.setBounds(413, 15, 78, 70);
-		btnPlay.setBackground(new Color(30, 58, 42));
-		btnPlay.setBorder(null);
-		MainRectangle.add(btnPlay);
+		Playbtn.setBounds(413, 15, 78, 70);
+		Playbtn.setBackground(new Color(30, 58, 42));
+		Playbtn.setBorder(null);
+		MainRectangle.add(Playbtn);
 		
 		JButton Repeatbtn = new JButton("");
 		Repeatbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/repeat.png")));
@@ -582,6 +572,7 @@ on Prevbtn = new JButton("");
 			 DefaultListModel DLMAlbum = new DefaultListModel();
 			 DefaultListModel DLMYear = new DefaultListModel();
 			 DefaultListModel DLMFavorite = new DefaultListModel();
+			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 			 
 			 for(int x = 0; x < userSongs.size(); x++) {
 				 DLMTitle.addElement(userSongs.get(x).getSongName());
@@ -602,7 +593,7 @@ on Prevbtn = new JButton("");
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
 
 			 
-			 userPlaylist = generalModel.getInstance().gettingPlaylists(currentUser);
+			 userPlaylists = generalModel.getInstance().gettingPlaylists(currentUser);
 			 
 
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
@@ -616,15 +607,15 @@ on Prevbtn = new JButton("");
 			 DefaultListModel DLM2 = new DefaultListModel();
 			 
 
-			 for(int y = 0; y < userPlaylist.size(); y++)
-				 DLM2.addElement(userPlaylist.get(y).getPlaylistName());
+			 for(int y = 0; y < userPlaylists.size(); y++)
+				 DLM2.addElement(userPlaylists.get(y).getPlaylistName());
 
 
 			 HomeView.getInstance().Playlist_List.setModel(DLM2);
 			 //LibraryView.getInstance().Playlist_List.setModel(DLM2);
 			//==========================================================
 
-			 playlistListJList.setModel(DLM2);
+			 Playlist_List.setModel(DLM2);
 			 
 
 		 }
@@ -635,8 +626,7 @@ on Prevbtn = new JButton("");
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 
-			 CreatePlaylist cp = new CreatePlaylist();
-			 cp.setVisible(true);
+			 CreatePlaylist.getInstance().setVisible(true);
 			 
 			 
 		 }

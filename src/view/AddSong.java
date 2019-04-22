@@ -158,7 +158,7 @@ public class AddSong extends JFrame {
 			 
 			 int songid = songctr;
 			 String name = textFieldSongName.getText();
-			 int artistid = generalController.getInstance().getIDWithUsername(currentUser);
+			 //int artistid = generalController.getInstance().getIDWithUsername(currentUser);
 //			 int songID = 0;
 //			 String username = HomeView.getInstance().currentUser;
 //			 String songName = textFieldSongName.getText();

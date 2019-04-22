@@ -130,5 +130,6 @@ public class ArtistLoggingInView extends JFrame{
 	public void closingWindow() {
 		this.setVisible(false);
 	}
+	
 }
-=======
+

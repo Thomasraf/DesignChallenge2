@@ -50,7 +50,7 @@ public class LibraryView extends JFrame {
 	ArrayList<Playlist> userPlaylists;
 	boolean songChangedInLibrary, playSongInPlaylist, songChangedInMP;
 
-
+	private volatile static LibraryView instance = null;
 	public static LibraryView getInstance() {
         if (instance == null) {
         	instance = new LibraryView();
@@ -193,12 +193,12 @@ public class LibraryView extends JFrame {
 		contentPane.add(TopBar);
 		TopBar.setLayout(null);
 		
-		JButton button = new JButton("");
-		button.setBounds(10, 11, 39, 39);
-		button.setIcon(new ImageIcon(HomeView.class.getResource("/images2/expand-button.png")));
-		button.setBorder(null);
-		button.setBackground(new Color(30, 58, 42));
-		TopBar.add(button);
+		JButton btnLogout = new JButton("");
+		btnLogout.setBounds(10, 11, 39, 39);
+		btnLogout.setIcon(new ImageIcon(LibraryView.class.getResource("/images2/logout.png")));
+		btnLogout.setBorder(null);
+		btnLogout.setBackground(new Color(30, 58, 42));
+		TopBar.add(btnLogout);
 		
 
 		JTextField txtSearch = new JTextField();

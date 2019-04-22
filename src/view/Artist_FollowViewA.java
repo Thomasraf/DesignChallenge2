@@ -1,4 +1,3 @@
-
 package view;
 
 import java.awt.EventQueue;
@@ -22,51 +21,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 
-public class ArtistView extends JFrame {
+public class Artist_FollowViewA extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtSearch;
-	CreateAlbum createAlbumView;
 	boolean evenClick = false;
-	String currentUser;
-	
-	JButton Shufflebtn, Nextbtn, Prevbtn, AddAlbum, AddtoQueue,
-			RemoveAlbum, RemoveSongfromAlbum, AddPic_Album;
-	JPanel MainRectangle, SongDetails;
-	JLabel SongName, Artist, Album;
+	boolean evenClick2 = false;
+	private volatile static Artist_FollowViewA instance = null;
 	/**
 	 * Launch the application.
 	 */
-	
-private volatile static ArtistView modelInstance = null;
-	
-	public static ArtistView getInstance() {
-        if (modelInstance == null) {
-        	modelInstance = new ArtistView();
+	public static Artist_FollowViewA getInstance() {
+        if (instance == null) {
+        	instance = new Artist_FollowViewA();
         }
-		return modelInstance;
-	
+		return instance;
 	}
-	
-	public static void run()
-	{
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ArtistView frame = new ArtistView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
-	private ArtistView() {
-		createAlbumView = new CreateAlbum();
+	public Artist_FollowViewA() {
 		setBackground(new Color(254,254,250));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,19 +54,19 @@ private volatile static ArtistView modelInstance = null;
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		MainRectangle = new JPanel();
+		JPanel MainRectangle = new JPanel();
 		MainRectangle.setBackground(new Color(30,58,42));
-		MainRectangle.setBounds(110, 579, 1036, 92);
+		MainRectangle.setBounds(343, 568, 1036, 92);
 		contentPane.add(MainRectangle);
 		MainRectangle.setLayout(null);
 		
-		SongDetails = new JPanel();
+		JPanel SongDetails = new JPanel();
 		SongDetails.setBackground(new Color(30,58,42));
 		SongDetails.setBounds(0, 0, 147, 101);
 		MainRectangle.add(SongDetails);
 		SongDetails.setLayout(null);
 		
-		SongName = new JLabel("(Song Name)");
+		JLabel SongName = new JLabel("(Song Name)");
 		SongName.setHorizontalAlignment(SwingConstants.CENTER);
 		SongName.setForeground(new Color(255, 255, 255));
 		SongName.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -194,20 +169,12 @@ private volatile static ArtistView modelInstance = null;
 		contentPane.add(TopBar);
 		TopBar.setLayout(null);
 		
-		JButton btnLogout = new JButton("");
-		btnLogout.setBounds(10, 11, 39, 39);
-		btnLogout.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/logout.png")));
-		btnLogout.setBorder(null);
-		btnLogout.setBackground(new Color(30, 58, 42));
-		TopBar.add(btnLogout);
-		
-		txtSearch = new JTextField();
-		txtSearch.setForeground(SystemColor.desktop);
-		txtSearch.setText("Search");
-		txtSearch.setHorizontalAlignment(SwingConstants.LEFT);
-		txtSearch.setBounds(95, 11, 170, 39);
-		TopBar.add(txtSearch);
-		txtSearch.setColumns(10);
+		JButton button = new JButton("");
+		button.setBounds(10, 11, 39, 39);
+		button.setIcon(new ImageIcon(HomeView.class.getResource("/images2/expand-button.png")));
+		button.setBorder(null);
+		button.setBackground(new Color(30, 58, 42));
+		TopBar.add(button);
 		
 		JButton SearchBtn = new JButton("");
 		SearchBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/magnifying-glass (1).png")));
@@ -239,7 +206,7 @@ private volatile static ArtistView modelInstance = null;
 		TopBar.add(button_2);
 		
 		JButton Refreshbtn = new JButton("");
-		Refreshbtn.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/reload.png")));
+		Refreshbtn.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/reload.png")));
 		Refreshbtn.setBorder(null);
 		Refreshbtn.setBackground(new Color(30, 58, 42));
 		Refreshbtn.setBounds(1035, 11, 39, 39);
@@ -248,7 +215,7 @@ private volatile static ArtistView modelInstance = null;
 		JButton button_1 = new JButton("");
 		button_1.setToolTipText("Artist is Verified");
 		button_1.setEnabled(false);
-		button_1.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/correct (4).png")));
+		button_1.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/correct (4).png")));
 		button_1.setBorder(null);
 		button_1.setBackground(new Color(30,58,42));
 		button_1.setBounds(448, 22, 28, 28);
@@ -547,15 +514,15 @@ private volatile static ArtistView modelInstance = null;
 		ProfileName_Dashboard.setBounds(184, 11, 305, 60);
 		Dashboard.add(ProfileName_Dashboard);
 		
-		JButton FavePlaylists_Dashboard = new JButton("My Albums");
-		FavePlaylists_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
-		FavePlaylists_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		FavePlaylists_Dashboard.setBackground(new Color(254, 254, 250));
-		FavePlaylists_Dashboard.setBounds(10, 170, 206, 30);
-		Dashboard.add(FavePlaylists_Dashboard);
+		JButton Playlists_Dashboard = new JButton("Public Playlists");
+		Playlists_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlists_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlists_Dashboard.setBackground(new Color(254, 254, 250));
+		Playlists_Dashboard.setBounds(10, 170, 206, 30);
+		Dashboard.add(Playlists_Dashboard);
 		
 		JButton AddQueuebtn = new JButton("");
-		AddQueuebtn.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/star (1).png")));
+		AddQueuebtn.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/star (1).png")));
 		AddQueuebtn.setBorder(null);
 		AddQueuebtn.setBackground(new Color(254,254,250));
 		AddQueuebtn.setBounds(607, 11, 39, 39);
@@ -564,7 +531,7 @@ private volatile static ArtistView modelInstance = null;
 		Dashboard.add(AddQueuebtn);
 		
 		JButton FavePlaylistbtn = new JButton("");
-		FavePlaylistbtn.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/like.png")));
+		FavePlaylistbtn.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/like.png")));
 		FavePlaylistbtn.setBorder(null);
 		FavePlaylistbtn.setBackground(new Color(254, 254, 250));
 		FavePlaylistbtn.setBounds(656, 11, 39, 39);
@@ -573,15 +540,13 @@ private volatile static ArtistView modelInstance = null;
 		Dashboard.add(FavePlaylistbtn);
 		
 		JButton Add_SongtoAlbum = new JButton("");
-		Add_SongtoAlbum.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/add-song-interface-symbol.png")));
+		Add_SongtoAlbum.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/add-song-interface-symbol.png")));
 		Add_SongtoAlbum.setBorder(null);
 		Add_SongtoAlbum.setBackground(new Color(254, 254, 250));
 		Add_SongtoAlbum.setBounds(705, 11, 39, 39);
 		Add_SongtoAlbum.setBorder(null);
 		Add_SongtoAlbum.setToolTipText("Add Song to Album");
 		Dashboard.add(Add_SongtoAlbum);
-		
-//		JButton
 		
 		JButton LFollow_Dashboard = new JButton("Listeners I Follow");
 		LFollow_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
@@ -597,12 +562,12 @@ private volatile static ArtistView modelInstance = null;
 		AFollow_Dashboard.setBounds(580, 170, 164, 30);
 		Dashboard.add(AFollow_Dashboard);
 		
-		JButton myPlaylist_Dashboard = new JButton("My Playlists");
-		myPlaylist_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
-		myPlaylist_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		myPlaylist_Dashboard.setBackground(new Color(254, 254, 250));
-		myPlaylist_Dashboard.setBounds(213, 170, 206, 30);
-		Dashboard.add(myPlaylist_Dashboard);
+		JButton Albums_Dashboard = new JButton("Artist's Albums");
+		Albums_Dashboard.setHorizontalAlignment(SwingConstants.LEFT);
+		Albums_Dashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Albums_Dashboard.setBackground(new Color(254, 254, 250));
+		Albums_Dashboard.setBounds(213, 170, 206, 30);
+		Dashboard.add(Albums_Dashboard);
 		
 		JList LFollow1 = new JList();
 		LFollow1.setBackground(new Color(254,254,250));
@@ -694,76 +659,59 @@ private volatile static ArtistView modelInstance = null;
 		AFollow9.setBounds(580, 444, 164, 30);
 		Dashboard.add(AFollow9);
 		
-		AddPic_Album = new JButton("");
-		AddPic_Album.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/picture (1).png")));
+		JButton AddPic_Album = new JButton("");
+		AddPic_Album.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/picture (1).png")));
 		AddPic_Album.setToolTipText("Add Album Art");
 		AddPic_Album.setBorder(null);
 		AddPic_Album.setBackground(new Color(254, 254, 250));
 		AddPic_Album.setBounds(558, 11, 39, 39);
 		Dashboard.add(AddPic_Album);
 		
-		RemoveSongfromAlbum = new JButton("");
-		RemoveSongfromAlbum.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/prohibition (1).png")));
+		JButton RemoveSongfromAlbum = new JButton("");
+		RemoveSongfromAlbum.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/prohibition (1).png")));
 		RemoveSongfromAlbum.setToolTipText("Remove Song from Album");
 		RemoveSongfromAlbum.setBorder(null);
 		RemoveSongfromAlbum.setBackground(new Color(254, 254, 250));
 		RemoveSongfromAlbum.setBounds(705, 61, 39, 39);
 		Dashboard.add(RemoveSongfromAlbum);
 		
-		RemoveAlbum = new JButton("");
-		RemoveAlbum.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/delete.png")));
+		JButton RemoveAlbum = new JButton("");
+		RemoveAlbum.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/delete.png")));
 		RemoveAlbum.setToolTipText("Delete Album");
 		RemoveAlbum.setBorder(null);
 		RemoveAlbum.setBackground(new Color(254, 254, 250));
 		RemoveAlbum.setBounds(656, 61, 39, 39);
 		Dashboard.add(RemoveAlbum);
 		
-		AddtoQueue = new JButton("");
-		AddtoQueue.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/add-to-queue-button (1).png")));
+		JButton AddtoQueue = new JButton("");
+		AddtoQueue.setIcon(new ImageIcon(Artist_FollowViewA.class.getResource("/images2/add-to-queue-button (1).png")));
 		AddtoQueue.setToolTipText("Add to Queue");
 		AddtoQueue.setBorder(null);
 		AddtoQueue.setBackground(new Color(254, 254, 250));
 		AddtoQueue.setBounds(607, 61, 39, 39);
 		Dashboard.add(AddtoQueue);
 		
-		AddAlbum = new JButton("");
-		AddAlbum.setIcon(new ImageIcon(ArtistView.class.getResource("/images2/add_album_icon.png")));
-		AddAlbum.setToolTipText("Create a new Album");
-		AddAlbum.setBorder(null);
-		AddAlbum.setBackground(new Color(254, 254, 250));
-		AddAlbum.setBounds(560, 61, 39, 39);
-		Dashboard.add(AddAlbum);
+		JButton btnFollow = new JButton("Follow");
+		btnFollow.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(evenClick2) {
+				btnFollow.setText("FOLLOW");
+				evenClick = false;
+			}
+				else {
+					btnFollow.setText("UNFOLLOW");
+					evenClick2 = true;
+				}
+				}
+		});
+		btnFollow.setForeground(Color.WHITE);
+		btnFollow.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnFollow.setBackground(Color.BLACK);
+		btnFollow.setBounds(603, 126, 136, 35);
+		Dashboard.add(btnFollow);
 		
-		AddAlbum.addActionListener(new addAlbumbtn());
-
-	}
-	
-	class addAlbumbtn implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			createAlbumView.setVisible(true);
-		}
 		
-	}
-	
-	class playlistsbtn implements ActionListener
-	{
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
-	
-	public void setUsername(String username)
-	{
-		currentUser = username;
-		System.out.println(currentUser + " from artist view");
 	}
 }
-

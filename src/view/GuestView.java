@@ -339,7 +339,7 @@ public class GuestView extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 
-			 CreatePlaylist cp = new CreatePlaylist();
+			 CreatePlaylist cp = CreatePlaylist.getInstance();
 			 cp.setVisible(true);
 			 
 			 

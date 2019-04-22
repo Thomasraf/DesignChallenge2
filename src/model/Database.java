@@ -7,6 +7,7 @@ import controller.PlaylistBuilder;
 import controller.SongBuilder;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilterOutputStream;
 import java.io.InputStream;
@@ -139,6 +140,25 @@ public class Database{
 		
 	}
 	
+//	public void newClassTemplate()
+//	{
+//		Connection cnt = getConnection(); 
+//		boolean loggedIn = false;
+//		
+//		String query = "";
+//		
+//		try {
+//			//create prepared statement
+//			PreparedStatement ps = cnt.prepareStatement(query);
+//			
+//			//get result and store in result set
+//			ResultSet rs = ps.executeQuery();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			
+//		}
+//	}
+	
 	public boolean addingAccount(account newAccount){ //Signing Up
 		String x,y;
 		boolean unique = false;
@@ -219,45 +239,107 @@ public class Database{
 		
 	}
 	
-//	public boolean loggingArtistAccount(account registeredAccount) { //Logging In
-//		Connection cnt = getConnection(); 
-//		boolean loggedIn = false;
-//		
-//		String query = "SELECT * FROM swdespa.artist WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
-//		
-//		try {
-//			//create prepared statement
-//			PreparedStatement ps = cnt.prepareStatement(query);
-//			
-//			//get result and store in result set
-//			ResultSet rs = ps.executeQuery();
-//			
-//			
-//			if(rs.next()) {
-//				loggedIn = true;
-//			}
-//			else {
-//				loggedIn = false;
-//				
-//			}
-//			
-//			//close all the resources
-//			ps.close();
-//			rs.close();
-//			cnt.close();
-//			
-//			
-//		
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			
-//		}
-//		return loggedIn;
-//		
-//	}
+
+	public int getIDforArtist(String username)
+	{
+		int result = 0;
+		Connection cnt = getConnection();
+		String query = "SELECT artistid FROM udc.artist WHERE username = '" + username + "'";
+		try {
+			//create prepared statement
+			PreparedStatement ps = cnt.prepareStatement(query);
+			
+			//get result and store in result set
+			ResultSet rs = ps.executeQuery();
+			
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			//close all the resources
+			ps.close();
+			rs.close();
+			cnt.close();
+			
+			
+		
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		return result;
+		
+	}
+	
+	public boolean loggingArtistAccount(account registeredAccount) { //Logging In
+		Connection cnt = getConnection(); 
+		boolean loggedIn = false;
+		
+		String query = "SELECT * FROM udc.artist WHERE username = ('"+registeredAccount.getUsername()+"') AND password = ('"+registeredAccount.getPassword()+"');";
+		
+		try {
+			//create prepared statement
+			PreparedStatement ps = cnt.prepareStatement(query);
+			
+			//get result and store in result set
+			ResultSet rs = ps.executeQuery();
+			
+			
+			if(rs.next()) {
+				loggedIn = true;
+			}
+			else {
+				loggedIn = false;
+				
+			}
+			
+			//close all the resources
+			ps.close();
+			rs.close();
+			cnt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		return loggedIn;
+		
+	}
+
+	public void addArtistPlaylist(ArtistPlaylist pl)
+	{
+		Connection cnt = getConnection(); 
+		boolean loggedIn = false;
+		
+		String query = "INSERT INTO artist_playlist (playlistid, name, userid, description, picture) VALUES (?,?,?,?,?)";
+		
+		try {
+			//create prepared statement
+			PreparedStatement ps = cnt.prepareStatement(query);
+			File image = new File(pl.getPath());
+			FileInputStream fis = new FileInputStream(image);
+			ps.setInt(1, pl.getID());
+			ps.setString(2, pl.getName());
+			ps.setInt(3, pl.getUserID());
+			ps.setString(4, pl.getDescription());
+			ps.setBinaryStream(5, (InputStream)fis);
+			
+			//get result and store in result set
+			ps.execute();
+			System.out.println("Successfully added artist playlist!");
+			
+		} catch (SQLException | FileNotFoundException e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
+	public void writeSongBLOB(int SongID, String path) {
 
 	public void writeSongBLOB(int SongID, String path,String songName) {
+
 			
 			Connection cnt = getConnection();
 			FileInputStream input = null;
@@ -356,6 +438,8 @@ public class Database{
 		} 
 		
 	}
+	
+	
 	
 	public void readBLOB(int SongID) {
 		Connection cnt = getConnection();

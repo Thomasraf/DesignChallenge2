@@ -20,12 +20,15 @@ public class generalModel {
 	
 	}
 	
+
 	public void getSongData(Song s,String songName)
+
 	{
 		int SongID = Database.getInstance().addingSong(s);
 		Database.getInstance().writeSongBLOB(SongID, s.getPath(),songName);
 	}
 	
+
 	
 	public void getPlaylistData(Playlist p)
 	{
@@ -70,6 +73,11 @@ public class generalModel {
 	public void getUserPlaylistData(Playlist p)
 	{
 		Database.getInstance().addingUserPlaylist(p);
+	}
+	
+	public void addArtistPlaylist(ArtistPlaylist ap)
+	{
+		Database.getInstance().addArtistPlaylist(ap);
 	}
 	
 	public ArrayList<Song> gettingSongs(String t) {
@@ -162,12 +170,18 @@ public class generalModel {
 		return Database.getInstance().gettingUserPlaylist(username);
 	}
 	
+
+	
+	public ArrayList<Song> getSongStuff() {
+		return Database.getInstance().gettingSongs();
+
 	public ArrayList<Song> getSortByTitle(String username) {
 		return Database.getInstance().sortByTitle(username);
 	}
 	
 	public ArrayList<Song> getSortByArtist(String username) {
 		return Database.getInstance().sortByArtist(username);
+
 	}
 	
 	//=========================================================================== Everything Editing

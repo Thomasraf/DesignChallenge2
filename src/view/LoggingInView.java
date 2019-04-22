@@ -100,7 +100,7 @@ public class LoggingInView extends JFrame{
 			logIn = new account(registeredUsername,registeredPassword);
 			generalController.getInstance().gettingRegisteredAccountData(registeredUsername, registeredPassword);
 			RegisteredUserView.getInstance().setUserName(registeredUsername);
-			HomeView.getInstance().setUserName(registeredUsername);
+//			HomeView.getInstance().setUserName(registeredUsername);
 			closingWindow();
 			SelectAccount.getInstance().setVisible(false);
 		}

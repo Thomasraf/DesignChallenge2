@@ -1,5 +1,6 @@
 package controller;
 import model.generalModel;
+import model.ArtistPlaylist;
 import model.Playlist;
 import model.Song;
 import model.account;
@@ -34,5 +35,17 @@ public class generalController {
 	{
 		Playlist p = new Playlist(playlistName, username, favorite,privacy,path,description);
 		generalModel.getInstance().getUserPlaylistData(p);
+	}
+	
+	public void addArtistPlaylist(ArtistPlaylist ap)
+	{
+		generalModel.getInstance().addArtistPlaylist(ap);
+	}
+	
+	public int getIDWithUsername(String username)
+	{
+		int result = generalModel.getInstance().getIDForArtist(username);
+		System.out.println(result);
+		return result;
 	}
 }

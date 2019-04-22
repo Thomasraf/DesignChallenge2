@@ -1,4 +1,3 @@
-
 package view;
 
 import java.awt.EventQueue;
@@ -24,7 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 
-public class HomeViewA extends JFrame {
+public class AlbumView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtSearch;
@@ -33,8 +32,8 @@ public class HomeViewA extends JFrame {
 	private JPanel MainRectangle, SongDetails,  TopBar, MusicPanel, RecentlyPlayedPanel, Dashboard;
 	JList Playlist_List, RecentlyPlayedList, RP_List, MP_List;
 	JLabel 	SongName, Artist, Album, MusicLbl, label, MostPlayedSongs,
-			PlaylistArt_1, PlaylistArt_2, PlaylistArt_3, PlaylistArt_4,
-			PlaylistArt_5, PlaylistArt_6, lblMadeForYou;
+			AlbumArt_1, AlbumArt_2, AlbumArt_3, AlbumArt_4,
+			AlbumArt_5, AlbumArt_6, lblMadeForYou;
 	JButton Shufflebtn, Nextbtn, Prevbtn, Playbtn, Repeatbtn, Queuebtn, 
 			StopBtn, Volumebtn, NewAlbumPic, button, SearchBtn, ProfilePic, 
 			Profile, Notificationbtn, Refreshbtn, verified, btnNewButton,
@@ -47,17 +46,11 @@ public class HomeViewA extends JFrame {
 			AlbumName_6;
 	
 	ArtistView profileView = ArtistView.getInstance();
-	LibraryViewA libraryView = LibraryViewA.getInstance();
-	CreateArtistPlaylist newPlaylistView = CreateArtistPlaylist.getInstance();
-	AddSong addSongView = AddSong.getInstance();
-	NotificationViewA notifs = NotificationViewA.getInstance();
-	AlbumView albums = AlbumView.getInstance();
 
 	/**
 	 * Launch the application.
 	 */
 //	public static void main(String[] args) {
-
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
@@ -69,36 +62,23 @@ public class HomeViewA extends JFrame {
 //			}
 //		});
 //	}
-
 	
-private volatile static HomeViewA modelInstance = null;
+private volatile static AlbumView modelInstance = null;
 	
-	public static HomeViewA getInstance() {
+	public static AlbumView getInstance() {
         if (modelInstance == null) {
-        	modelInstance = new HomeViewA();
+        	modelInstance = new AlbumView();
         }
 		return modelInstance;
 	
 	}
 
-//	public void run()
-//	{
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					HomeViewA frame = new HomeViewA();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	
 	
 	/**
 	 * Create the frame.
 	 */
-	private HomeViewA() {
+	private AlbumView() {
 		setBackground(new Color(254,254,250));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -145,37 +125,37 @@ private volatile static HomeViewA modelInstance = null;
 		SongDetails.add(Album);
 		
 		Shufflebtn = new JButton("");
-		Shufflebtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/shuffle (4).png")));
+		Shufflebtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/shuffle (4).png")));
 		Shufflebtn.setBackground(new Color(30,58,42));
 		Shufflebtn.setBounds(290, 31, 39, 39);
 		Shufflebtn.setBorder(null);
 		MainRectangle.add(Shufflebtn);
 		
 		Nextbtn = new JButton("");
-		Nextbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/next (2).png")));
+		Nextbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/next (2).png")));
 		Nextbtn.setBackground(new Color(30, 58, 42));
 		Nextbtn.setBounds(512, 31, 39, 39);
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
 		Prevbtn = new JButton("");
-		Prevbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/back (2).png")));
+		Prevbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/back (2).png")));
 		Prevbtn.setBackground(new Color(30, 58, 42));
 		Prevbtn.setBounds(355, 31, 39, 39);
 		Prevbtn.setBorder(null);
 		MainRectangle.add(Prevbtn);
 		
 		Playbtn = new JButton("");
-		Playbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/play-button (2).png")));
+		Playbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/play-button (2).png")));
 		Playbtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(evenClick) {
-				Playbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/play-button (2).png")));
+				Playbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/play-button (2).png")));
 				evenClick = false;
 			}
 				else {
-					Playbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/rounded-pause-button.png")));
+					Playbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/rounded-pause-button.png")));
 					evenClick = true;
 				}
 				}
@@ -186,28 +166,28 @@ private volatile static HomeViewA modelInstance = null;
 		MainRectangle.add(Playbtn);
 		
 		Repeatbtn = new JButton("");
-		Repeatbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/repeat.png")));
+		Repeatbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/repeat.png")));
 		Repeatbtn.setBackground(new Color(30, 58, 42));
 		Repeatbtn.setBounds(577, 31, 39, 39);
 		Repeatbtn.setBorder(null);
 		MainRectangle.add(Repeatbtn);
 		
 		Queuebtn = new JButton("");
-		Queuebtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/list (1).png")));
+		Queuebtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/list (1).png")));
 		Queuebtn.setBorder(null);
 		Queuebtn.setBackground(new Color(30, 58, 42));
 		Queuebtn.setBounds(769, 31, 39, 39);
 		MainRectangle.add(Queuebtn);
 		
 		StopBtn = new JButton("");
-		StopBtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/stop (3).png")));
+		StopBtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/stop (3).png")));
 		StopBtn.setBorder(null);
 		StopBtn.setBackground(new Color(30, 58, 42));
 		StopBtn.setBounds(818, 31, 39, 39);
 		MainRectangle.add(StopBtn);
 		
 		Volumebtn = new JButton("");
-		Volumebtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/speaker (2).png")));
+		Volumebtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/speaker (2).png")));
 		Volumebtn.setBorder(null);
 		Volumebtn.setBackground(new Color(30, 58, 42));
 		Volumebtn.setBounds(867, 31, 39, 39);
@@ -215,7 +195,7 @@ private volatile static HomeViewA modelInstance = null;
 		
 		
 		NewAlbumPic = new JButton("");
-		NewAlbumPic.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/photo.png")));
+		NewAlbumPic.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/photo.png")));
 		NewAlbumPic.setBounds(0, 579, 119, 92);
 		contentPane.add(NewAlbumPic);
 		NewAlbumPic.setBackground(new Color(170, 187, 204));
@@ -228,7 +208,7 @@ private volatile static HomeViewA modelInstance = null;
 		
 		button = new JButton("");
 		button.setBounds(10, 11, 39, 39);
-		button.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/expand-button.png")));
+		button.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/expand-button.png")));
 		button.setBorder(null);
 		button.setBackground(new Color(30, 58, 42));
 		TopBar.add(button);
@@ -242,7 +222,7 @@ private volatile static HomeViewA modelInstance = null;
 		txtSearch.setColumns(10);
 		
 		SearchBtn = new JButton("");
-		SearchBtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/magnifying-glass (1).png")));
+		SearchBtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/magnifying-glass (1).png")));
 		SearchBtn.setBorder(null);
 		SearchBtn.setBackground(new Color(30,58,42));
 		SearchBtn.setBounds(55, 11, 39, 39);
@@ -250,7 +230,7 @@ private volatile static HomeViewA modelInstance = null;
 		TopBar.add(SearchBtn);
 		
 		ProfilePic = new JButton("");
-		ProfilePic.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/user-avatar-main-picture.png")));
+		ProfilePic.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/user-avatar-main-picture.png")));
 		ProfilePic.setBounds(478, 10, 40, 40);
 		TopBar.add(ProfilePic);
 		ProfilePic.setBackground(new Color(170, 187, 204));
@@ -264,14 +244,14 @@ private volatile static HomeViewA modelInstance = null;
 		TopBar.add(Profile);
 		
 		Notificationbtn = new JButton("");
-		Notificationbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/notifications-button.png")));
+		Notificationbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/notifications-button.png")));
 		Notificationbtn.setBorder(null);
 		Notificationbtn.setBackground(new Color(30, 58, 42));
 		Notificationbtn.setBounds(1084, 11, 39, 39);
 		TopBar.add(Notificationbtn);
 		
 		Refreshbtn = new JButton("");
-		Refreshbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/reload.png")));
+		Refreshbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/reload.png")));
 		Refreshbtn.setBorder(null);
 		Refreshbtn.setBackground(new Color(30, 58, 42));
 		Refreshbtn.setBounds(1035, 11, 39, 39);
@@ -294,7 +274,7 @@ private volatile static HomeViewA modelInstance = null;
 		btnNewButton = new JButton("New Playlist");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/add-circular-outlined-button (1).png")));
+		btnNewButton.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		btnNewButton.setBounds(0, 429, 186, 88);
 		MusicPanel.add(btnNewButton);
 		
@@ -548,7 +528,7 @@ private volatile static HomeViewA modelInstance = null;
 		RecentlyPlayedPanel.add(MPSONG_4);
 		
 		AddSongbtn = new JButton("Add Song");
-		AddSongbtn.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/add-circular-outlined-button (1).png")));
+		AddSongbtn.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		AddSongbtn.setHorizontalAlignment(SwingConstants.LEFT);
 		AddSongbtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		AddSongbtn.setBounds(0, 426, 186, 88);
@@ -580,49 +560,49 @@ private volatile static HomeViewA modelInstance = null;
 		contentPane.add(Dashboard);
 		Dashboard.setLayout(null);
 		
-		PlaylistArt_1 = new JLabel("ALBUM ART");
-		PlaylistArt_1.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/KDRLK.png")));
-		PlaylistArt_1.setBackground(new Color(254,254,250));
-		PlaylistArt_1.setHorizontalAlignment(SwingConstants.CENTER);
-		PlaylistArt_1.setBounds(51, 27, 164, 164);
-		Dashboard.add(PlaylistArt_1);
+		AlbumArt_1 = new JLabel("ALBUM ART");
+		AlbumArt_1.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/KDRLK.png")));
+		AlbumArt_1.setBackground(new Color(254,254,250));
+		AlbumArt_1.setHorizontalAlignment(SwingConstants.CENTER);
+		AlbumArt_1.setBounds(51, 27, 164, 164);
+		Dashboard.add(AlbumArt_1);
 		
-		PlaylistArt_2 = new JLabel("ALBUM ART");
-		PlaylistArt_2.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/khalid.png")));
-		PlaylistArt_2.setHorizontalAlignment(SwingConstants.CENTER);
-		PlaylistArt_2.setBackground(new Color(254, 254, 250));
-		PlaylistArt_2.setBounds(285, 27, 164, 164);
-		Dashboard.add(PlaylistArt_2);
+		AlbumArt_2 = new JLabel("ALBUM ART");
+		AlbumArt_2.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/khalid.png")));
+		AlbumArt_2.setHorizontalAlignment(SwingConstants.CENTER);
+		AlbumArt_2.setBackground(new Color(254, 254, 250));
+		AlbumArt_2.setBounds(285, 27, 164, 164);
+		Dashboard.add(AlbumArt_2);
 		
-		PlaylistArt_3 = new JLabel("ALBUM ART");
-		PlaylistArt_3.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/Africa.png")));
-		PlaylistArt_3.setHorizontalAlignment(SwingConstants.CENTER);
-		PlaylistArt_3.setBackground(new Color(254, 254, 250));
-		PlaylistArt_3.setBounds(530, 27, 164, 164);
-		Dashboard.add(PlaylistArt_3);
+		AlbumArt_3 = new JLabel("ALBUM ART");
+		AlbumArt_3.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/Africa.png")));
+		AlbumArt_3.setHorizontalAlignment(SwingConstants.CENTER);
+		AlbumArt_3.setBackground(new Color(254, 254, 250));
+		AlbumArt_3.setBounds(530, 27, 164, 164);
+		Dashboard.add(AlbumArt_3);
 		
-		PlaylistArt_4 = new JLabel("ALBUM ART");
-		PlaylistArt_4.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/images.png")));
-		PlaylistArt_4.setHorizontalAlignment(SwingConstants.CENTER);
-		PlaylistArt_4.setBackground(new Color(254, 254, 250));
-		PlaylistArt_4.setBounds(51, 242, 164, 164);
-		Dashboard.add(PlaylistArt_4);
+		AlbumArt_4 = new JLabel("ALBUM ART");
+		AlbumArt_4.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/images.png")));
+		AlbumArt_4.setHorizontalAlignment(SwingConstants.CENTER);
+		AlbumArt_4.setBackground(new Color(254, 254, 250));
+		AlbumArt_4.setBounds(51, 242, 164, 164);
+		Dashboard.add(AlbumArt_4);
 		
-		PlaylistArt_5 = new JLabel("ALBUM ART");
-		PlaylistArt_5.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/brownbag.png")));
-		PlaylistArt_5.setHorizontalAlignment(SwingConstants.CENTER);
-		PlaylistArt_5.setBackground(new Color(254, 254, 250));
-		PlaylistArt_5.setBounds(285, 242, 164, 164);
-		Dashboard.add(PlaylistArt_5);
+		AlbumArt_5 = new JLabel("ALBUM ART");
+		AlbumArt_5.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/brownbag.png")));
+		AlbumArt_5.setHorizontalAlignment(SwingConstants.CENTER);
+		AlbumArt_5.setBackground(new Color(254, 254, 250));
+		AlbumArt_5.setBounds(285, 242, 164, 164);
+		Dashboard.add(AlbumArt_5);
 		
-		PlaylistArt_6 = new JLabel("ALBUM ART");
-		PlaylistArt_6.setIcon(new ImageIcon(HomeViewA.class.getResource("/images2/yourname.png")));
-		PlaylistArt_6.setHorizontalAlignment(SwingConstants.CENTER);
-		PlaylistArt_6.setBackground(new Color(254, 254, 250));
-		PlaylistArt_6.setBounds(530, 242, 164, 164);
-		Dashboard.add(PlaylistArt_6);
+		AlbumArt_6 = new JLabel("ALBUM ART");
+		AlbumArt_6.setIcon(new ImageIcon(AlbumView.class.getResource("/images2/yourname.png")));
+		AlbumArt_6.setHorizontalAlignment(SwingConstants.CENTER);
+		AlbumArt_6.setBackground(new Color(254, 254, 250));
+		AlbumArt_6.setBounds(530, 242, 164, 164);
+		Dashboard.add(AlbumArt_6);
 		
-		AlbumName_1 = new JButton("Dec my Ave");
+		AlbumName_1 = new JButton("Album Name");
 		AlbumName_1.setHorizontalAlignment(SwingConstants.LEFT);
 		AlbumName_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		AlbumName_1.setBackground(new Color(254, 254, 250));
@@ -630,7 +610,7 @@ private volatile static HomeViewA modelInstance = null;
 		AlbumName_1.setBorder(null);
 		Dashboard.add(AlbumName_1);
 		
-		AlbumName_2 = new JButton("Khalid Beats ");
+		AlbumName_2 = new JButton("Album Name");
 		AlbumName_2.setHorizontalAlignment(SwingConstants.LEFT);
 		AlbumName_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		AlbumName_2.setBackground(new Color(254, 254, 250));
@@ -638,7 +618,7 @@ private volatile static HomeViewA modelInstance = null;
 		AlbumName_2.setBorder(null);
 		Dashboard.add(AlbumName_2);
 		
-		AlbumName_3 = new JButton("Toto by Africa");
+		AlbumName_3 = new JButton("Album Name");
 		AlbumName_3.setHorizontalAlignment(SwingConstants.LEFT);
 		AlbumName_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		AlbumName_3.setBackground(new Color(254, 254, 250));
@@ -646,7 +626,7 @@ private volatile static HomeViewA modelInstance = null;
 		AlbumName_3.setBorder(null);
 		Dashboard.add(AlbumName_3);
 		
-		AlbumName_4 = new JButton("Old People Music - 80's");
+		AlbumName_4 = new JButton("Album Name");
 		AlbumName_4.setHorizontalAlignment(SwingConstants.LEFT);
 		AlbumName_4.setFont(new Font("Tahoma", Font.BOLD, 12));
 		AlbumName_4.setBackground(new Color(254, 254, 250));
@@ -654,7 +634,7 @@ private volatile static HomeViewA modelInstance = null;
 		AlbumName_4.setBorder(null);
 		Dashboard.add(AlbumName_4);
 		
-		AlbumName_5 = new JButton("Brownbag Music");
+		AlbumName_5 = new JButton("Album Name");
 		AlbumName_5.setHorizontalAlignment(SwingConstants.LEFT);
 		AlbumName_5.setFont(new Font("Tahoma", Font.BOLD, 12));
 		AlbumName_5.setBackground(new Color(254, 254, 250));
@@ -662,7 +642,7 @@ private volatile static HomeViewA modelInstance = null;
 		AlbumName_5.setBorder(null);
 		Dashboard.add(AlbumName_5);
 		
-		AlbumName_6 = new JButton("Your Name. (Original Motion Picture Soundtrack)");
+		AlbumName_6 = new JButton("Album Name");
 		AlbumName_6.setHorizontalAlignment(SwingConstants.LEFT);
 		AlbumName_6.setFont(new Font("Tahoma", Font.BOLD, 12));
 		AlbumName_6.setBackground(new Color(254, 254, 250));
@@ -670,18 +650,13 @@ private volatile static HomeViewA modelInstance = null;
 		AlbumName_6.setBorder(null);
 		Dashboard.add(AlbumName_6);
 		
-		lblMadeForYou = new JLabel("Playlists you might like");
+		lblMadeForYou = new JLabel("Your Albums");
 		lblMadeForYou.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblMadeForYou.setBounds(0, 0, 186, 23);
 		Dashboard.add(lblMadeForYou);
 		
 		ProfilePic.addActionListener(new btnProfile());
 		Profile.addActionListener(new btnProfile());
-		Library.addActionListener(new btnLibrary());
-		btnNewButton.addActionListener(new btnNewPlaylist());
-		AddSongbtn.addActionListener(new btnAddSong());
-		Notificationbtn.addActionListener(new btnNotifs());
-		Albums_Music.addActionListener(new btnAlbum());
 		
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
@@ -716,72 +691,13 @@ private volatile static HomeViewA modelInstance = null;
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			profileView.getInstance().run();
-			profileView.getInstance().setUsername(currentUser);
-//			profileView.setUsername(currentUser);
+			profileView.setUsername(currentUser);
 			closeWindow();
 			
 		}
 		
 	}
 	
-	class btnLibrary implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			libraryView.getInstance().setVisible(true);
-//			libraryView.getInstance()
-			setVisible(false);
-		}
-		
-	}
-	
-	class btnNewPlaylist implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			newPlaylistView.getInstance().setVisible(true);
-		}
-		
-	}
-	
-	class btnAddSong implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			addSongView.setCurrentUser(currentUser);
-			addSongView.getInstance().setVisible(true);
-		}
-		
-	}
-	
-	class btnAlbum implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			albums.setVisible(true);
-			setVisible(false);
-		}
-		
-	}
-	
-	class btnNotifs implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			notifs.getInstance().setVisible(true);
-		}
-		
-	}
 	public void closeWindow()
 	{
 		this.setVisible(false);
@@ -791,7 +707,5 @@ private volatile static HomeViewA modelInstance = null;
 	{
 		this.setVisible(true);
 	}
-	
-
 }
 

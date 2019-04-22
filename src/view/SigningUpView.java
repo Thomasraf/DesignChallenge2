@@ -158,6 +158,7 @@ public class SigningUpView extends JFrame{
 					JOptionPane.showMessageDialog(null, "Username already exisits! Please Try Again!");
 				}
 
+
 				
 				HomeView.getInstance().setUserName(username);
 			//	HomeView.getInstance().setDisplayPicture(path);

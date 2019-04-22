@@ -222,7 +222,7 @@ public class MusicPlaer extends JFrame {
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
-			 AddSong as = new AddSong();
+			 AddSong as = AddSong.getInstance();
 			 as.setVisible(true);
 			 
 		 }
@@ -259,7 +259,7 @@ public class MusicPlaer extends JFrame {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 
-			 CreatePlaylist cp = new CreatePlaylist();
+			 CreatePlaylist cp = CreatePlaylist.getInstance();
 			 cp.setVisible(true);
 			 
 			 

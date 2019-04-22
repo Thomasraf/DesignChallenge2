@@ -5,13 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import controller.RecentlyPlayedBuilder;
 import controller.SongBuilder;
 import jaco.mp3.player.MP3Player;
 import model.Playlist;
+
+import model.PlaylistList;
+
 
 import model.RecentlyPlayed;
 import model.RecentlyPlayedList;
@@ -35,12 +36,15 @@ import java.util.ArrayList;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 
 public class HomeView extends JFrame {
+
 
 	private volatile static HomeView instance = null;
 	MP3Player mp3 = new MP3Player(new File("currentSong.mp3"));
@@ -74,6 +78,7 @@ public class HomeView extends JFrame {
 	 * Launch the application.
 	 */
 
+
 	
 	public static HomeView getInstance() {
         if (instance == null) {
@@ -81,6 +86,7 @@ public class HomeView extends JFrame {
         }
 		return instance;
 	}
+
 
 	public void setSong(String path) {
 		mp3.stop();
@@ -90,6 +96,7 @@ public class HomeView extends JFrame {
 	public void refreshSongs(SongList sl) {
 		this.sl = sl;
 	}
+
 	
 	/**
 	 * Create the frame.
@@ -109,16 +116,22 @@ public class HomeView extends JFrame {
 		
 		JPanel MainRectangle = new JPanel();
 		MainRectangle.setBackground(new Color(30,58,42));
-		MainRectangle.setBounds(110, 579, 1036, 92);
+		MainRectangle.setBounds(119, 579, 1027, 92);
 		contentPane.add(MainRectangle);
 		MainRectangle.setLayout(null);
 		
 		JPanel SongDetails = new JPanel();
 		SongDetails.setBackground(new Color(30,58,42));
-		SongDetails.setBounds(0, 0, 147, 101);
+		SongDetails.setBounds(0, 0, 191, 101);
 		MainRectangle.add(SongDetails);
 		SongDetails.setLayout(null);
 		
+
+		txtpnSongNameGenre = new JTextPane();
+		txtpnSongNameGenre.setBounds(0, 0, 191, 90);
+		SongDetails.add(txtpnSongNameGenre);
+		txtpnSongNameGenre.setText("Song Name:\r\nArtist:\r\nAlbum:\r\nGenre:\r\nYear:");
+
 		JLabel SongName = new JLabel("(Song Name)");
 		SongName.setHorizontalAlignment(SwingConstants.CENTER);
 		SongName.setForeground(new Color(255, 255, 255));
@@ -139,6 +152,7 @@ public class HomeView extends JFrame {
 		Album.setFont(new Font("Calibri", Font.PLAIN, 12));
 		Album.setBounds(0, 62, 147, 28);
 		SongDetails.add(Album);
+
 		
 		JButton Shufflebtn = new JButton("");
 		Shufflebtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/shuffle (4).png")));
@@ -147,22 +161,28 @@ public class HomeView extends JFrame {
 		Shufflebtn.setBorder(null);
 		MainRectangle.add(Shufflebtn);
 		
+
 		 Nextbtn = new JButton("");
 		Nextbtn.addActionListener(new btn_nextSong());
+
 		Nextbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/next (2).png")));
 		Nextbtn.setBackground(new Color(30, 58, 42));
 		Nextbtn.setBounds(512, 31, 39, 39);
 		Nextbtn.setBorder(null);
 		MainRectangle.add(Nextbtn);
 		
+on Prevbtn = new JButton("");
+=======
 		 Prevbtn = new JButton("");
 		Prevbtn.addActionListener(new btn_prevSong());
+
 		Prevbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/back (2).png")));
 		Prevbtn.setBackground(new Color(30, 58, 42));
 		Prevbtn.setBounds(355, 31, 39, 39);
 		Prevbtn.setBorder(null);
 		MainRectangle.add(Prevbtn);
 		
+
 		 Playbtn = new JButton("");
 		Playbtn.addActionListener(new btn_Play());
 		Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
@@ -171,18 +191,19 @@ public class HomeView extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				if(evenClick) {
 				Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/play-button (2).png")));
+
 				evenClick = false;
 			}
 				else {
-					Playbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
+					btnPlay.setIcon(new ImageIcon(HomeView.class.getResource("/images2/rounded-pause-button.png")));
 					evenClick = true;
 				}
 				}
 		});
-		Playbtn.setBounds(413, 15, 78, 70);
-		Playbtn.setBackground(new Color(30, 58, 42));
-		Playbtn.setBorder(null);
-		MainRectangle.add(Playbtn);
+		btnPlay.setBounds(413, 15, 78, 70);
+		btnPlay.setBackground(new Color(30, 58, 42));
+		btnPlay.setBorder(null);
+		MainRectangle.add(btnPlay);
 		
 		JButton Repeatbtn = new JButton("");
 		Repeatbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/repeat.png")));
@@ -198,8 +219,10 @@ public class HomeView extends JFrame {
 		Queuebtn.setBounds(769, 31, 39, 39);
 		MainRectangle.add(Queuebtn);
 		
+
 		 StopBtn = new JButton("");
 		StopBtn.addActionListener(new btn_Stop());
+
 		StopBtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/stop (3).png")));
 		StopBtn.setBorder(null);
 		StopBtn.setBackground(new Color(30, 58, 42));
@@ -242,6 +265,7 @@ public class HomeView extends JFrame {
 		TopBar.add(SearchBtn);
 		
 
+
 		ProfilePic = new JButton("");
 		//ProfilePic.setIcon(profilePath);
 		//ProfilePic.paint(profilePath);
@@ -256,6 +280,7 @@ public class HomeView extends JFrame {
 
 		
 		 Profile = new JButton("Profile Name");
+
 		Profile.setBackground(new Color(30,58,42));
 		Profile.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Profile.setForeground(Color.WHITE);
@@ -270,6 +295,7 @@ public class HomeView extends JFrame {
 		Notificationbtn.setBounds(1084, 11, 39, 39);
 		TopBar.add(Notificationbtn);
 		
+
 		 Refreshbtn = new JButton("");
 		Refreshbtn.addActionListener(new Refresh_btn());
 		Refreshbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/reload.png")));
@@ -284,13 +310,14 @@ public class HomeView extends JFrame {
 		TopBar.add(btnSearch);
 		btnSearch.addActionListener(new btn_Search());
 
+
 		
 		JPanel MusicPanel = new JPanel();
 		MusicPanel.setBackground(new Color(254, 254, 250));
 		MusicPanel.setBounds(0, 62, 186, 514);
 		contentPane.add(MusicPanel);
 		MusicPanel.setLayout(null);
-		
+
 		 btnCreatePlaylist = new JButton("New Playlist");
 		btnCreatePlaylist.addActionListener(new btn_CreatePlaylist());
 		btnCreatePlaylist.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -298,6 +325,7 @@ public class HomeView extends JFrame {
 		btnCreatePlaylist.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
 		btnCreatePlaylist.setBounds(0, 429, 186, 88);
 		MusicPanel.add(btnCreatePlaylist);
+
 		
 		JLabel MusicLbl = new JLabel("Music");
 		MusicLbl.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -305,7 +333,7 @@ public class HomeView extends JFrame {
 		MusicLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		MusicLbl.setBounds(0, 0, 186, 34);
 		MusicPanel.add(MusicLbl);
-		
+
 //		 Library = new JButton("Library");
 //		Library.addActionListener(new btn_Library());
 //		Library.setBackground(new Color(242, 203, 155));
@@ -313,6 +341,7 @@ public class HomeView extends JFrame {
 //		Library.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		Library.setBounds(0, 33, 186, 30);
 //		MusicPanel.add(Library);
+
 		
 		JButton Artist_Music = new JButton("Artist");
 		Artist_Music.setHorizontalAlignment(SwingConstants.LEFT);
@@ -334,7 +363,31 @@ public class HomeView extends JFrame {
 		Albums_Music.setBackground(new Color(242, 203, 155));
 		Albums_Music.setBounds(0, 90, 186, 30);
 		MusicPanel.add(Albums_Music);
+
+		JButton Playlist_Name3 = new JButton("");
+		Playlist_Name3.setEnabled(false);
+		Playlist_Name3.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name3.setBackground(new Color(254, 254, 250));
+		Playlist_Name3.setBounds(0, 232, 186, 30);
+		MusicPanel.add(Playlist_Name3);
 		
+		JButton Playlist_Name2 = new JButton("");
+		Playlist_Name2.setEnabled(false);
+		Playlist_Name2.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name2.setBackground(new Color(242, 203, 155));
+		Playlist_Name2.setBounds(0, 203, 186, 30);
+		MusicPanel.add(Playlist_Name2);
+		
+		JButton Playlist_Name1 = new JButton("");
+		Playlist_Name1.setEnabled(false);
+		Playlist_Name1.setHorizontalAlignment(SwingConstants.LEFT);
+		Playlist_Name1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Playlist_Name1.setBackground(new Color(254, 254, 250));
+		Playlist_Name1.setBounds(0, 175, 186, 30);
+		MusicPanel.add(Playlist_Name1);
+
 		JButton Playlists_Music = new JButton("Playlists");
 		Playlists_Music.setHorizontalAlignment(SwingConstants.LEFT);
 		Playlists_Music.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -342,7 +395,9 @@ public class HomeView extends JFrame {
 		Playlists_Music.setBounds(0, 146, 186, 30);
 		MusicPanel.add(Playlists_Music);
 		
+
 		 Playlist_List = new JList();
+
 		Playlist_List.setBounds(0, 175, 186, 253);
 		MusicPanel.add(Playlist_List);
 		
@@ -359,6 +414,7 @@ public class HomeView extends JFrame {
 		label.setBounds(0, 0, 186, 34);
 		RecentlyPlayedPanel.add(label);
 		
+
 		 AddSongbtn = new JButton("Add Song");
 		AddSongbtn.addActionListener(new btn_AddSong());
 		AddSongbtn.setIcon(new ImageIcon(HomeView.class.getResource("/images2/add-circular-outlined-button (1).png")));
@@ -382,14 +438,7 @@ public class HomeView extends JFrame {
 		RP_List.setBounds(0, 33, 186, 200);
 		RecentlyPlayedPanel.add(RP_List);
 		
-		 MP_List = new JList();
-		 MP_List.addListSelectionListener(new ListSelectionListener() {
-				public void valueChanged(ListSelectionEvent arg0) {
-					try {	
-					}catch(ArrayIndexOutOfBoundsException e) {}
-					songChangedInMP = true;	
-				}
-			});
+		JList MP_List = new JList();
 		MP_List.setBounds(0, 287, 186, 139);
 		RecentlyPlayedPanel.add(MP_List);
 		
@@ -517,11 +566,13 @@ public class HomeView extends JFrame {
 		});
 	}
 	
+
 	class Refresh_btn implements ActionListener
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
 			 
+
 			 //==========================================================   FOR LIBRARY STUFF
 			 userSongs = generalModel.getInstance().gettingSongs(HomeView.getInstance().currentUser);
 			 
@@ -549,9 +600,11 @@ public class HomeView extends JFrame {
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
+
 			 
-			 DefaultListModel DLMMostPlayed = new DefaultListModel();
+			 userPlaylist = generalModel.getInstance().gettingPlaylists(currentUser);
 			 
+
 			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
 				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
 			 
@@ -559,16 +612,21 @@ public class HomeView extends JFrame {
 			 //LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //========================================================== FOR PLAYLISTS
 			 userPlaylists = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
+
 			 DefaultListModel DLM2 = new DefaultListModel();
-			
-			 for(int y = 0; y < userPlaylists.size(); y++)
-				 DLM2.addElement(userPlaylists.get(y).getPlaylistName());
+			 
+
+			 for(int y = 0; y < userPlaylist.size(); y++)
+				 DLM2.addElement(userPlaylist.get(y).getPlaylistName());
+
 
 			 HomeView.getInstance().Playlist_List.setModel(DLM2);
 			 //LibraryView.getInstance().Playlist_List.setModel(DLM2);
 			//==========================================================
+
+			 playlistListJList.setModel(DLM2);
 			 
-			 
+
 		 }
 	 }
 	
@@ -694,9 +752,16 @@ public class HomeView extends JFrame {
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
-			 mp3.stop();
+			 String username;
+			 username = currentUser;
+//			 RegisteredUserProfile.getInstance().setVisible(true);
+//			 System.out.println(currentUser); for testing
+//			 RegisteredUserProfile.getInstance().getUserName(username);		
+			 ListenerView.getInstance().setVisible(true);
+			 ListenerView.getInstance().getUsername(username);
 		 }
 	 }
+
 	 
 
 	 class btn_nextSong implements ActionListener
@@ -729,3 +794,4 @@ public class HomeView extends JFrame {
 	
 
 }
+

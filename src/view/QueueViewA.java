@@ -170,7 +170,7 @@ public class QueueViewA extends JFrame {
 		
 		JButton btnLogout = new JButton("");
 		btnLogout.setBounds(10, 11, 39, 39);
-		btnLogout.setIcon(new ImageIcon(QueueViewAA.class.getResource("/images2/logout.png")));
+		btnLogout.setIcon(new ImageIcon(QueueViewA.class.getResource("/images2/logout.png")));
 		btnLogout.setBorder(null);
 		btnLogout.setBackground(new Color(30, 58, 42));
 		TopBar.add(btnLogout);

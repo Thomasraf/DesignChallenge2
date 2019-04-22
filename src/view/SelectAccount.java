@@ -38,7 +38,7 @@ public class SelectAccount extends JFrame{
 		
 		signingUpViewing = new SigningUpView();
 		loggingInViewing = new LoggingInView();
-//		artistLoggingInView = new ArtistLoggingInView();
+		artistLoggingInView = ArtistLoggingInView.getInstance();
 		JPanel backgroundPanel = new JPanel();
 		getContentPane().add(backgroundPanel, BorderLayout.CENTER);
 		backgroundPanel.setLayout(null);

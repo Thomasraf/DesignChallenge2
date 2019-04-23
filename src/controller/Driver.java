@@ -14,12 +14,13 @@ public class Driver {
 		String URL = "jdbc:mysql://localhost:3306/";
 
 
-
+		String USERNAME = "root";
 
 
 //		String PASSWORD = "1234";
 		String PASSWORD = "rootadmin";
 //		String DATABASE = "swdespa";
+		String DATABASE = "udc";
 
 
 		Database.getInstance().setConnection(URL, USERNAME, PASSWORD, DATABASE);

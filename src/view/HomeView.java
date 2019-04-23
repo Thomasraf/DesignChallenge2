@@ -551,12 +551,12 @@ public class HomeView extends JFrame {
 				 DLMYear.addElement(userSongs.get(x).getYear());
 				 DLMFavorite.addElement(userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
 			 userSongsMostPlayed = generalModel.getInstance().getMostPlayed(currentUser);
@@ -565,11 +565,11 @@ public class HomeView extends JFrame {
 //			 DefaultListModel DLMMostPlayed = new DefaultListModel();
 
 			 
-			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
-				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
-			 
-			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
-			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
+//			 for(int x = 0; x < userSongsMostPlayed.size(); x++)
+//				 DLMMostPlayed.addElement(userSongsMostPlayed.get(x).getSongName() + " (" + userSongsMostPlayed.get(x).getCount() + ") ");
+//			 
+//			 HomeView.getInstance().MP_List.setModel(DLMMostPlayed);
+//			 LibraryView.getInstance().MP_List.setModel(DLMMostPlayed);
 			 //========================================================== FOR PLAYLISTS
 			 userPlaylists = generalModel.getInstance().gettingPlaylists(HomeView.getInstance().currentUser);
 			 DefaultListModel DLM2 = new DefaultListModel();
@@ -580,7 +580,7 @@ public class HomeView extends JFrame {
 
 
 			 HomeView.getInstance().Playlist_List.setModel(DLM2);
-			 LibraryView.getInstance().Playlist_List.setModel(DLM2);
+//			 LibraryView.getInstance().Playlist_List.setModel(DLM2);
 			//==========================================================
 
 
@@ -619,8 +619,8 @@ public class HomeView extends JFrame {
 	 {
 		 public void actionPerformed(ActionEvent e)
 		 {
-			 LibraryView.getInstance().setVisible(true);
-			 LibraryView.getInstance().setUserName(currentUser);
+//			 LibraryView.getInstance().setVisible(true);
+//			 LibraryView.getInstance().setUserName(currentUser);
 			 dispose();
 		 }
 	 }

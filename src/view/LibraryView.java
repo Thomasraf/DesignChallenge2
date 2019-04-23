@@ -37,7 +37,7 @@ import javax.swing.JList;
 
 public class LibraryView extends JFrame {
 
-//	private volatile static LibraryView instance = null;
+	private volatile static LibraryView instance = null;
 	public String currentUser;
 	private JPanel contentPane;
 
@@ -61,7 +61,7 @@ public class LibraryView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LibraryView() {
+	private LibraryView() {
 		setBackground(new Color(254,254,250));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -518,12 +518,12 @@ public class LibraryView extends JFrame {
 				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
 				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 //==========================================================  FOR MOST PLAYED STUFF
 			 HomeView.getInstance().userSongsMostPlayed = generalModel.getInstance().getMostPlayed(HomeView.getInstance().currentUser);
@@ -543,7 +543,7 @@ public class LibraryView extends JFrame {
 				 DLM2.addElement(HomeView.getInstance().userPlaylists.get(y).getPlaylistName());
 
 			 HomeView.getInstance().Playlist_List.setModel(DLM2);
-			 LibraryView.getInstance().Playlist_List.setModel(DLM2);
+//			 LibraryView.getInstance().Playlist_List.setModel(DLM2);
 			//==========================================================
 			 
 			 
@@ -723,12 +723,12 @@ public class LibraryView extends JFrame {
 				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
 				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 
 		 }
@@ -755,12 +755,12 @@ public class LibraryView extends JFrame {
 				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
 				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 
 		 }
@@ -787,12 +787,12 @@ public class LibraryView extends JFrame {
 				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
 				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 
 		 }
@@ -819,12 +819,12 @@ public class LibraryView extends JFrame {
 				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
 				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 
 		 }
@@ -851,13 +851,13 @@ public class LibraryView extends JFrame {
 				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
 				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
-			 
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 
 			 
 		 }
 	 }
@@ -883,12 +883,12 @@ public class LibraryView extends JFrame {
 				 DLMYear.addElement(HomeView.getInstance().userSongs.get(x).getYear());
 				 DLMFavorite.addElement(HomeView.getInstance().userSongs.get(x).getFavorite());
 			 }
-			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
-			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
-			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
-			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
-			 LibraryView.getInstance().Year_List.setModel(DLMYear);
-			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
+//			 LibraryView.getInstance().Title_list.setModel(DLMTitle);
+//			 LibraryView.getInstance().Artist_list.setModel(DLMArtist);
+//			 LibraryView.getInstance().Genre_List.setModel(DLMGenre);
+//			 LibraryView.getInstance().Album_List.setModel(DLMAlbum);
+//			 LibraryView.getInstance().Year_List.setModel(DLMYear);
+//			 LibraryView.getInstance().Fave_List.setModel(DLMFavorite);
 			 
 			 
 		 }

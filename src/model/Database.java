@@ -381,6 +381,42 @@ public class Database{
 		}
 	}
 
+	public void addSong(Song s)
+	{
+		Connection cnt = getConnection();
+
+		String query = "INSERT INTO songs (Title, Artist, Album, Genre, Year, Username) VALUES (?,?,?,?,?,?)";
+		String query2 = "INSERT INTO songdata (data) VALUES (?)";
+		
+		try {
+			//create prepared statement
+			//insert to playlistdata
+			PreparedStatement ps = cnt.prepareStatement(query);
+			File image = new File(s.getPath());
+			FileInputStream fis = new FileInputStream(image);
+			
+			//load data into songs
+			ps.setString(1, s.getSongName());
+			ps.setString(2, s.getArtistName());
+			ps.setString(3, s.getAlbum());
+			ps.setString(4, s.getGenre());
+			ps.setString(5, s.getYear());
+			ps.setString(6, s.getUserName());
+			ps.execute();
+			
+			PreparedStatement ps2 = cnt.prepareStatement(query2);
+			ps2.setBinaryStream(1, (InputStream)fis);
+			ps2.execute();
+			
+//			System.out.println("Successfully added album " + a.getAlbumName() + "!");
+		}
+		
+		catch (SQLException | FileNotFoundException e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
 	public void writeSongBLOB(int SongID, String path,String songName) {
 
 			

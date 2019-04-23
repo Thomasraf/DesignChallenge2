@@ -86,6 +86,11 @@ public class generalModel {
 		Database.getInstance().addAlbum(a);
 	}
 	
+	public void addSong(Song s)
+	{
+		Database.getInstance().addSong(s);
+	}
+	
 	public ArrayList<Song> gettingSongs(String t) {
 		return Database.getInstance().getSongs(t);
 	}

@@ -43,10 +43,14 @@ public class generalController {
 		generalModel.getInstance().addArtistPlaylist(ap);
 	}
 
-
 	public void addAlbum(Album a)
 	{
 		generalModel.getInstance().addAlbum(a);
+	}
+	
+	public void addSong(Song s)
+	{
+		generalModel.getInstance().addSong(s);
 	}
 /*	
 	public int getIDWithUsername(String username)
